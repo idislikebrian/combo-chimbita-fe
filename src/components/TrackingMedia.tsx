@@ -98,21 +98,20 @@ export function TrackingMedia({
         </svg>
       </figure>
 
-      <div className="media__bar ficha">
-        <span className="media__note">
-          <T t={note} />
-        </span>
-        <span className="media__count" aria-hidden="true">
-          {boxes.length} obj · {W}×{H}
-        </span>
-        <div className="media__toggles" role="group" aria-label="Capas / Layers">
-          <button type="button" className="chip" aria-pressed={filtro} onClick={() => setFiltro((v) => !v)}>
-            <T t={{ es: "Filtro", en: "Filter" }} />
-          </button>
-          <button type="button" className="chip" aria-pressed={trazado} onClick={() => setTrazado((v) => !v)}>
-            <T t={{ es: "Trazado", en: "Tracking" }} />
-          </button>
-        </div>
+      {/* Readout corners: printed over the image like a camera's data, outside the role="img" figure. */}
+      <p className="media__note micro">
+        <T t={note} />
+      </p>
+      <p className="media__count micro" aria-hidden="true">
+        {boxes.length} obj · {W}×{H}
+      </p>
+      <div className="media__toggles" role="group" aria-label="Capas / Layers">
+        <button type="button" className="chip chip--senal" aria-pressed={filtro} onClick={() => setFiltro((v) => !v)}>
+          <T t={{ es: "Filtro", en: "Filter" }} />
+        </button>
+        <button type="button" className="chip chip--senal" aria-pressed={trazado} onClick={() => setTrazado((v) => !v)}>
+          <T t={{ es: "Trazado", en: "Tracking" }} />
+        </button>
       </div>
     </div>
   );

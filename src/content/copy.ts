@@ -30,6 +30,11 @@ export const copy = {
       es: "Los cuatro integrantes de COMBO CHIMBITA en un pasillo azul, pasados por el filtro de rastreo.",
       en: "The four members of COMBO CHIMBITA in a blue hallway, run through the tracking filter.",
     },
+    /** The edge-running ficha band on the hero poster. Coordinates come from campaign.ts. */
+    ficha: {
+      status: { es: "Crowdfunding · borrador", en: "Crowdfunding · draft" },
+      record: { es: "Nuevo disco", en: "New record" },
+    },
     mediaNote: {
       es: "Imagen temporal · el video con filtro de rastreo llega después",
       en: "Temporary image · the tracking-filter video comes later",
@@ -38,6 +43,7 @@ export const copy = {
 
   ficha: {
     heading: { es: "Estado de la campaña", en: "Campaign status" },
+    band: { es: "Ficha de campaña", en: "Campaign sheet" },
     raised: { es: "Recaudado", en: "Raised" },
     goal: { es: "Meta", en: "Goal" },
     daysLeft: { es: "Días restantes", en: "Days left" },
@@ -81,10 +87,11 @@ export const copy = {
   },
 
   tiers: {
-    kicker: { es: "Recompensas · borrador", en: "Rewards · draft" },
-    heading: { es: "Elige tu boleto", en: "Pick your ticket" },
+    kicker: { es: "Lista de precios · borrador", en: "Price list · draft" },
+    heading: { es: "Recompensas", en: "Rewards" },
     includes: { es: "Incluye", en: "Includes" },
     limit: { es: "Cupos", en: "Slots" },
+    currency: { es: "USD", en: "USD" },
     limitPlaceholder: { es: "[límite]", en: "[limit]" },
     cta: { es: "Contribuir", en: "Contribute" },
     open: {

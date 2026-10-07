@@ -47,11 +47,21 @@ function Status({ state, id }: { state: State; id: string }) {
   );
 }
 
-export function TierButton({ tierId, tierName, disabled }: { tierId: string; tierName: Bilingual; disabled?: boolean }) {
+export function TierButton({
+  tierId,
+  tierName,
+  disabled,
+  className,
+}: {
+  tierId: string;
+  tierName: Bilingual;
+  disabled?: boolean;
+  className?: string;
+}) {
   const { state, run } = useCheckout();
   const statusId = useId();
   return (
-    <div className="checkout">
+    <div className={`checkout ${className ?? ""}`}>
       <button
         type="button"
         className="btn"
@@ -75,7 +85,9 @@ export function TierButton({ tierId, tierName, disabled }: { tierId: string; tie
   );
 }
 
-export function OpenAmountForm() {
+/** The "any amount" row. `children` (name and description) render between the amount and
+ *  the button so the row can sit on the same grid as the priced rows. */
+export function OpenAmountForm({ className, children }: { className?: string; children?: React.ReactNode }) {
   const { state, setState, run } = useCheckout();
   const [value, setValue] = useState("");
   const inputRef = useRef<HTMLInputElement>(null);
@@ -83,7 +95,7 @@ export function OpenAmountForm() {
   const statusId = useId();
   return (
     <form
-      className="checkout open-form"
+      className={`open-form ${className ?? ""}`}
       onSubmit={(e) => {
         e.preventDefault();
         const n = Number(value);
@@ -95,25 +107,30 @@ export function OpenAmountForm() {
         run({ amountUsd: Math.round(n * 100) / 100 });
       }}
     >
-      <label className="open-form__label" htmlFor={inputId}>
-        <T t={copy.tiers.open.label} />
-      </label>
-      <div className="open-form__row">
-        <span className="open-form__cur" aria-hidden="true">$</span>
-        <input
-          id={inputId}
-          ref={inputRef}
-          className="open-form__input"
-          aria-invalid={state === "invalid" || undefined}
-          inputMode="decimal"
-          type="number"
-          min={openAmount.minUsd}
-          step="any"
-          value={value}
-          onChange={(e) => setValue(e.target.value)}
-          aria-describedby={statusId}
-          autoComplete="off"
-        />
+      {children}
+      <div className="open-form__amount">
+        <label className="open-form__label etiqueta" htmlFor={inputId}>
+          <T t={copy.tiers.open.label} />
+        </label>
+        <div className="open-form__row">
+          <span className="open-form__cur" aria-hidden="true">$</span>
+          <input
+            id={inputId}
+            ref={inputRef}
+            className="open-form__input"
+            aria-invalid={state === "invalid" || undefined}
+            inputMode="decimal"
+            type="number"
+            min={openAmount.minUsd}
+            step="any"
+            value={value}
+            onChange={(e) => setValue(e.target.value)}
+            aria-describedby={statusId}
+            autoComplete="off"
+          />
+        </div>
+      </div>
+      <div className="checkout open-form__action">
         <button type="submit" className="btn" aria-disabled={state === "working" || undefined}>
           <span className="btn__label">
             <T t={copy.tiers.cta} /> →
@@ -123,8 +140,8 @@ export function OpenAmountForm() {
             </span>
           </span>
         </button>
+        <Status state={state} id={statusId} />
       </div>
-      <Status state={state} id={statusId} />
     </form>
   );
 }
