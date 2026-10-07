@@ -447,12 +447,14 @@ html[data-lang="es"] .l-en, html[data-lang="en"] .l-es { display: none !importan
 .site-footer__name {
   font-family: var(--font-cartel); font-variation-settings: var(--cartel-opsz); font-weight: 900;
   font-size: 14.2vw; line-height: var(--cartel-caps-lead); letter-spacing: var(--cartel-caps-track); white-space: nowrap;
-  margin: 0 0 -.06em calc(var(--margen) - .04em);
+  margin: 0;
+  text-align: center;
+  /* Negative tracking also trails the last letter; pad it back so the ink sits centred. */
+  padding-right: calc(-1 * var(--cartel-caps-track) + .025em); /* + optical: C vs A side bearings */
 }
 .site-footer__band {
   display: grid; grid-template-columns: 1fr 1.4fr auto; gap: var(--paso-4);
-  padding: var(--paso-4) var(--margen) var(--paso-5);
-  border-top: 1.5px solid var(--linea);
+  padding: var(--paso-5) var(--margen) var(--paso-5);
 }
 .site-footer__links { display: grid; gap: var(--paso-1); }
 .site-footer__coords { display: grid; gap: var(--paso-1); }
