@@ -320,50 +320,6 @@ html[data-lang="es"] .l-en, html[data-lang="en"] .l-es { display: none !importan
   .story__text { font-size: 18px; }
 }
 
-/* ---------- una primavera ---------- */
-.primavera {
-  position: relative;
-  overflow: hidden;
-  padding: var(--paso-5) 0 var(--paso-7);
-  border-top: 1.5px solid var(--linea);
-}
-.primavera__stage {
-  display: grid; place-items: center;
-  min-height: min(80vh, 820px);
-  padding: 0 var(--margen);
-}
-.primavera__flower {
-  position: relative;
-  width: min(80vw, 640px);
-  aspect-ratio: 1;
-}
-.flor {
-  position: absolute; inset: 0;
-  -webkit-mask: url("/media/flores/pasiflora.svg") center / contain no-repeat;
-  mask: url("/media/flores/pasiflora.svg") center / contain no-repeat;
-}
-/* Whole state: one ink, pasiflora on paper. Static under reduced motion. */
-.flor--pasiflora { background: var(--pasiflora); }
-
-@supports (animation-timeline: view()) {
-  @media (prefers-reduced-motion: no-preference) {
-    .primavera__flower {
-      animation: abrir steps(12, end) both;
-      animation-timeline: view();
-      animation-range: entry 0% cover 55%;
-    }
-  }
-}
-@keyframes abrir {
-  from { transform: scale(.18) rotate(-72deg); }
-  to { transform: scale(1) rotate(0deg); }
-}
-
-
-@media (max-width: 720px) {
-  .primavera__stage { min-height: 70vh; }
-}
-
 /* ---------- lista: rewards as a printed price list on kraft ---------- */
 .lista {
   position: relative;

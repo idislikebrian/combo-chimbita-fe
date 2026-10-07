@@ -75,13 +75,6 @@ export const copy = {
     places: { es: "Studio 9, Massachusetts · Bogotá", en: "Studio 9, Massachusetts · Bogotá" },
   },
 
-  primavera: {
-    alt: {
-      es: "Una pasiflora rosada abriéndose.",
-      en: "A pink passionflower opening.",
-    },
-  },
-
   tiers: {
     kicker: { es: "Lista de precios · borrador", en: "Price list · draft" },
     heading: { es: "Recompensas", en: "Rewards" },
