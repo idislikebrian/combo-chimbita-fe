@@ -1,11 +1,12 @@
 import type { Metadata, Viewport } from "next";
-import { Big_Shoulders, Newsreader, IBM_Plex_Mono } from "next/font/google";
+import { Big_Shoulders, Newsreader } from "next/font/google";
 import { copy } from "@/content/copy";
 import "@/styles/tokens.css";
 import "./globals.css";
 
-// Google Fonts now ships "Big Shoulders Display" as the opsz axis of "Big Shoulders".
-// globals.css pins opsz 72 for the `cartel` role, which is the Display cut.
+// Two families only on this site: Big Shoulders and Newsreader (campaign art direction,
+// Oct 7 2026). Google ships "Big Shoulders Display" as the opsz axis of "Big Shoulders":
+// globals.css pins opsz 72 for display sizes and lets small metadata follow its size.
 const cartel = Big_Shoulders({
   subsets: ["latin"],
   axes: ["opsz"],
@@ -17,12 +18,6 @@ const texto = Newsreader({
   axes: ["opsz"],
   style: ["normal", "italic"],
   variable: "--nf-texto",
-  display: "swap",
-});
-const ficha = IBM_Plex_Mono({
-  subsets: ["latin"],
-  weight: ["500", "600"],
-  variable: "--nf-ficha",
   display: "swap",
 });
 
@@ -49,7 +44,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       lang="es"
       data-lang="es"
       data-theme="papel"
-      className={`${cartel.variable} ${texto.variable} ${ficha.variable}`}
+      className={`${cartel.variable} ${texto.variable}`}
       suppressHydrationWarning
     >
       <head>

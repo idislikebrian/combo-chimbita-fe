@@ -23,7 +23,7 @@ export const campaign = {
 
   links: {
     bandcamp: "https://combochimbita.bandcamp.com/",
-    instagram: null as string | null,
+    instagram: "https://instagram.com/combochimbita" as string | null, // verified by Brian, Oct 7 2026
     contact: null as string | null,
     mailingList: null as string | null,
   },

@@ -25,7 +25,7 @@ export function Footer() {
           <li>
             <a href={l.bandcamp} rel="noopener">Bandcamp ↗</a>
           </li>
-          <li>Instagram · {l.instagram ? <a href={l.instagram} rel="noopener">Instagram ↗</a> : <Pending />}</li>
+          <li>{l.instagram ? <a href={l.instagram} rel="noopener">Instagram ↗</a> : <>Instagram · <Pending /></>}</li>
           <li>
             <T t={f.contact} /> · {l.contact ? <a href={l.contact}>{l.contact.replace(/^mailto:/, "")}</a> : <Pending />}
           </li>
