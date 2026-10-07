@@ -30,12 +30,6 @@ export function Footer() {
             <T t={f.list} /> · {l.mailingList ? <a href={l.mailingList} rel="noopener">↗</a> : <Pending />}
           </li>
         </ul>
-        <div className="inkbar" aria-hidden="true">
-          <span className="inkbar__sw inkbar__sw--tinta" />
-          <span className="inkbar__sw inkbar__sw--pasiflora" />
-          <span className="inkbar__sw inkbar__sw--maiz" />
-          <span className="micro">tinta · pasiflora · maiz / Black · Fluorescent Pink · Sunflower (riso)</span>
-        </div>
       </div>
     </footer>
   );
