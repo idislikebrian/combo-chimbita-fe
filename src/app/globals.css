@@ -20,7 +20,7 @@
      descenders (p, g) don't collide; tracking does the tightening instead. */
   --cartel-xl-track: -0.03em;   --cartel-xl-lead: 0.86;   /* hero chapter word, 88–260px */
   --cartel-track: -0.022em;     --cartel-lead: 0.86;      /* section titles, 64–150px */
-  --cartel-crop-track: -0.035em; --cartel-crop-lead: 0.76; /* cropped billing: Una primavera (one line) */
+  --cartel-crop-track: -0.035em; --cartel-crop-lead: 0.76; /* cropped one-line billing (unused for now) */
   --cartel-caps-track: -0.025em; --cartel-caps-lead: 0.76; /* COMBO CHIMBITA wordmark, caps, no descenders */
   --numero-track: -0.015em;     --numero-lead: 0.85;      /* prices and counter values, 40–104px */
   --titular-sm-track: -0.008em; --titular-sm-lead: 0.92;  /* tier names, 32–36px */
@@ -223,10 +223,12 @@ html[data-lang="es"] .l-en, html[data-lang="en"] .l-es { display: none !importan
 
 .media__src--key {
   filter: grayscale(1) contrast(1.9) brightness(1.15);
-  -webkit-mask-image: radial-gradient(circle, #000 0 1.7px, transparent 2.3px);
-  mask-image: radial-gradient(circle, #000 0 1.7px, transparent 2.3px);
-  -webkit-mask-size: var(--trama-celda) var(--trama-celda);
-  mask-size: var(--trama-celda) var(--trama-celda);
+  /* Finer screen than --trama-celda (6px) on this image only, by art direction. */
+  --trama-hero: 3.5px;
+  -webkit-mask-image: radial-gradient(circle, #000 0 1px, transparent 1.45px);
+  mask-image: radial-gradient(circle, #000 0 1px, transparent 1.45px);
+  -webkit-mask-size: var(--trama-hero) var(--trama-hero);
+  mask-size: var(--trama-hero) var(--trama-hero);
 }
 /* Red channel: luminance multiplied into a senal-rojo field, screened over the key, slipped desfase-2. */
 .media__rojo {
@@ -345,7 +347,7 @@ html[data-lang="es"] .l-en, html[data-lang="en"] .l-es { display: none !importan
 .primavera {
   position: relative;
   overflow: hidden;
-  padding: var(--paso-5) 0 .14em;
+  padding: var(--paso-5) 0 var(--paso-7);
   border-top: 1.5px solid var(--linea);
 }
 .primavera__stage {
@@ -381,20 +383,12 @@ html[data-lang="es"] .l-en, html[data-lang="en"] .l-es { display: none !importan
 }
 
 
-.primavera__word {
-  font-family: var(--font-cartel); font-variation-settings: var(--cartel-opsz); font-weight: 900;
-  font-size: clamp(96px, 21vw, 380px); line-height: var(--cartel-crop-lead); letter-spacing: var(--cartel-crop-track);
-  white-space: nowrap;
-  margin: calc(-1 * var(--paso-6)) 0 0 calc(var(--margen) - .05em);
-  position: relative;
-}
 .primavera__note {
   position: absolute; right: var(--margen); top: var(--paso-5);
   color: var(--tinta-suave);
 }
 @media (max-width: 720px) {
   .primavera__stage { min-height: 70vh; }
-  .primavera__word { font-size: 30vw; margin-top: var(--paso-4); }
 }
 
 /* ---------- lista: rewards as a printed price list on kraft ---------- */

@@ -78,7 +78,6 @@ export const copy = {
   },
 
   primavera: {
-    word: { es: "Una primavera", en: "Una primavera" },
     alt: {
       es: "Una pasiflora rosada abriéndose.",
       en: "A pink passionflower opening.",
@@ -134,7 +133,6 @@ export const copy = {
   },
 
   footer: {
-    contact: { es: "Contacto", en: "Contact" },
     list: { es: "Lista de correo", en: "Mailing list" },
     pending: { es: "[enlace pendiente]", en: "[link pending]" },
     rights: { es: "Brooklyn · Bogotá", en: "Brooklyn · Bogotá" },

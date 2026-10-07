@@ -27,9 +27,6 @@ export function Footer() {
           </li>
           <li>{l.instagram ? <a href={l.instagram} rel="noopener">Instagram ↗</a> : <>Instagram · <Pending /></>}</li>
           <li>
-            <T t={f.contact} /> · {l.contact ? <a href={l.contact}>{l.contact.replace(/^mailto:/, "")}</a> : <Pending />}
-          </li>
-          <li>
             <T t={f.list} /> · {l.mailingList ? <a href={l.mailingList} rel="noopener">↗</a> : <Pending />}
           </li>
         </ul>
