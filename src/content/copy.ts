@@ -119,7 +119,42 @@ export const copy = {
     },
     error: { es: "No se pudo abrir el pago. Intenta de nuevo.", en: "Couldn't open checkout. Try again." },
     thanks: { es: "Gracias. Tu aporte quedó registrado.", en: "Thank you. Your contribution went through." },
+    /** Shown on the receipt page while Stripe runs on test keys. */
+    testMode: { es: "Modo de prueba · no se cobra dinero real", en: "Test mode · no real money is charged" },
     invalidAmount: { es: "Escribe un monto de al menos ${min} USD.", en: "Enter an amount of at least ${min} USD." },
+  },
+
+  // Return pages after Stripe Checkout. DRAFT wording, not reviewed by the band.
+  gracias: {
+    title: { es: "Gracias", en: "Thank you" },
+    kicker: { es: "Comprobante de aporte", en: "Contribution receipt" },
+    body: {
+      es: "Tu aporte quedó registrado. Gracias por ser parte de este disco.",
+      en: "Your contribution went through. Thank you for being part of this record.",
+    },
+    processing: {
+      es: "Tu pago todavía se está procesando.",
+      en: "Your payment is still processing.",
+    },
+    missing: {
+      es: "No encontramos este pago.",
+      en: "We couldn't find this payment.",
+    },
+    reward: { es: "Recompensa", en: "Reward" },
+    amount: { es: "Monto", en: "Amount" },
+    email: { es: "Correo", en: "Email" },
+    shipping: { es: "Envío a", en: "Ships to" },
+    back: { es: "Volver a la campaña", en: "Back to the campaign" },
+  },
+
+  cancelado: {
+    title: { es: "Pago cancelado", en: "Payment cancelled" },
+    kicker: { es: "Sin cobro", en: "Nothing charged" },
+    body: {
+      es: "No se hizo ningún cobro. Puedes volver y elegir otra recompensa cuando quieras.",
+      en: "Nothing was charged. Come back and pick a reward whenever you like.",
+    },
+    back: { es: "Volver a las recompensas", en: "Back to the rewards" },
   },
 
   footer: {

@@ -497,3 +497,22 @@ html[data-lang="es"] .l-en, html[data-lang="en"] .l-es { display: none !importan
   .flor-glifo--no { width: 18px; height: 18px; }
   .site-footer__flores { font-size: 24px; }
 }
+
+/* ---------- checkout return pages (gracias / cancelado) ---------- */
+/* A printed receipt slip: tinta on paper, one pasiflora button. */
+.recibo { padding: var(--paso-7) var(--margen); min-height: 60vh; }
+.recibo__sheet { max-width: 640px; }
+.recibo__title {
+  font-family: var(--font-cartel); font-variation-settings: var(--cartel-opsz); font-weight: 900;
+  font-size: clamp(64px, 11vw, 160px); line-height: var(--cartel-lead); letter-spacing: var(--cartel-track);
+  margin-bottom: var(--paso-5);
+}
+.recibo__body { max-width: 34ch; margin-bottom: var(--paso-5); }
+.recibo__lines { border-top: 1.5px solid var(--linea); margin-bottom: var(--paso-5); }
+.recibo__lines > div {
+  display: flex; justify-content: space-between; gap: var(--paso-4);
+  padding-block: var(--paso-2); border-bottom: 1px dotted var(--linea);
+}
+.recibo__lines dt { color: var(--tinta-suave); }
+.recibo__lines dd { text-align: right; overflow-wrap: anywhere; }
+.recibo__test { color: var(--tinta-suave); margin-bottom: var(--paso-4); }

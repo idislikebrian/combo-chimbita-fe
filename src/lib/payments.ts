@@ -14,7 +14,8 @@ export async function startCheckout(req: CheckoutRequest): Promise<CheckoutResul
     const res = await fetch("/api/checkout", {
       method: "POST",
       headers: { "content-type": "application/json" },
-      body: JSON.stringify(req),
+      // Checkout opens in the language the page is showing.
+      body: JSON.stringify({ ...req, lang: document.documentElement.dataset.lang === "en" ? "en" : "es" }),
     });
     const data = (await res.json().catch(() => ({}))) as Partial<CheckoutResult> & { url?: string };
     if (res.ok && data.url) return { status: "redirect", url: data.url };
