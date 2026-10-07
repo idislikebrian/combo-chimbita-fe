@@ -18,14 +18,13 @@ const boxes = [
   { x: 720, y: 300, w: 180, h: 200 },
   { x: 1090, y: 320, w: 180, h: 210 },
   { x: 1400, y: 400, w: 250, h: 220 },
-  { x: 1200, y: 720, w: 220, h: 180 },
 ];
+// Faces only: one box per band member.
 const links: [number, number][] = [
   [0, 1],
   [1, 2],
   [2, 3],
-  [3, 4],
-  [0, 4],
+  [0, 2],
   [1, 3],
 ];
 const center = (i: number) => [boxes[i].x + boxes[i].w / 2, boxes[i].y + boxes[i].h / 2];
