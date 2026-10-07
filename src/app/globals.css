@@ -282,7 +282,7 @@ html[data-lang="es"] .l-en, html[data-lang="en"] .l-es { display: none !importan
   border-left: 1px solid var(--linea-suave);
   color: var(--tinta-suave); white-space: nowrap;
 }
-.lomo__list { display: flex; flex-wrap: wrap; align-items: baseline; padding: var(--paso-4) 0 var(--paso-4) var(--paso-3); }
+.lomo__list { display: flex; flex-wrap: wrap; align-items: baseline; align-self: center; padding: var(--paso-4) 0 var(--paso-4) var(--paso-3); }
 .lomo__item {
   display: flex; align-items: baseline; gap: var(--paso-2);
   padding: var(--paso-2) var(--paso-4) var(--paso-2) 0;
@@ -295,10 +295,10 @@ html[data-lang="es"] .l-en, html[data-lang="en"] .l-es { display: none !importan
 }
 .lomo__value .is-placeholder { color: var(--pasiflora); }
 .lomo__coords {
-  writing-mode: vertical-rl;
-  padding: var(--paso-3) var(--paso-2);
+  display: flex; flex-direction: column; justify-content: center; gap: 2px;
+  padding: var(--paso-3) var(--margen) var(--paso-3) var(--paso-4);
   border-left: 1px solid var(--linea-suave);
-  color: var(--tinta-suave); white-space: nowrap; text-align: center;
+  color: var(--tinta-suave); white-space: nowrap; text-align: right;
 }
 @media (max-width: 720px) {
   .lomo { grid-template-columns: minmax(0, 1fr); }
@@ -314,7 +314,7 @@ html[data-lang="es"] .l-en, html[data-lang="en"] .l-es { display: none !importan
   }
   .lomo__item:last-child { border-bottom: 0; }
   .lomo__value { font-size: 40px; }
-  .lomo__coords { writing-mode: horizontal-tb; border-left: 0; border-top: 1px solid var(--linea-suave); padding: var(--paso-2) var(--margen); text-align: left; }
+  .lomo__coords { border-left: 0; border-top: 1px solid var(--linea-suave); padding: var(--paso-2) var(--margen); text-align: left; }
 }
 
 /* ---------- story ---------- */
@@ -362,8 +362,8 @@ html[data-lang="es"] .l-en, html[data-lang="en"] .l-es { display: none !importan
 }
 .flor {
   position: absolute; inset: 0;
-  -webkit-mask: url("/media/flor-pasiflora.png") center / contain no-repeat;
-  mask: url("/media/flor-pasiflora.png") center / contain no-repeat;
+  -webkit-mask: url("/media/flores/pasiflora.svg") center / contain no-repeat;
+  mask: url("/media/flores/pasiflora.svg") center / contain no-repeat;
 }
 /* Whole state: one ink, pasiflora on paper. Static under reduced motion. */
 .flor--pasiflora { background: var(--pasiflora); }
@@ -383,10 +383,6 @@ html[data-lang="es"] .l-en, html[data-lang="en"] .l-es { display: none !importan
 }
 
 
-.primavera__note {
-  position: absolute; right: var(--margen); top: var(--paso-5);
-  color: var(--tinta-suave);
-}
 @media (max-width: 720px) {
   .primavera__stage { min-height: 70vh; }
 }
@@ -461,13 +457,13 @@ html[data-lang="es"] .l-en, html[data-lang="en"] .l-es { display: none !importan
 }
 .open-form__input::-webkit-outer-spin-button, .open-form__input::-webkit-inner-spin-button { -webkit-appearance: none; margin: 0; }
 
-/* The recurring passionflower stamp (raster until the vectors arrive). */
+/* The recurring passionflower stamp (Brian's vector, deliverables/flowers). */
 .sello {
   position: absolute; display: block; pointer-events: none;
   width: clamp(96px, 11vw, 168px); aspect-ratio: 1;
   background: var(--pasiflora);
-  -webkit-mask: url("/media/flor-pasiflora.png") center / contain no-repeat;
-  mask: url("/media/flor-pasiflora.png") center / contain no-repeat;
+  -webkit-mask: url("/media/flores/pasiflora.svg") center / contain no-repeat;
+  mask: url("/media/flores/pasiflora.svg") center / contain no-repeat;
 }
 .sello--lista { top: calc(-0.5 * clamp(96px, 11vw, 168px)); right: calc(var(--margen) + 6%); transform: rotate(-9deg); }
 

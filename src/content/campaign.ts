@@ -12,8 +12,6 @@ export const campaign = {
   raisedUsd: null as number | null,
   /** Number of contributions. Will come from Stripe. */
   backers: null as number | null,
-  /** Campaign end, ISO date (YYYY-MM-DD). Drives "days left". */
-  endDate: null as string | null,
 
   /** Hero media. Swap `video` in when the blob-tracking renders arrive. */
   media: {
@@ -32,14 +30,6 @@ export const campaign = {
     bogota: "4.71° N 74.07° W",
   },
 };
-
-/** Call on the client only: "now" must be the visitor's clock, not build time. */
-export function daysLeft(endDate: string | null, now: Date): number | null {
-  if (!endDate) return null;
-  const end = new Date(`${endDate}T23:59:59`);
-  const ms = end.getTime() - now.getTime();
-  return Math.max(0, Math.ceil(ms / 86_400_000));
-}
 
 export function formatUsd(n: number): string {
   return `$${n.toLocaleString("en-US")}`;

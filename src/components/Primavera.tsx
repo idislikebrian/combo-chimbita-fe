@@ -2,8 +2,7 @@ import { copy } from "@/content/copy";
 import { T } from "./T";
 
 // The flower opening: one pasiflora silhouette on paper, the whole (unbroken) state.
-// A quiet room with no heading. Flower is a raster crop of the 08-flores sketch until
-// the Illustrator vectors arrive.
+// A quiet room with no heading. Vector from Brian's flower set (deliverables/flowers).
 export function Primavera() {
   return (
     <div className="primavera">
@@ -15,9 +14,6 @@ export function Primavera() {
           <span className="flor flor--pasiflora" />
         </div>
       </div>
-      <p className="primavera__note micro">
-        <T t={copy.primavera.note} />
-      </p>
     </div>
   );
 }

@@ -1,9 +1,8 @@
 import { copy, type Bilingual } from "@/content/copy";
 import { campaign, formatUsd } from "@/content/campaign";
-import { DaysLeft } from "./DaysLeft";
 import { T } from "./T";
 
-// The campaign counter as a ficha band: one tinta strip in the document flow, read like a
+// The campaign counter as a ficha band (open-ended campaign: no end date, no countdown): one tinta strip in the document flow, read like a
 // record spine. Plain label + value pairs separated by rules. No boxes, bars or progress.
 function Value({ value, placeholder }: { value: React.ReactNode | null; placeholder: Bilingual }) {
   if (value !== null) return <>{value}</>;
@@ -19,7 +18,6 @@ export function Ficha() {
   const items: { label: Bilingual; value: React.ReactNode | null; placeholder: Bilingual }[] = [
     { label: copy.ficha.goal, value: campaign.goalUsd === null ? null : formatUsd(campaign.goalUsd), placeholder: p.goal },
     { label: copy.ficha.raised, value: campaign.raisedUsd === null ? null : formatUsd(campaign.raisedUsd), placeholder: p.raised },
-    { label: copy.ficha.daysLeft, value: campaign.endDate === null ? null : <DaysLeft endDate={campaign.endDate} />, placeholder: p.daysLeft },
     { label: copy.ficha.backers, value: campaign.backers === null ? null : String(campaign.backers), placeholder: p.backers },
   ];
   return (
@@ -40,7 +38,8 @@ export function Ficha() {
         ))}
       </dl>
       <p className="lomo__coords micro" aria-hidden="true">
-        {campaign.coords.brooklyn} · {campaign.coords.bogota}
+        <span>Brooklyn {campaign.coords.brooklyn}</span>
+        <span>Bogotá {campaign.coords.bogota}</span>
       </p>
     </section>
   );

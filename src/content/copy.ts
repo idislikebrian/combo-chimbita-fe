@@ -46,12 +46,10 @@ export const copy = {
     band: { es: "Ficha de campaña", en: "Campaign sheet" },
     raised: { es: "Recaudado", en: "Raised" },
     goal: { es: "Meta", en: "Goal" },
-    daysLeft: { es: "Días restantes", en: "Days left" },
     backers: { es: "Aportes", en: "Contributions" },
     placeholders: {
       raised: { es: "[recaudado]", en: "[raised]" },
       goal: { es: "[meta]", en: "[goal]" },
-      daysLeft: { es: "[días]", en: "[days]" },
       backers: { es: "[aportes]", en: "[contributions]" },
     },
   },
@@ -82,7 +80,6 @@ export const copy = {
       es: "Una pasiflora rosada abriéndose.",
       en: "A pink passionflower opening.",
     },
-    note: { es: "Flor del boceto · vector final pendiente", en: "Sketch flower · final vector pending" },
   },
 
   tiers: {
