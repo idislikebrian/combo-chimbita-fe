@@ -29,6 +29,7 @@ export function Hero() {
 
         <TrackingMedia
           still={campaign.media.still}
+          print={campaign.media.print}
           video={campaign.media.video}
           alt={copy.hero.mediaAlt}
           note={copy.hero.mediaNote}

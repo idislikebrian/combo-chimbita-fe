@@ -131,14 +131,19 @@ html[data-lang="es"] .l-en, html[data-lang="en"] .l-es { display: none !importan
   display: flex; align-items: center; justify-content: space-between; gap: var(--paso-4);
   padding: var(--paso-4) var(--margen) var(--paso-4) var(--margen);
 }
-.site-header__mark { display: block; width: 168px; flex: none; }
-.mark { width: 100%; height: auto; overflow: visible; }
-.mark__ink text { font-family: var(--font-cartel); font-variation-settings: var(--cartel-opsz); font-weight: 900; fill: currentColor; }
+.site-header__mark { display: block; width: 168px; flex: none; color: var(--tinta); }
+.logo {
+  display: block; width: 100%; aspect-ratio: 599.65 / 308.74;
+  background: currentColor;
+  -webkit-mask: url("/media/logo.svg") center / contain no-repeat;
+  mask: url("/media/logo.svg") center / contain no-repeat;
+}
+@media (forced-colors: active) { .logo { background: CanvasText; } }
 .lang { display: flex; gap: var(--paso-1); }
 @media (pointer: coarse) { .chip, .lang__btn { min-height: 44px; min-width: 44px; } }
 @media (max-width: 720px) {
   .site-header { padding-block: var(--paso-3); }
-  .site-header__mark { width: 120px; } /* brand minimum */
+  .site-header__mark { width: 112px; } /* basic lockup minimum is 64px */
 }
 
 /* ---------- hero: a poster. Billing cropped to the sheet, the filtered image cutting
@@ -214,46 +219,18 @@ html[data-lang="es"] .l-en, html[data-lang="en"] .l-es { display: none !importan
 .media__filtro, .media__trazado { position: absolute; inset: 0; width: 100%; height: 100%; }
 .media__src { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
 
-/* Filter off: the plain source. Filter on: key layer (paper-colour dots) + slipped red channel. */
-.media__src--key, .media__grain { display: none; }
+/* Filter off: the plain photo. Filter on: the riso CMYK print (halftone baked into the file). */
+.media__src--print { display: none; }
 .media__filtro.is-on .media__src--plain { display: none; }
-.media__filtro.is-on .media__src--key,
-.media__filtro.is-on .media__rojo,
-.media__filtro.is-on .media__grain { display: block; }
-
-.media__src--key {
-  filter: grayscale(1) contrast(1.9) brightness(1.15);
-  /* Finer screen than --trama-celda (6px) on this image only, by art direction. */
-  --trama-hero: 3.5px;
-  -webkit-mask-image: radial-gradient(circle, #000 0 1px, transparent 1.45px);
-  mask-image: radial-gradient(circle, #000 0 1px, transparent 1.45px);
-  -webkit-mask-size: var(--trama-hero) var(--trama-hero);
-  mask-size: var(--trama-hero) var(--trama-hero);
-}
-/* Red channel: luminance multiplied into a senal-rojo field, screened over the key, slipped desfase-2. */
-.media__rojo {
-  position: absolute; inset: 0; display: none;
-  background: var(--senal-rojo);
-  isolation: isolate;
-  mix-blend-mode: screen;
-  transform: translate(var(--desfase-2), var(--desfase-2));
-  -webkit-mask-image: repeating-linear-gradient(0deg, #000 0 2px, transparent 2px 4px);
-  mask-image: repeating-linear-gradient(0deg, #000 0 2px, transparent 2px 4px);
-}
-.media__rojo .media__src { filter: grayscale(1) contrast(2.4) brightness(.8); mix-blend-mode: multiply; }
-.media__grain {
-  position: absolute; inset: 0; pointer-events: none;
-  opacity: .2; mix-blend-mode: screen;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='1.1' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 1.6 -0.5'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
-}
+.media__filtro.is-on .media__src--print { display: block; }
 
 .media__trazado { display: none; pointer-events: none; }
 .media__trazado.is-on { display: block; }
 .trz-box { fill: none; stroke: var(--tinta); stroke-width: 2; vector-effect: non-scaling-stroke; }
 .trz-line { stroke: var(--senal-rojo); stroke-width: 1.5; vector-effect: non-scaling-stroke; }
 .trz-tag { fill: var(--senal-rojo); }
-.trz-id { font-family: var(--font-cartel); font-size: 19px; font-weight: 800; letter-spacing: var(--micro-track); fill: var(--fondo-100); }
-.trz-num { font-family: var(--font-cartel); font-size: 18px; font-weight: 700; letter-spacing: var(--micro-track); fill: var(--tinta); }
+.trz-id { font-family: var(--font-cartel); font-size: 24px; font-weight: 800; letter-spacing: var(--micro-track); fill: var(--fondo-100); }
+.trz-num { font-family: var(--font-cartel); font-size: 22px; font-weight: 700; letter-spacing: var(--micro-track); fill: var(--tinta); }
 
 .media { position: relative; }
 .media__note, .media__count, .media__toggles { position: absolute; z-index: 3; margin: 0; }

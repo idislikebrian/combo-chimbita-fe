@@ -17,6 +17,8 @@ export const campaign = {
   media: {
     video: null as string | null,
     still: "/media/banda-still.jpg",
+    /** Riso CMYK print of the still: four separations overprinted (scripts/riso-cmyk.py). */
+    print: "/media/banda-riso-cmyk.jpg",
   },
 
   links: {

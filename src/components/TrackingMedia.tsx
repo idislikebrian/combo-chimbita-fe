@@ -5,20 +5,20 @@ import type { Bilingual } from "@/content/copy";
 import { T } from "./T";
 
 // Two independent layers, as approved by the band:
-//   1. filtro  — the image treatment (here a CSS/SVG stand-in on a still)
+//   1. filtro  — the image treatment (here a riso CMYK print of the still)
 //   2. trazado — tracking boxes, lines and numbers drawn over it
 // When the pre-rendered blob-tracking video lands, it replaces layer 1 only.
 
-// Hand-placed regions on the 1600 × 1010 still. Labels print each box's real
+// Hand-placed regions on the 2000 × 1262 riso print. Labels print each box's real
 // pixel position in that file, so every number shown is true.
-const W = 1600;
-const H = 1010;
+const W = 2000;
+const H = 1262;
 const boxes = [
-  { x: 304, y: 336, w: 208, h: 240 },
-  { x: 576, y: 240, w: 144, h: 160 },
-  { x: 872, y: 256, w: 144, h: 168 },
-  { x: 1120, y: 320, w: 200, h: 176 },
-  { x: 960, y: 576, w: 176, h: 144 },
+  { x: 380, y: 420, w: 260, h: 300 },
+  { x: 720, y: 300, w: 180, h: 200 },
+  { x: 1090, y: 320, w: 180, h: 210 },
+  { x: 1400, y: 400, w: 250, h: 220 },
+  { x: 1200, y: 720, w: 220, h: 180 },
 ];
 const links: [number, number][] = [
   [0, 1],
@@ -32,11 +32,13 @@ const center = (i: number) => [boxes[i].x + boxes[i].w / 2, boxes[i].y + boxes[i
 
 export function TrackingMedia({
   still,
+  print,
   video,
   alt,
   note,
 }: {
   still: string;
+  print: string;
   video: string | null;
   alt: Bilingual;
   note: Bilingual;
@@ -59,14 +61,9 @@ export function TrackingMedia({
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img className="media__src media__src--plain" src={still} alt="" />
               {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img className="media__src media__src--key" src={still} alt="" />
-              <span className="media__rojo">
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img className="media__src" src={still} alt="" />
-              </span>
+              <img className="media__src media__src--print" src={print} alt="" />
             </>
           )}
-          <span className="media__grain" />
         </div>
 
         <svg
@@ -83,14 +80,14 @@ export function TrackingMedia({
           {boxes.map((b, i) => (
             <g key={i}>
               <rect className="trz-box" x={b.x} y={b.y} width={b.w} height={b.h} />
-              <rect className="trz-tag" x={b.x} y={b.y - 26} width={44} height={22} />
-              <text className="trz-id" x={b.x + 6} y={b.y - 9}>
+              <rect className="trz-tag" x={b.x} y={b.y - 33} width={56} height={28} />
+              <text className="trz-id" x={b.x + 8} y={b.y - 11}>
                 {String(i + 1).padStart(2, "0")}
               </text>
-              <text className="trz-num" x={b.x + 50} y={b.y - 9}>
+              <text className="trz-num" x={b.x + 64} y={b.y - 11}>
                 x{b.x} y{b.y}
               </text>
-              <text className="trz-num" x={b.x + b.w} y={b.y + b.h + 20} textAnchor="end">
+              <text className="trz-num" x={b.x + b.w} y={b.y + b.h + 26} textAnchor="end">
                 {b.w}×{b.h}
               </text>
             </g>
