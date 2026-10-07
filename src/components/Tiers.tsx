@@ -2,6 +2,7 @@ import { copy } from "@/content/copy";
 import { tiers } from "@/content/tiers";
 import { TierButton, OpenAmountForm } from "./Checkout";
 import { T } from "./T";
+import { Flor, FlorList, FLORES } from "./Flor";
 
 // Rewards as a printed price list (market bill / ticket office), not plan cards.
 // DOM order is name → contents → price → action so headings lead; the grid puts the price first.
@@ -31,16 +32,17 @@ export function Tiers() {
           return (
             <li key={tier.id} className="renglon">
               <p className="renglon__no micro" aria-hidden="true">
+                <Flor name={FLORES[i % FLORES.length]} className="flor-glifo--no" />
                 № {String(i + 1).padStart(2, "0")}
               </p>
               <h3 id={`tier-${tier.id}`} className="renglon__name">
                 <T t={tier.name} />
               </h3>
               <p lang="es" className="l-es renglon__items pequeno">
-                {tier.includes.es.join(" ★ ")}
+                <FlorList items={tier.includes.es} />
               </p>
               <p lang="en" className="l-en renglon__items pequeno">
-                {tier.includes.en.join(" ★ ")}
+                <FlorList items={tier.includes.en} />
               </p>
               <p className="renglon__limit etiqueta">
                 <T t={c.limit} />{" "}
@@ -69,6 +71,7 @@ export function Tiers() {
         <li className="renglon renglon--open">
           <OpenAmountForm className="renglon__form">
             <p className="renglon__no micro" aria-hidden="true">
+              <Flor name={FLORES[tiers.length % FLORES.length]} className="flor-glifo--no" />
               № {String(tiers.length + 1).padStart(2, "0")}
             </p>
             <h3 id="tier-libre" className="renglon__name">

@@ -2,6 +2,7 @@ import { copy } from "@/content/copy";
 import { campaign } from "@/content/campaign";
 import { TrackingMedia } from "./TrackingMedia";
 import { T } from "./T";
+import { Flor } from "./Flor";
 
 // The hero is a poster: billing set to the sheet and cropped, the filtered band image
 // cutting into it, and a ficha band running up the left edge.
@@ -11,13 +12,13 @@ export function Hero() {
     <section className="cartel" aria-labelledby="hero-title">
       <p className="cartel__ficha ficha">
         <span>COMBO CHIMBITA</span>
-        <span aria-hidden="true">·</span>
+        <Flor name="pasiflora" className="flor-glifo--sep" />
         <span><T t={f.status} /></span>
-        <span aria-hidden="true">·</span>
+        <Flor name="dalia" className="flor-glifo--sep" />
         <span><T t={f.record} /></span>
-        <span aria-hidden="true">·</span>
+        <Flor name="loto" className="flor-glifo--sep" />
         <span>Brooklyn {campaign.coords.brooklyn}</span>
-        <span aria-hidden="true">·</span>
+        <Flor name="heliconia" className="flor-glifo--sep" />
         <span>Bogotá {campaign.coords.bogota}</span>
       </p>
 

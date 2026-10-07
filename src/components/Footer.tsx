@@ -1,6 +1,7 @@
 import { copy } from "@/content/copy";
 import { campaign } from "@/content/campaign";
 import { T } from "./T";
+import { Flor, FLORES } from "./Flor";
 
 function Pending() {
   return (
@@ -30,6 +31,11 @@ export function Footer() {
             <T t={f.list} /> · {l.mailingList ? <a href={l.mailingList} rel="noopener">↗</a> : <Pending />}
           </li>
         </ul>
+        <p className="site-footer__flores" aria-hidden="true">
+          {FLORES.map((n) => (
+            <Flor key={n} name={n} />
+          ))}
+        </p>
       </div>
     </footer>
   );

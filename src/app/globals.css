@@ -494,7 +494,7 @@ html[data-lang="es"] .l-en, html[data-lang="en"] .l-es { display: none !importan
   margin: 0 0 -.06em calc(var(--margen) - .04em);
 }
 .site-footer__band {
-  display: grid; grid-template-columns: 1fr 1.4fr; gap: var(--paso-4);
+  display: grid; grid-template-columns: 1fr 1.4fr auto; gap: var(--paso-4);
   padding: var(--paso-4) var(--margen) var(--paso-5);
   border-top: 1.5px solid var(--linea);
 }
@@ -504,4 +504,38 @@ html[data-lang="es"] .l-en, html[data-lang="en"] .l-es { display: none !importan
 @media (max-width: 720px) {
   .site-footer__band { grid-template-columns: 1fr; }
   .site-footer__name { font-size: 13vw; }
+}
+
+/* ---------- flores: liner-note micrographics (one ink, currentColor) ---------- */
+.flor-glifo {
+  display: inline-block; flex: none;
+  width: 1em; height: 1em;
+  vertical-align: -0.14em;
+  background: currentColor;
+  -webkit-mask: var(--flor) center / contain no-repeat;
+  mask: var(--flor) center / contain no-repeat;
+}
+@media (forced-colors: active) { .flor-glifo { background: CanvasText; } }
+.flor-glifo--pasiflora { --flor: url("/media/flores/pasiflora.svg"); }
+.flor-glifo--dalia { --flor: url("/media/flores/dalia.svg"); }
+.flor-glifo--loto { --flor: url("/media/flores/loto.svg"); }
+.flor-glifo--heliconia { --flor: url("/media/flores/heliconia.svg"); }
+
+/* Separator between run-on items: smaller than the text, with space either side. */
+.flor-glifo--sep { width: .72em; height: .72em; margin: 0 .42em; vertical-align: -0.06em; }
+.flor-list__item { white-space: normal; }
+
+/* Tier marker: the flower sits over the № like a catalogue stamp. */
+.renglon__no { display: flex; flex-direction: column; align-items: flex-start; gap: 6px; }
+.flor-glifo--no { width: 22px; height: 22px; color: var(--tinta); }
+
+/* Footer: the full set as a credits row. */
+.site-footer__flores { display: flex; align-items: flex-end; gap: var(--paso-3); align-self: end; font-size: 28px; color: var(--tinta); }
+
+/* Hero ficha: separators rotate with the vertical band. */
+.cartel__ficha .flor-glifo--sep { margin: 0; }
+@media (max-width: 720px) {
+  .renglon__no { flex-direction: row; align-items: center; gap: var(--paso-2); }
+  .flor-glifo--no { width: 18px; height: 18px; }
+  .site-footer__flores { font-size: 24px; }
 }
