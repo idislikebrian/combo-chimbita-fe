@@ -22,6 +22,7 @@ enum FulfillmentStatus {
   PENDING
   SHIPPED
   DELIVERED
+  CANCELLED // refunded before it shipped: don't send
 }
 
 model Pledge {

@@ -12,7 +12,7 @@ import { tiers } from "@/content/tiers";
 //   checkout.session.completed               paid now, or PENDING for async methods
 //   checkout.session.async_payment_succeeded PENDING -> PAID
 //   checkout.session.async_payment_failed    PENDING -> FAILED
-//   charge.refunded                          PAID -> REFUNDED (full refunds only)
+//   charge.refunded                          PAID -> REFUNDED (full refunds only); unshipped -> CANCELLED
 
 export async function POST(request: Request) {
   const stripe = getStripe();
@@ -116,9 +116,15 @@ async function markRefunded(charge: Stripe.Charge): Promise<boolean> {
   if (!charge.refunded) return false; // partial refund: leave the pledge counted, flag manually
   const pi = typeof charge.payment_intent === "string" ? charge.payment_intent : charge.payment_intent?.id;
   if (!pi) return false;
+  const refundedAt = new Date();
   const res = await db.pledge.updateMany({
     where: { stripePaymentIntentId: pi },
-    data: { paymentStatus: "REFUNDED", refundedAt: new Date() },
+    data: { paymentStatus: "REFUNDED", refundedAt },
+  });
+  // Pull it off the shipping list unless it already went out.
+  await db.pledge.updateMany({
+    where: { stripePaymentIntentId: pi, fulfillmentStatus: "PENDING" },
+    data: { fulfillmentStatus: "CANCELLED" },
   });
   return res.count > 0;
 }
