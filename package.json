@@ -4,11 +4,18 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
+    "build": "prisma generate && next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "postinstall": "prisma generate",
+    "db:migrate": "node --env-file=.env.local node_modules/prisma/build/index.js migrate dev",
+    "db:deploy": "node --env-file=.env.local node_modules/prisma/build/index.js migrate deploy",
+    "db:studio": "node --env-file=.env.local node_modules/prisma/build/index.js studio",
+    "db:check": "node --env-file=.env.local node_modules/.bin/tsx scripts/db-check.mts"
   },
   "dependencies": {
+    "@prisma/adapter-neon": "^7.10.0",
+    "@prisma/client": "^7.10.0",
     "next": "16.4.0",
     "react": "19.3.0",
     "react-dom": "19.3.0",
@@ -20,6 +27,8 @@
     "@types/react-dom": "^19",
     "eslint": "^9",
     "eslint-config-next": "16.4.0",
+    "prisma": "^7.10.0",
+    "tsx": "^4.23.15",
     "typescript": "^5"
   }
 }

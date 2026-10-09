@@ -8,10 +8,8 @@ export const campaign = {
   /** Goal shown in the readout. Set to the budget per the $30K plan.
    *  Still open with the band: show a near-term stage (~$7–8K by January) too? */
   goalUsd: 30000 as number | null,
-  /** Raised so far in USD. Will come from Stripe totals. */
-  raisedUsd: null as number | null,
-  /** Number of contributions. Will come from Stripe. */
-  backers: null as number | null,
+  // Raised and contributions are not set here: they're summed from paid pledges in the
+  // database (src/lib/totals.ts), written by the Stripe webhook.
 
   /** Hero media. Swap `video` in when the blob-tracking renders arrive. */
   media: {
@@ -20,6 +18,10 @@ export const campaign = {
     /** Riso CMYK print of the still: four separations overprinted (scripts/riso-cmyk.py). */
     print: "/media/banda-riso-cmyk.jpg",
   },
+
+  /** Public campaign URL used in share links. null = the site the visitor is on
+   *  (the preview today); set to https://combochimbita.net at launch. */
+  shareUrl: null as string | null,
 
   links: {
     bandcamp: "https://combochimbita.bandcamp.com/",

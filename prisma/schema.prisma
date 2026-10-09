@@ -1,0 +1,61 @@
+// Pledges from Stripe Checkout. Rows are written only by the verified webhook
+// (src/app/api/stripe/webhook/route.ts); the page reads paid totals from here.
+
+generator client {
+  provider = "prisma-client"
+  output   = "../src/generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+enum PaymentStatus {
+  PENDING // session completed, async payment method still clearing
+  PAID
+  FAILED
+  REFUNDED
+}
+
+enum FulfillmentStatus {
+  NOT_REQUIRED // open amount: nothing to send
+  PENDING
+  SHIPPED
+  DELIVERED
+}
+
+model Pledge {
+  id                    String            @id @default(cuid())
+  stripeSessionId       String            @unique
+  stripePaymentIntentId String?           @unique
+  livemode              Boolean
+  /// tiers.ts id, or "libre" for an open amount
+  tierId                String
+  amountCents           Int
+  currency              String
+  lang                  String
+  email                 String?
+  name                  String?
+  paymentStatus         PaymentStatus
+  fulfillmentStatus     FulfillmentStatus
+  shippingName          String?
+  shippingLine1         String?
+  shippingLine2         String?
+  shippingCity          String?
+  shippingState         String?
+  shippingPostalCode    String?
+  shippingCountry       String?
+  paidAt                DateTime?
+  refundedAt            DateTime?
+  createdAt             DateTime          @default(now())
+  updatedAt             DateTime          @updatedAt
+
+  @@index([livemode, paymentStatus])
+}
+
+/// Every Stripe event we've processed, so retries and duplicates are no-ops.
+model StripeEvent {
+  id         String   @id
+  type       String
+  receivedAt DateTime @default(now())
+}

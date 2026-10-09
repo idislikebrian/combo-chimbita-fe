@@ -47,6 +47,7 @@ export const copy = {
     raised: { es: "Recaudado", en: "Raised" },
     goal: { es: "Meta", en: "Goal" },
     backers: { es: "Aportes", en: "Contributions" },
+    testMode: { es: "Pagos de prueba · no es dinero real", en: "Test payments · not real money" },
     placeholders: {
       raised: { es: "[recaudado]", en: "[raised]" },
       goal: { es: "[meta]", en: "[goal]" },
@@ -145,6 +146,28 @@ export const copy = {
     email: { es: "Correo", en: "Email" },
     shipping: { es: "Envío a", en: "Ships to" },
     back: { es: "Volver a la campaña", en: "Back to the campaign" },
+  },
+
+  // Post-contribution sharing. Nothing personal goes into a share: no amount, reward, name or email.
+  share: {
+    heading: { es: "Ayuda a que esto siga creciendo", en: "Help this keep growing" },
+    /** Prefilled post for X and Threads; the campaign URL is appended. DRAFT wording. */
+    message: {
+      es: "Aporté al crowdfunding del nuevo disco de COMBO CHIMBITA. Súmate:",
+      en: "I chipped in to the crowdfunding for COMBO CHIMBITA's new record. Join in:",
+    },
+    instagram: { es: "Instagram", en: "Instagram" },
+    threads: { es: "Threads", en: "Threads" },
+    x: { es: "X", en: "X" },
+    copy: { es: "Copiar enlace", en: "Copy link" },
+    copied: { es: "Enlace copiado", en: "Link copied" },
+    /** Desktop / no native share: Instagram has no web share intent, so hand over the link. */
+    instagramFallback: {
+      es: "Enlace copiado. Pégalo en tu historia o en tu bio de Instagram.",
+      en: "Link copied. Paste it into your Instagram story or bio.",
+    },
+    copyFailed: { es: "No se pudo copiar. Copia el enlace de arriba.", en: "Couldn't copy. Copy the link above." },
+    newWindow: { es: "abre en una ventana nueva", en: "opens in a new window" },
   },
 
   cancelado: {

@@ -1,11 +1,13 @@
 import { Suspense } from "react";
+import { headers } from "next/headers";
 import Link from "next/link";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { T } from "@/components/T";
 import { copy, type Bilingual } from "@/content/copy";
 import { tiers, openAmount } from "@/content/tiers";
-import { formatUsd } from "@/content/campaign";
+import { campaign, formatUsd } from "@/content/campaign";
+import { Share } from "@/components/Share";
 import { getStripe } from "@/lib/stripe";
 
 // Return page after Stripe Checkout. Reads the session from Stripe on the server so
@@ -37,12 +39,16 @@ async function Resolved({ searchParams }: { searchParams: Promise<{ session_id?:
   if (!session || session.status !== "complete") return <Receipt state="missing" />;
   if (session.payment_status !== "paid") return <Receipt state="processing" />;
 
+  const host = (await headers()).get("host");
+  const shareUrl = campaign.shareUrl ?? (host ? `https://${host}` : null);
+
   const pledge = session.metadata?.pledge;
   const tier = tiers.find((t) => t.id === pledge);
   const addr = session.collected_information?.shipping_details?.address;
   return (
     <Receipt
       state="paid"
+      shareUrl={shareUrl}
       paid={{
         reward: tier ? tier.name : pledge === openAmount.id ? copy.tiers.open.name : { es: "—", en: "—" },
         amountUsd: (session.amount_total ?? 0) / 100,
@@ -53,7 +59,15 @@ async function Resolved({ searchParams }: { searchParams: Promise<{ session_id?:
   );
 }
 
-function Receipt({ state, paid }: { state: "loading" | "paid" | "processing" | "missing"; paid?: Paid }) {
+function Receipt({
+  state,
+  paid,
+  shareUrl,
+}: {
+  state: "loading" | "paid" | "processing" | "missing";
+  paid?: Paid;
+  shareUrl?: string | null;
+}) {
   const g = copy.gracias;
   return (
     <section className="recibo__sheet" aria-labelledby="recibo-title" aria-busy={state === "loading" || undefined}>
@@ -100,6 +114,8 @@ function Receipt({ state, paid }: { state: "loading" | "paid" | "processing" | "
       <Link className="btn btn--primary recibo__back" href="/">
         <span className="btn__label">← <T t={g.back} /></span>
       </Link>
+      {/* Shown only after a confirmed payment. Shares the campaign, never this receipt. */}
+      {state === "paid" && shareUrl ? <Share url={shareUrl} /> : null}
     </section>
   );
 }

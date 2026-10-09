@@ -1,5 +1,6 @@
 import { copy, type Bilingual } from "@/content/copy";
 import { campaign, formatUsd } from "@/content/campaign";
+import { getTotals } from "@/lib/totals";
 import { T } from "./T";
 
 // The campaign counter as a ficha band (open-ended campaign: no end date, no countdown): one tinta strip in the document flow, read like a
@@ -13,12 +14,15 @@ function Value({ value, placeholder }: { value: React.ReactNode | null; placehol
   );
 }
 
-export function Ficha() {
+export async function Ficha() {
   const p = copy.ficha.placeholders;
+  // Raised and contributions come from paid pledges in the database. If it can't be
+  // reached they stay as placeholders rather than showing a number that might be wrong.
+  const totals = await getTotals();
   const items: { label: Bilingual; value: React.ReactNode | null; placeholder: Bilingual }[] = [
     { label: copy.ficha.goal, value: campaign.goalUsd === null ? null : formatUsd(campaign.goalUsd), placeholder: p.goal },
-    { label: copy.ficha.raised, value: campaign.raisedUsd === null ? null : formatUsd(campaign.raisedUsd), placeholder: p.raised },
-    { label: copy.ficha.backers, value: campaign.backers === null ? null : String(campaign.backers), placeholder: p.backers },
+    { label: copy.ficha.raised, value: totals ? formatUsd(totals.raisedUsd) : null, placeholder: p.raised },
+    { label: copy.ficha.backers, value: totals ? String(totals.backers) : null, placeholder: p.backers },
   ];
   return (
     <section className="lomo" data-theme="noche" aria-labelledby="lomo-title">
@@ -37,9 +41,15 @@ export function Ficha() {
           </div>
         ))}
       </dl>
-      <p className="lomo__coords micro" aria-hidden="true">
-        <span>Brooklyn {campaign.coords.brooklyn}</span>
-        <span>Bogotá {campaign.coords.bogota}</span>
+      <p className="lomo__coords micro">
+        {/* Test-mode totals are labelled so the preview's numbers never read as real money. */}
+        {totals && !totals.livemode ? (
+          <span className="lomo__test">
+            <T t={copy.ficha.testMode} />
+          </span>
+        ) : null}
+        <span aria-hidden="true">Brooklyn {campaign.coords.brooklyn}</span>
+        <span aria-hidden="true">Bogotá {campaign.coords.bogota}</span>
       </p>
     </section>
   );

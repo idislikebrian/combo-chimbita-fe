@@ -277,6 +277,7 @@ html[data-lang="es"] .l-en, html[data-lang="en"] .l-es { display: none !importan
   border-left: 1px solid var(--linea-suave);
   color: var(--tinta-suave); white-space: nowrap; text-align: right;
 }
+.lomo__test { color: var(--pasiflora); }
 @media (max-width: 720px) {
   .lomo { grid-template-columns: minmax(0, 1fr); }
   .lomo__label {
@@ -516,3 +517,26 @@ html[data-lang="es"] .l-en, html[data-lang="en"] .l-es { display: none !importan
 .recibo__lines dt { color: var(--tinta-suave); }
 .recibo__lines dd { text-align: right; overflow-wrap: anywhere; }
 .recibo__test { color: var(--tinta-suave); margin-bottom: var(--paso-4); }
+
+/* Post-contribution sharing: a numbered run of lines like the price list, no icon chips.
+   Tinta on paper; hover inverts to a tinta fill (the page's ink state). */
+.compartir { margin-top: var(--paso-6); padding-top: var(--paso-4); border-top: 1.5px solid var(--linea); }
+.compartir__title {
+  font-family: var(--font-cartel); font-variation-settings: var(--cartel-opsz); font-weight: 900;
+  text-transform: uppercase;
+  font-size: clamp(36px, 5.2vw, 64px); line-height: var(--titular-sm-lead, .92); letter-spacing: var(--titular-sm-track);
+  margin-bottom: var(--paso-4);
+}
+.compartir__item { display: flex; align-items: baseline; gap: var(--paso-3); border-bottom: 1px dotted var(--linea); }
+.compartir__no { color: var(--tinta-suave); min-width: 2ch; }
+.compartir__action {
+  flex: 1; display: flex; justify-content: space-between; align-items: baseline; gap: var(--paso-3);
+  min-height: 44px; padding: var(--paso-2) var(--paso-2) var(--paso-2) 0;
+  background: none; border: 0; text-align: left; cursor: pointer;
+  font-family: var(--font-cartel); font-variation-settings: var(--cartel-opsz); font-weight: 900;
+  font-size: 28px; line-height: 1; letter-spacing: var(--titular-sm-track); text-decoration: none; color: var(--tinta);
+}
+@media (hover: hover) {
+  .compartir__action:hover { background: var(--tinta); color: var(--fondo-100); padding-left: var(--paso-2); }
+}
+.compartir__status { min-height: 1.2em; margin-top: var(--paso-3); }

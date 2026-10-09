@@ -21,3 +21,8 @@ export function getStripe(): Stripe | null {
   }
   return client;
 }
+
+/** Live keys are refused above, so this is false until launch changes that guard. */
+export function isLiveStripe(): boolean {
+  return false;
+}
