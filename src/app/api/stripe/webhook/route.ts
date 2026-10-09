@@ -113,7 +113,11 @@ async function upsertFromSession(session: Stripe.Checkout.Session, type: Stripe.
 
 async function markRefunded(charge: Stripe.Charge): Promise<boolean> {
   const db = getDb()!;
-  if (!charge.refunded) return false; // partial refund: leave the pledge counted, flag manually
+  // TODO(before launch): partial refunds. Rule locked Oct 9 2026: the public total is the net
+  // amount retained ($300 pledge, $100 refunded -> counts $200). Store amount_refunded on the
+  // pledge from charge.amount_refunded and sum (amountCents - refundedCents) in totals.ts.
+  // Until then a partial refund leaves the pledge counted in full.
+  if (!charge.refunded) return false;
   const pi = typeof charge.payment_intent === "string" ? charge.payment_intent : charge.payment_intent?.id;
   if (!pi) return false;
   const refundedAt = new Date();
