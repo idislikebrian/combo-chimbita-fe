@@ -65,6 +65,10 @@ export async function POST(request: Request) {
   try {
     const session = await stripe.checkout.sessions.create({
       mode: "payment",
+      // Managed Payments (Stripe as merchant of record) is on by default in new sandboxes.
+      // It's for digital goods: it refuses shipping and demands a product tax code.
+      // Vinyl and posters ship, so the band stays the seller.
+      managed_payments: { enabled: false },
       line_items: [line],
       locale: lang,
       // Checkout always asks for an email in payment mode; this adds the supporter's name.
@@ -79,9 +83,9 @@ export async function POST(request: Request) {
     if (!session.url) return Response.json({ status: "error" }, { status: 502 });
     return Response.json({ url: session.url });
   } catch (err) {
-    // Log the Stripe error type/code only, never request contents.
-    const e = err as { type?: string; code?: string };
-    console.error("[checkout] session create failed", e.type, e.code);
+    // Log the Stripe error type/code/param only, never request contents.
+    const e = err as { type?: string; code?: string; param?: string };
+    console.error("[checkout] session create failed", e.type, e.code, e.param);
     return Response.json({ status: "error" }, { status: 502 });
   }
 }
