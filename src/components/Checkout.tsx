@@ -73,7 +73,7 @@ export function TierButton({
         }}
       >
         <span className="btn__label">
-          {disabled ? <T t={copy.tiers.notAvailable} /> : <><T t={copy.tiers.cta} /> →</>}
+          {disabled ? <T t={copy.tiers.notAvailable} /> : <><T t={copy.tiers.cta} /> <span aria-hidden="true">→</span></>}
           <span className="sr-only">
             {" · "}
             <T t={tierName} />
@@ -133,7 +133,7 @@ export function OpenAmountForm({ className, children }: { className?: string; ch
       <div className="checkout open-form__action">
         <button type="submit" className="btn" aria-disabled={state === "working" || undefined}>
           <span className="btn__label">
-            <T t={copy.tiers.cta} /> →
+            <T t={copy.tiers.cta} /> <span aria-hidden="true">→</span>
             <span className="sr-only">
               {" · "}
               <T t={copy.tiers.open.name} />

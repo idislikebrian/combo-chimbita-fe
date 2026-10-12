@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useId, useState } from "react";
 import type { Bilingual } from "@/content/copy";
 import { T } from "./T";
 
@@ -35,13 +35,16 @@ export function TrackingMedia({
   video,
   alt,
   note,
+  layersLabel,
 }: {
   still: string;
   print: string;
   video: string | null;
   alt: Bilingual;
   note: Bilingual;
+  layersLabel: Bilingual;
 }) {
+  const layersId = useId();
   const [filtro, setFiltro] = useState(true);
   const [trazado, setTrazado] = useState(true);
 
@@ -101,7 +104,11 @@ export function TrackingMedia({
       <p className="media__count micro" aria-hidden="true">
         {boxes.length} obj · {W}×{H}
       </p>
-      <div className="media__toggles" role="group" aria-label="Capas / Layers">
+      {/* Named by a hidden <T> so the label follows the page language (same as media-alt). */}
+      <div className="media__toggles" role="group" aria-labelledby={layersId}>
+        <span id={layersId} className="sr-only">
+          <T t={layersLabel} />
+        </span>
         <button type="button" className="chip chip--senal" aria-pressed={filtro} onClick={() => setFiltro((v) => !v)}>
           <T t={{ es: "Filtro", en: "Filter" }} />
         </button>

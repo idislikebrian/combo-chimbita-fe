@@ -108,7 +108,7 @@ function Receipt({
       ) : null}
       <p className="recibo__test etiqueta"><T t={copy.checkout.testMode} /></p>
       <Link className="btn btn--primary recibo__back" href="/">
-        <span className="btn__label">← <T t={g.back} /></span>
+        <span className="btn__label"><span aria-hidden="true">←</span> <T t={g.back} /></span>
       </Link>
       {/* Shown only after a confirmed payment. Shares the campaign, never this receipt. */}
       {state === "paid" && shareUrl ? <Share url={shareUrl} /> : null}

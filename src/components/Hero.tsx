@@ -34,6 +34,7 @@ export function Hero() {
           video={campaign.media.video}
           alt={copy.hero.mediaAlt}
           note={copy.hero.mediaNote}
+          layersLabel={copy.hero.layersLabel}
         />
 
         <div className="cartel__pie">
@@ -42,7 +43,7 @@ export function Hero() {
           </p>
           <a className="btn btn--primary btn--lg cartel__cta" href="#recompensas">
             <span className="btn__label">
-              <T t={copy.hero.cta} /> →
+              <T t={copy.hero.cta} /> <span aria-hidden="true">→</span>
             </span>
           </a>
         </div>

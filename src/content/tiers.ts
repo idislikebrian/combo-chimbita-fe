@@ -42,8 +42,8 @@ export const tiers: Tier[] = [
     priceUsd: 100,
     name: { es: "Para la pared", en: "For the wall" },
     includes: {
-      es: ["Vinilo del disco nuevo", "Afiche firmado"],
-      en: ["Vinyl of the new record", "Signed poster"],
+      es: ["Vinilo del disco nuevo [¿firmado?]", "Afiche firmado"],
+      en: ["Vinyl of the new record [signed?]", "Signed poster"],
     },
     limit: null,
     stripePriceId: null,
@@ -55,8 +55,8 @@ export const tiers: Tier[] = [
     priceUsd: 300,
     name: { es: "Escucha con la banda", en: "Listen with the band" },
     includes: {
-      es: ["Vinilo del disco nuevo", "Afiche firmado", "Una escucha privada en línea con la banda"],
-      en: ["Vinyl of the new record", "Signed poster", "A private online listening session with the band"],
+      es: ["Vinilo del disco nuevo [¿firmado?]", "Afiche firmado", "Una escucha privada en línea con la banda"],
+      en: ["Vinyl of the new record [signed?]", "Signed poster", "A private online listening session with the band"],
     },
     limit: null,
     stripePriceId: null,
@@ -68,8 +68,8 @@ export const tiers: Tier[] = [
     priceUsd: 500,
     name: { es: "De cerquita", en: "Up close" },
     includes: {
-      es: ["Vinilo del disco nuevo", "Afiche firmado", "Una escucha privada en línea con la banda", "Un show íntimo de cupo limitado en Nueva York"],
-      en: ["Vinyl of the new record", "Signed poster", "A private online listening session with the band", "An intimate, limited-capacity show in New York"],
+      es: ["Vinilo del disco nuevo [¿firmado?]", "Afiche firmado", "Una escucha privada en línea con la banda", "Un show íntimo de cupo limitado en Nueva York"],
+      en: ["Vinyl of the new record [signed?]", "Signed poster", "A private online listening session with the band", "An intimate, limited-capacity show in New York"],
     },
     limit: null,
     stripePriceId: null,
@@ -82,7 +82,7 @@ export const tiers: Tier[] = [
     name: { es: "Producción ejecutiva", en: "Executive producer" },
     includes: {
       es: [
-        "Vinilo del disco nuevo",
+        "Vinilo del disco nuevo [¿firmado?]",
         "Afiche firmado",
         "Una escucha privada en línea con la banda",
         "Un show íntimo de cupo limitado en Nueva York",
@@ -90,7 +90,7 @@ export const tiers: Tier[] = [
         "Crédito de producción ejecutiva",
       ],
       en: [
-        "Vinyl of the new record",
+        "Vinyl of the new record [signed?]",
         "Signed poster",
         "A private online listening session with the band",
         "An intimate, limited-capacity show in New York",

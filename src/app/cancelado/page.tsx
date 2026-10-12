@@ -23,7 +23,7 @@ export default function CanceladoPage() {
             <T t={c.body} />
           </p>
           <Link className="btn btn--primary recibo__back" href="/#recompensas">
-            <span className="btn__label">← <T t={c.back} /></span>
+            <span className="btn__label"><span aria-hidden="true">←</span> <T t={c.back} /></span>
           </Link>
         </section>
       </main>

@@ -35,6 +35,8 @@ export const copy = {
       status: { es: "Crowdfunding · borrador", en: "Crowdfunding · draft" },
       record: { es: "Nuevo disco", en: "New record" },
     },
+    /** Screen-reader name of the Filtro / Trazado toggle group. */
+    layersLabel: { es: "Capas", en: "Layers" },
     mediaNote: {
       es: "Imagen temporal · el video con filtro de rastreo llega después",
       en: "Temporary image · the tracking-filter video comes later",
@@ -43,11 +45,11 @@ export const copy = {
 
   ficha: {
     heading: { es: "Estado de la campaña", en: "Campaign status" },
-    band: { es: "Ficha de campaña", en: "Campaign sheet" },
+    band: { es: "Ficha de campaña", en: "Where we are" },
     raised: { es: "Recaudado", en: "Raised" },
     goal: { es: "Meta", en: "Goal" },
     backers: { es: "Aportes", en: "Contributions" },
-    testMode: { es: "Pagos de prueba · no es dinero real", en: "Test payments · not real money" },
+    testMode: { es: "Modo de prueba · no se cobra dinero real", en: "Test mode · no real money is charged" },
     placeholders: {
       raised: { es: "[recaudado]", en: "[raised]" },
       goal: { es: "[meta]", en: "[goal]" },
@@ -79,7 +81,7 @@ export const copy = {
     kicker: { es: "Formas de entrar · borrador", en: "Ways in · draft" },
     heading: { es: "Haz parte del disco", en: "Be part of the record" },
     includes: { es: "Incluye", en: "Includes" },
-    limit: { es: "Cupos", en: "Slots" },
+    limit: { es: "Cupos", en: "Spots" },
     currency: { es: "USD", en: "USD" },
     limitPlaceholder: { es: "[límite]", en: "[limit]" },
     cta: { es: "Me sumo", en: "I'm in" },
@@ -97,7 +99,7 @@ export const copy = {
       es: "Precios, cupos y contenidos vienen de un documento anterior y no están aprobados. Se actualizan con el documento final de recompensas.",
       en: "Prices, limits and contents come from an earlier document and aren't approved. They'll be updated from the final rewards doc.",
     },
-    notAvailable: { es: "Disponible al aprobarse", en: "Available once approved" },
+    notAvailable: { es: "Aún no disponible", en: "Not available yet" },
   },
 
   money: {
@@ -121,7 +123,7 @@ export const copy = {
     thanks: { es: "Gracias. Tu aporte quedó registrado.", en: "Thank you. Your contribution went through." },
     /** Shown on the receipt page while Stripe runs on test keys. */
     testMode: { es: "Modo de prueba · no se cobra dinero real", en: "Test mode · no real money is charged" },
-    invalidAmount: { es: "Escribe un monto de al menos ${min} USD.", en: "Enter an amount of at least ${min} USD." },
+    invalidAmount: { es: "Escribe un monto de al menos ${min}.", en: "Enter an amount of at least ${min}." },
   },
 
   // Return pages after Stripe Checkout. DRAFT wording, not reviewed by the band.
@@ -133,12 +135,12 @@ export const copy = {
       en: "Your contribution went through. This record already has a piece of you in it.",
     },
     processing: {
-      es: "Tu pago se está procesando. Dale un momento.",
-      en: "Your payment is still processing. Give it a moment.",
+      es: "Tu pago se está procesando. Recarga esta página en unos minutos.",
+      en: "Your payment is still processing. Reload this page in a few minutes.",
     },
     missing: {
-      es: "No encontramos este pago.",
-      en: "We couldn't find this payment.",
+      es: "No encontramos este pago. Si ya pagaste, escríbenos a [correo de contacto] y lo resolvemos.",
+      en: "We couldn't find this payment. If you already paid, write to us at [contact email] and we'll sort it out.",
     },
     reward: { es: "Recompensa", en: "Reward" },
     /** Reward value when a paid session's tier can't be matched to tiers.ts. */
@@ -176,8 +178,8 @@ export const copy = {
     title: { es: "Pago cancelado", en: "Payment cancelled" },
     kicker: { es: "Sin cobro", en: "Nothing charged" },
     body: {
-      es: "No se hizo ningún cobro. Cuando quieras, vuelve y elige otra forma de entrar.",
-      en: "Nothing was charged. Come back and pick another way in whenever you're ready.",
+      es: "Cuando quieras, vuelve y elige otra forma de entrar.",
+      en: "Come back and pick another way in whenever you're ready.",
     },
     back: { es: "Ver las formas de entrar", en: "See the ways in" },
   },
