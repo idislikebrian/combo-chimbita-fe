@@ -20,9 +20,14 @@ export const campaign = {
   },
 
   /** The campaign's one public address: metadataBase, og:url, the share block on /gracias
-   *  and the Stripe success / cancel URLs. The campaign lives on this subdomain; the root
-   *  domain serves the holding page (src/proxy.ts). */
-  siteUrl: "https://disco.combochimbita.net",
+   *  and the Stripe success / cancel URLs. Production is the disco subdomain (the root domain
+   *  serves the holding page, src/proxy.ts); every other build, preview or local, is the
+   *  review preview, so a test payment there returns there. VERCEL_ENV is set by Vercel at
+   *  build and run time; server code only. */
+  siteUrl:
+    process.env.VERCEL_ENV === "production"
+      ? "https://disco.combochimbita.net"
+      : "https://combo-chimbita-preview.vercel.app",
   /** Root domain, home of the holding page (src/app/espera). */
   rootUrl: "https://combochimbita.net",
 
