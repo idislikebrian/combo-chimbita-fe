@@ -26,9 +26,9 @@ const texto = Newsreader({
 // Flip INDEXABLE=true in the production env at launch.
 const indexable = process.env.INDEXABLE === "true";
 
-// Link previews are Spanish only. The image is a placeholder (the band still, not 1200×630)
-// until a proper share card exists.
-const shareImage = { url: "/media/banda-still.jpg", width: 1600, height: 1010, alt: copy.hero.mediaAlt.es };
+// Link previews are Spanish only. The image is a placeholder (the band still, resized and
+// compressed under 250 KB for WhatsApp; not 1200×630) until a proper share card exists.
+const shareImage = { url: "/media/og-temp.jpg", width: 1200, height: 757, alt: copy.hero.mediaAlt.es };
 
 export const metadata: Metadata = {
   metadataBase: new URL(campaign.siteUrl),
