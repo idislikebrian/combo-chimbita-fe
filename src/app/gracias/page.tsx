@@ -50,7 +50,7 @@ async function Resolved({ searchParams }: { searchParams: Promise<{ session_id?:
       state="paid"
       shareUrl={shareUrl}
       paid={{
-        reward: tier ? tier.name : pledge === openAmount.id ? copy.tiers.open.name : { es: "—", en: "—" },
+        reward: tier ? tier.name : pledge === openAmount.id ? copy.tiers.open.name : copy.gracias.rewardFallback,
         amountUsd: (session.amount_total ?? 0) / 100,
         email: session.customer_details?.email ?? null,
         shipTo: addr ? [addr.city, addr.country].filter(Boolean).join(", ") : null,

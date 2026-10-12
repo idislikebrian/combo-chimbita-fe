@@ -7,10 +7,10 @@ export type Bilingual<T = string> = Record<Lang, T>;
 
 export const copy = {
   meta: {
-    title: "COMBO CHIMBITA · Crowdfunding",
+    title: "COMBO CHIMBITA · Haz parte del disco",
     description: {
-      es: "Crowdfunding para el nuevo disco de COMBO CHIMBITA.",
-      en: "Crowdfunding for the new COMBO CHIMBITA record.",
+      es: "Diez años, cuatro discos. El próximo lo hacemos con ustedes adentro. Crowdfunding del nuevo disco de COMBO CHIMBITA.",
+      en: "Ten years, four records. We're making the next one with you in it. Crowdfunding the new COMBO CHIMBITA record.",
     },
   },
 
@@ -126,21 +126,23 @@ export const copy = {
 
   // Return pages after Stripe Checkout. DRAFT wording, not reviewed by the band.
   gracias: {
-    title: { es: "Gracias", en: "Thank you" },
+    title: { es: "Ya estás adentro", en: "You're in" },
     kicker: { es: "Comprobante de aporte", en: "Contribution receipt" },
     body: {
-      es: "Tu aporte quedó registrado. Gracias por ser parte de este disco.",
-      en: "Your contribution went through. Thank you for being part of this record.",
+      es: "Tu aporte quedó registrado. Este disco ya lleva algo tuyo.",
+      en: "Your contribution went through. This record already has a piece of you in it.",
     },
     processing: {
-      es: "Tu pago todavía se está procesando.",
-      en: "Your payment is still processing.",
+      es: "Tu pago se está procesando. Dale un momento.",
+      en: "Your payment is still processing. Give it a moment.",
     },
     missing: {
       es: "No encontramos este pago.",
       en: "We couldn't find this payment.",
     },
     reward: { es: "Recompensa", en: "Reward" },
+    /** Reward value when a paid session's tier can't be matched to tiers.ts. */
+    rewardFallback: { es: "Sin detalle", en: "Not listed" },
     amount: { es: "Monto", en: "Amount" },
     email: { es: "Correo", en: "Email" },
     shipping: { es: "Envío a", en: "Ships to" },
@@ -149,11 +151,11 @@ export const copy = {
 
   // Post-contribution sharing. Nothing personal goes into a share: no amount, reward, name or email.
   share: {
-    heading: { es: "Ayuda a que esto siga creciendo", en: "Help this keep growing" },
+    heading: { es: "Pásalo", en: "Pass it on" },
     /** Prefilled post for X and Threads; the campaign URL is appended. DRAFT wording. */
     message: {
-      es: "Aporté al crowdfunding del nuevo disco de COMBO CHIMBITA. Súmate:",
-      en: "I chipped in to the crowdfunding for COMBO CHIMBITA's new record. Join in:",
+      es: "Me sumé al disco nuevo de COMBO CHIMBITA. Lo están haciendo independiente, con su gente adentro. Haz parte:",
+      en: "I'm in on COMBO CHIMBITA's new record. They're making it independently, with their people in it. Be part of it:",
     },
     instagram: { es: "Instagram", en: "Instagram" },
     threads: { es: "Threads", en: "Threads" },
@@ -165,7 +167,7 @@ export const copy = {
       es: "Enlace copiado. Pégalo en tu historia o en tu bio de Instagram.",
       en: "Link copied. Paste it into your Instagram story or bio.",
     },
-    copyFailed: { es: "No se pudo copiar. Copia el enlace de arriba.", en: "Couldn't copy. Copy the link above." },
+    copyFailed: { es: "No se pudo copiar el enlace. Inténtalo de nuevo.", en: "Couldn't copy the link. Try again." },
     newWindow: { es: "abre en una ventana nueva", en: "opens in a new window" },
   },
 
@@ -173,10 +175,10 @@ export const copy = {
     title: { es: "Pago cancelado", en: "Payment cancelled" },
     kicker: { es: "Sin cobro", en: "Nothing charged" },
     body: {
-      es: "No se hizo ningún cobro. Puedes volver y elegir otra recompensa cuando quieras.",
-      en: "Nothing was charged. Come back and pick a reward whenever you like.",
+      es: "No se hizo ningún cobro. Cuando quieras, vuelve y elige otra forma de entrar.",
+      en: "Nothing was charged. Come back and pick another way in whenever you're ready.",
     },
-    back: { es: "Volver a las recompensas", en: "Back to the rewards" },
+    back: { es: "Ver las formas de entrar", en: "See the ways in" },
   },
 
   footer: {
