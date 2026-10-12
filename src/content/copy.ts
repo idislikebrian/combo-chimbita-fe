@@ -22,10 +22,10 @@ export const copy = {
   hero: {
     chapter: { es: "Nuevo disco", en: "New record" },
     ask: {
-      es: "Crowdfunding para grabar el próximo disco de manera independiente, con la comunidad que lo ha hecho posible.",
-      en: "Crowdfunding to record the next album independently, with the community that made it possible.",
+      es: "Diez años sonando porque ustedes llegaron. El próximo disco lo hacemos con ustedes adentro.",
+      en: "Ten years of this music because you showed up. The next record, we make with you in it.",
     },
-    cta: { es: "Contribuir", en: "Contribute" },
+    cta: { es: "Haz parte del disco", en: "Be part of the record" },
     mediaAlt: {
       es: "Los cuatro integrantes de COMBO CHIMBITA en un pasillo azul, pasados por el filtro de rastreo.",
       en: "The four members of COMBO CHIMBITA in a blue hallway, run through the tracking filter.",
@@ -56,39 +56,38 @@ export const copy = {
   },
 
   story: {
-    kicker: { es: "La historia · borrador de la banda", en: "The story · band draft" },
-    heading: { es: "Diez años, una historia", en: "Ten years, one story" },
+    kicker: { es: "La historia · borrador", en: "The story · draft" },
+    heading: { es: "Diez años con ustedes", en: "Ten years, with you" },
     paragraphs: {
       es: [
-        "Después de cuatro discos y diez años tocando juntos, seguimos creyendo en la música como una fuerza de conexión y transformación.",
-        "Este nuevo álbum nace desde un lugar más crudo y libre, inspirado por el rock latinoamericano de los 90, la cumbia psicodélica y sonidos afrocaribeños y experimentales.",
-        "Queremos lanzar este disco de manera independiente, junto a la comunidad que ha crecido con nosotros durante todos estos años.",
-        "Esta campaña es una invitación a ser parte de este nuevo capítulo y ayudarnos a llevar este álbum al mundo.",
+        "Diez años y cuatro discos después, seguimos aquí por una razón: ustedes. La gente que llegó a los toques, que compró los discos, que le pasó una canción a alguien que la necesitaba.",
+        "Esta banda duró porque una comunidad decidió quedarse. En Brooklyn, en Bogotá, y en cada ciudad donde alguien se sabe estas canciones de memoria.",
+        "El disco nuevo nace desde un lugar más crudo y libre: rock latinoamericano de los 90, cumbia psicodélica, sonidos afrocaribeños y experimentales.",
+        "Lo vamos a sacar de manera independiente, y no lo queremos hacer solos. Esta vez, ustedes están adentro.",
       ],
       en: [
-        "After four albums, we still believe in music as a force that connects experiences, dreams, and transformation. Each record has reflected a moment in our lives, and this one is no different.",
-        "This new album comes from a rawer, more direct place. A sound inspired by 90s Latin American rock, psychedelic cumbia, Afro-Cuban chants, Batá rhythms and experimental textures, all woven into something that feels completely ours.",
-        "These songs were born during long sessions at Studio 9 in Massachusetts, and finished in Bogotá, where new cumbias became the rhythmic heart of the album.",
-        "After ten years together, COMBO CHIMBITA is more than a music project. It's a way of life. This record is who we are today.",
-        "Help us release it independently and bring it directly to the community that has made this journey possible.",
+        "Ten years and four records in, we're still here for one reason. You kept showing up. To the shows, to the records, to the moment you sent one of our songs to someone who needed it.",
+        "This band lasted because a community decided to stay. In Brooklyn, in Bogotá, and every city in between where someone knows these songs by heart.",
+        "The new record comes from a rawer, more direct place. 90s Latin American rock, psychedelic cumbia, Afro-Cuban chants, Batá rhythms, experimental textures, all woven into something that feels completely ours.",
+        "We're releasing it independently, and we don't want to do it without you. This time, you're in it.",
       ],
     },
     places: { es: "Studio 9, Massachusetts · Bogotá", en: "Studio 9, Massachusetts · Bogotá" },
   },
 
   tiers: {
-    kicker: { es: "Lista de precios · borrador", en: "Price list · draft" },
-    heading: { es: "Recompensas", en: "Rewards" },
+    kicker: { es: "Formas de entrar · borrador", en: "Ways in · draft" },
+    heading: { es: "Haz parte del disco", en: "Be part of the record" },
     includes: { es: "Incluye", en: "Includes" },
     limit: { es: "Cupos", en: "Slots" },
     currency: { es: "USD", en: "USD" },
     limitPlaceholder: { es: "[límite]", en: "[limit]" },
-    cta: { es: "Contribuir", en: "Contribute" },
+    cta: { es: "Me sumo", en: "I'm in" },
     open: {
       name: { es: "Aporte libre", en: "Any amount" },
       body: {
-        es: "Sin recompensa, todo va al disco.",
-        en: "No reward, all of it goes to the record.",
+        es: "Sin recompensa. Cada aporte suma al disco.",
+        en: "No reward attached. Every bit counts toward the record.",
       },
       label: { es: "Monto en USD", en: "Amount in USD" },
     },
@@ -186,3 +185,20 @@ export const copy = {
     rights: { es: "Brooklyn · Bogotá", en: "Brooklyn · Bogotá" },
   },
 } as const;
+
+// Band's original story draft. Not rendered. Source material for upcoming sections.
+const storyBandDraft = {
+  es: [
+    "Después de cuatro discos y diez años tocando juntos, seguimos creyendo en la música como una fuerza de conexión y transformación.",
+    "Este nuevo álbum nace desde un lugar más crudo y libre, inspirado por el rock latinoamericano de los 90, la cumbia psicodélica y sonidos afrocaribeños y experimentales.",
+    "Queremos lanzar este disco de manera independiente, junto a la comunidad que ha crecido con nosotros durante todos estos años.",
+    "Esta campaña es una invitación a ser parte de este nuevo capítulo y ayudarnos a llevar este álbum al mundo.",
+  ],
+  en: [
+    "After four albums, we still believe in music as a force that connects experiences, dreams, and transformation. Each record has reflected a moment in our lives, and this one is no different.",
+    "This new album comes from a rawer, more direct place. A sound inspired by 90s Latin American rock, psychedelic cumbia, Afro-Cuban chants, Batá rhythms and experimental textures, all woven into something that feels completely ours.",
+    "These songs were born during long sessions at Studio 9 in Massachusetts, and finished in Bogotá, where new cumbias became the rhythmic heart of the album.",
+    "After ten years together, COMBO CHIMBITA is more than a music project. It's a way of life. This record is who we are today.",
+    "Help us release it independently and bring it directly to the community that has made this journey possible.",
+  ],
+};

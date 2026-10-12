@@ -27,10 +27,10 @@ export const tiers: Tier[] = [
   {
     id: "vinilo",
     priceUsd: 50,
-    name: { es: "Vinilo firmado", en: "Signed vinyl" },
+    name: { es: "El disco, firmado", en: "The record, signed" },
     includes: {
-      es: ["Preventa del vinilo, firmado por la banda"],
-      en: ["Vinyl pre-sale, signed by the band"],
+      es: ["Vinilo del disco nuevo, en preventa", "Firmado por la banda"],
+      en: ["Pre-order vinyl of the new record", "Signed by the band"],
     },
     limit: null,
     stripePriceId: null,
@@ -40,10 +40,10 @@ export const tiers: Tier[] = [
   {
     id: "vinilo-afiche",
     priceUsd: 100,
-    name: { es: "Vinilo + afiche", en: "Vinyl + poster" },
+    name: { es: "Para la pared", en: "For the wall" },
     includes: {
-      es: ["Vinilo", "Afiche firmado"],
-      en: ["Vinyl", "Signed poster"],
+      es: ["Vinilo del disco nuevo", "Afiche firmado"],
+      en: ["Vinyl of the new record", "Signed poster"],
     },
     limit: null,
     stripePriceId: null,
@@ -53,10 +53,10 @@ export const tiers: Tier[] = [
   {
     id: "escucha",
     priceUsd: 300,
-    name: { es: "Escucha privada", en: "Private listening" },
+    name: { es: "Escucha con la banda", en: "Listen with the band" },
     includes: {
-      es: ["Vinilo", "Afiche firmado", "Una escucha privada en línea"],
-      en: ["Vinyl", "Signed poster", "One private online listening party"],
+      es: ["Vinilo del disco nuevo", "Afiche firmado", "Una escucha privada en línea con la banda"],
+      en: ["Vinyl of the new record", "Signed poster", "A private online listening session with the band"],
     },
     limit: null,
     stripePriceId: null,
@@ -66,10 +66,10 @@ export const tiers: Tier[] = [
   {
     id: "en-vivo",
     priceUsd: 500,
-    name: { es: "Show íntimo", en: "Intimate show" },
+    name: { es: "De cerquita", en: "Up close" },
     includes: {
-      es: ["Vinilo", "Afiche firmado", "Una escucha privada en línea", "Show en vivo exclusivo y limitado"],
-      en: ["Vinyl", "Signed poster", "One private online listening party", "Exclusive limited live show"],
+      es: ["Vinilo del disco nuevo", "Afiche firmado", "Una escucha privada en línea con la banda", "Un show íntimo de cupo limitado en Nueva York"],
+      en: ["Vinyl of the new record", "Signed poster", "A private online listening session with the band", "An intimate, limited-capacity show in New York"],
     },
     limit: null,
     stripePriceId: null,
@@ -79,21 +79,21 @@ export const tiers: Tier[] = [
   {
     id: "productor",
     priceUsd: 1000,
-    name: { es: "Productor ejecutivo", en: "Executive producer" },
+    name: { es: "Producción ejecutiva", en: "Executive producer" },
     includes: {
       es: [
-        "Vinilo",
+        "Vinilo del disco nuevo",
         "Afiche firmado",
-        "Una escucha privada en línea",
-        "Show en vivo exclusivo y limitado",
+        "Una escucha privada en línea con la banda",
+        "Un show íntimo de cupo limitado en Nueva York",
         "Pase VIP al show de lanzamiento [confirmar detalle]",
-        "Crédito de productor ejecutivo",
+        "Crédito de producción ejecutiva",
       ],
       en: [
-        "Vinyl",
+        "Vinyl of the new record",
         "Signed poster",
-        "One private online listening party",
-        "Exclusive limited live show",
+        "A private online listening session with the band",
+        "An intimate, limited-capacity show in New York",
         "VIP pass to the album release show [confirm detail]",
         "Executive producer credit",
       ],
