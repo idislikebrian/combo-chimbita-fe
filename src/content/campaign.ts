@@ -19,9 +19,9 @@ export const campaign = {
     print: "/media/banda-riso-cmyk.jpg",
   },
 
-  /** Public campaign URL used in share links. null = the site the visitor is on
-   *  (the preview today); set to https://combochimbita.net at launch. */
-  shareUrl: null as string | null,
+  /** The one public site address: metadataBase, og:url and the share block on /gracias.
+   *  Points to the review preview until launch; switch to https://combochimbita.net then. */
+  siteUrl: "https://combo-chimbita-preview.vercel.app",
 
   links: {
     bandcamp: "https://combochimbita.bandcamp.com/",

@@ -161,13 +161,14 @@ export const copy = {
     threads: { es: "Threads", en: "Threads" },
     x: { es: "X", en: "X" },
     copy: { es: "Copiar enlace", en: "Copy link" },
+    linkLabel: { es: "Enlace", en: "Link" },
     copied: { es: "Enlace copiado", en: "Link copied" },
     /** Desktop / no native share: Instagram has no web share intent, so hand over the link. */
     instagramFallback: {
       es: "Enlace copiado. Pégalo en tu historia o en tu bio de Instagram.",
       en: "Link copied. Paste it into your Instagram story or bio.",
     },
-    copyFailed: { es: "No se pudo copiar el enlace. Inténtalo de nuevo.", en: "Couldn't copy the link. Try again." },
+    copyFailed: { es: "No se pudo copiar. Copia el enlace a mano.", en: "Couldn't copy. Copy the link by hand." },
     newWindow: { es: "abre en una ventana nueva", en: "opens in a new window" },
   },
 

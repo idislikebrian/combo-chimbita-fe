@@ -63,7 +63,7 @@ const ACTIONS: Action[] = [
   { id: "copy", label: s.copy, kind: "button", run: ({ url }) => copyLink(url, s.copied) },
 ];
 
-/** `url` is the public campaign URL, resolved on the server. */
+/** `url` is the public campaign URL (campaign.siteUrl), never the current page. */
 export function Share({ url }: { url: string }) {
   const [status, setStatus] = useState<Result>(null);
   const ctxFor = (lang: Lang): Ctx => ({ url, message: s.message[lang] });
@@ -73,6 +73,10 @@ export function Share({ url }: { url: string }) {
       <h2 id="compartir-title" className="compartir__title">
         <T t={s.heading} />
       </h2>
+      <p className="compartir__link">
+        <span className="etiqueta"><T t={s.linkLabel} /></span>
+        <span className="compartir__url ficha">{url.replace(/^https?:\/\//, "").replace(/\/$/, "")}</span>
+      </p>
       <ul className="compartir__list">
         {ACTIONS.map((a, i) => (
           <li key={a.id} className="compartir__item">

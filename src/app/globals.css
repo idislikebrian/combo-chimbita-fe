@@ -527,6 +527,8 @@ html[data-lang="es"] .l-en, html[data-lang="en"] .l-es { display: none !importan
   font-size: clamp(36px, 5.2vw, 64px); line-height: var(--titular-sm-lead, .92); letter-spacing: var(--titular-sm-track);
   margin-bottom: var(--paso-4);
 }
+.compartir__link { display: flex; flex-wrap: wrap; align-items: baseline; gap: var(--paso-1) var(--paso-3); margin-bottom: var(--paso-3); }
+.compartir__url { user-select: all; overflow-wrap: anywhere; }
 .compartir__item { display: flex; align-items: baseline; gap: var(--paso-3); border-bottom: 1px dotted var(--linea); }
 .compartir__no { color: var(--tinta-suave); min-width: 2ch; }
 .compartir__action {

@@ -1,5 +1,4 @@
 import { Suspense } from "react";
-import { headers } from "next/headers";
 import Link from "next/link";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
@@ -39,16 +38,13 @@ async function Resolved({ searchParams }: { searchParams: Promise<{ session_id?:
   if (!session || session.status !== "complete") return <Receipt state="missing" />;
   if (session.payment_status !== "paid") return <Receipt state="processing" />;
 
-  const host = (await headers()).get("host");
-  const shareUrl = campaign.shareUrl ?? (host ? `https://${host}` : null);
-
   const pledge = session.metadata?.pledge;
   const tier = tiers.find((t) => t.id === pledge);
   const addr = session.collected_information?.shipping_details?.address;
   return (
     <Receipt
       state="paid"
-      shareUrl={shareUrl}
+      shareUrl={campaign.siteUrl}
       paid={{
         reward: tier ? tier.name : pledge === openAmount.id ? copy.tiers.open.name : copy.gracias.rewardFallback,
         amountUsd: (session.amount_total ?? 0) / 100,

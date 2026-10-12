@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import { Big_Shoulders, Newsreader } from "next/font/google";
 import { copy } from "@/content/copy";
+import { campaign } from "@/content/campaign";
 import "@/styles/tokens.css";
 import "./globals.css";
 
@@ -25,9 +26,26 @@ const texto = Newsreader({
 // Flip INDEXABLE=true in the production env at launch.
 const indexable = process.env.INDEXABLE === "true";
 
+// Link previews are Spanish only. The image is a placeholder (the band still, not 1200×630)
+// until a proper share card exists.
+const shareImage = { url: "/media/banda-still.jpg", width: 1600, height: 1010, alt: copy.hero.mediaAlt.es };
+
 export const metadata: Metadata = {
+  metadataBase: new URL(campaign.siteUrl),
   title: copy.meta.title,
   description: copy.meta.description.es,
+  openGraph: {
+    title: copy.meta.title,
+    description: copy.meta.description.es,
+    url: "/",
+    images: [shareImage],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: copy.meta.title,
+    description: copy.meta.description.es,
+    images: [shareImage],
+  },
   robots: indexable ? { index: true, follow: true } : { index: false, follow: false, nocache: true },
 };
 
