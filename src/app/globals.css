@@ -499,6 +499,10 @@ html[data-lang="es"] .l-en, html[data-lang="en"] .l-es { display: none !importan
   .site-footer__flores { font-size: 24px; }
 }
 
+/* ---------- holding page (root domain): the receipt sheet, links set like the footer ---------- */
+.espera__links { display: grid; gap: var(--paso-2); margin-top: var(--paso-3); }
+.espera__links a { color: var(--tinta); text-underline-offset: 3px; text-decoration-thickness: 1.5px; }
+
 /* ---------- checkout return pages (gracias / cancelado) ---------- */
 /* A printed receipt slip: tinta on paper, one pasiflora button. */
 .recibo { padding: var(--paso-7) var(--margen); min-height: 60vh; }

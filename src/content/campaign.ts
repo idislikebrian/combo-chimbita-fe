@@ -19,9 +19,12 @@ export const campaign = {
     print: "/media/banda-riso-cmyk.jpg",
   },
 
-  /** The one public site address: metadataBase, og:url and the share block on /gracias.
-   *  Points to the review preview until launch; switch to https://combochimbita.net then. */
-  siteUrl: "https://combo-chimbita-preview.vercel.app",
+  /** The campaign's one public address: metadataBase, og:url, the share block on /gracias
+   *  and the Stripe success / cancel URLs. The campaign lives on this subdomain; the root
+   *  domain serves the holding page (src/proxy.ts). */
+  siteUrl: "https://disco.combochimbita.net",
+  /** Root domain, home of the holding page (src/app/espera). */
+  rootUrl: "https://combochimbita.net",
 
   links: {
     bandcamp: "https://combochimbita.bandcamp.com/",

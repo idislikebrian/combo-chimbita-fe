@@ -184,6 +184,14 @@ export const copy = {
     back: { es: "Ver las formas de entrar", en: "See the ways in" },
   },
 
+  // Holding page on the root domain (combochimbita.net). Not linked to the campaign yet.
+  holding: {
+    title: "COMBO CHIMBITA",
+    description: "COMBO CHIMBITA. Brooklyn · Bogotá.",
+    line: { es: "Diez años. Lo que sigue, pronto.", en: "Ten years. What's next, soon." },
+    meanwhile: { es: "Mientras tanto:", en: "In the meantime:" },
+  },
+
   footer: {
     list: { es: "Lista de correo", en: "Mailing list" },
     pending: { es: "[enlace pendiente]", en: "[link pending]" },

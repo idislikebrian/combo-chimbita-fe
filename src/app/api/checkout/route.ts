@@ -2,6 +2,7 @@ import type Stripe from "stripe";
 import { tiers, openAmount } from "@/content/tiers";
 import { shippingCountries } from "@/content/shipping";
 import { copy, type Lang } from "@/content/copy";
+import { campaign } from "@/content/campaign";
 import { getStripe } from "@/lib/stripe";
 
 // Creates a Stripe Checkout Session for one reward tier or an open amount.
@@ -61,7 +62,6 @@ export async function POST(request: Request) {
   const stripe = getStripe();
   if (!stripe) return Response.json({ status: "not_configured" }, { status: 503 });
 
-  const origin = new URL(request.url).origin;
   try {
     const session = await stripe.checkout.sessions.create({
       mode: "payment",
@@ -77,8 +77,9 @@ export async function POST(request: Request) {
       ...(ships ? { shipping_address_collection: { allowed_countries: shippingCountries } } : {}),
       metadata: { pledge, ships: String(ships), lang },
       payment_intent_data: { metadata: { pledge } },
-      success_url: `${origin}/gracias?session_id={CHECKOUT_SESSION_ID}`,
-      cancel_url: `${origin}/cancelado`,
+      // Always back to the campaign host, whichever host the request came in on.
+      success_url: `${campaign.siteUrl}/gracias?session_id={CHECKOUT_SESSION_ID}`,
+      cancel_url: `${campaign.siteUrl}/cancelado`,
     });
     if (!session.url) return Response.json({ status: "error" }, { status: 502 });
     return Response.json({ url: session.url });
