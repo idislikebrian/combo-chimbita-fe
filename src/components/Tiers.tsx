@@ -29,6 +29,13 @@ export function Tiers() {
             <T t={c.draftNote} />
           </p>
         ) : null}
+        <ul className="lista__terms pequeno">
+          {c.terms.es.map((line, i) => (
+            <li key={i}>
+              <T t={{ es: line, en: c.terms.en[i] }} />
+            </li>
+          ))}
+        </ul>
       </header>
 
       <ol className="lista__rows">
@@ -49,16 +56,11 @@ export function Tiers() {
               <p lang="en" className="l-en renglon__items pequeno">
                 <FlorList items={tier.includes.en} />
               </p>
-              <p className="renglon__limit etiqueta">
-                <T t={c.limit} />{" "}
-                {tier.limit === null ? (
-                  <span className="is-placeholder">
-                    <T t={c.limitPlaceholder} />
-                  </span>
-                ) : (
-                  tier.limit
-                )}
-              </p>
+              {tier.limit !== null ? (
+                <p className="renglon__limit etiqueta">
+                  <T t={c.limit} /> {tier.limit}
+                </p>
+              ) : null}
               <p className="renglon__price">
                 {tier.approved ? price : <span className="is-placeholder">[{price}]</span>}
                 <span className="sr-only"> USD</span>

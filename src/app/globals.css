@@ -278,6 +278,14 @@ html[data-lang="es"] .l-en, html[data-lang="en"] .l-es { display: none !importan
   color: var(--tinta-suave); white-space: nowrap; text-align: right;
 }
 .lomo__test { color: var(--pasiflora); }
+/* Progress (COB-614): under the figures in the middle column. The label and coords span both rows. */
+.lomo__label { grid-column: 1; grid-row: 1 / span 2; }
+.lomo__coords { grid-column: 3; grid-row: 1 / span 2; }
+.lomo__list { grid-column: 2; grid-row: 1; padding-bottom: var(--paso-3); }
+.lomo__avance { grid-column: 2; grid-row: 2; padding: 0 var(--paso-4) var(--paso-4) var(--paso-3); }
+/* The hairline is the whole $30K; the fill sits on it, width = raised / goal, capped at the goal. */
+.lomo__medidor { position: relative; height: 8px; border-bottom: 1px solid var(--linea-suave); }
+.lomo__relleno { position: absolute; left: 0; bottom: 0; height: 100%; background: var(--tinta); }
 @media (max-width: 720px) {
   .lomo { grid-template-columns: minmax(0, 1fr); }
   .lomo__label {
@@ -293,6 +301,9 @@ html[data-lang="es"] .l-en, html[data-lang="en"] .l-es { display: none !importan
   .lomo__item:last-child { border-bottom: 0; }
   .lomo__value { font-size: 40px; }
   .lomo__coords { border-left: 0; border-top: 1px solid var(--linea-suave); padding: var(--paso-2) var(--margen); text-align: left; }
+  .lomo__label, .lomo__coords, .lomo__list, .lomo__avance { grid-row: auto; grid-column: 1; }
+  .lomo__list { padding-bottom: 0; }
+  .lomo__avance { padding: var(--paso-2) var(--margen) var(--paso-4); }
 }
 
 /* ---------- story ---------- */
@@ -335,7 +346,8 @@ html[data-lang="es"] .l-en, html[data-lang="en"] .l-es { display: none !importan
   font-size: clamp(72px, 12vw, 200px); line-height: var(--cartel-lead); letter-spacing: var(--cartel-track);
   margin-left: -.04em;
 }
-.lista__draft { max-width: 60ch; margin-top: var(--paso-3); }
+.lista__draft, .lista__terms { max-width: 60ch; margin-top: var(--paso-3); }
+.lista__terms { list-style: none; margin-top: var(--paso-5); } /* clears the title's descenders */
 .lista__rows { border-top: 4.5px double var(--linea); border-bottom: 4.5px double var(--linea); }
 
 /* One printed line per tier. DOM: name, contents, limit, price, action. Grid: price leads. */

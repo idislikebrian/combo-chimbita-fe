@@ -1,10 +1,13 @@
 import { copy, type Bilingual } from "@/content/copy";
 import { campaign, formatUsd } from "@/content/campaign";
 import { getTotals } from "@/lib/totals";
+import { getProgress } from "@/lib/progress";
 import { T } from "./T";
 
 // The campaign counter as a ficha band (open-ended campaign: no end date, no countdown): one tinta strip in the document flow, read like a
-// record spine. Plain label + value pairs separated by rules. No boxes, bars or progress.
+// record spine. Plain label + value pairs separated by rules. The one exception (COB-614): progress toward
+// the goal as a printed rule, a hairline with a paper fill exactly proportional to the amount raised.
+// No boxes, rounded ends, ticks, segments or motion.
 function Value({ value, placeholder }: { value: React.ReactNode | null; placeholder: Bilingual }) {
   if (value !== null) return <>{value}</>;
   return (
@@ -19,9 +22,11 @@ export async function Ficha() {
   // Raised and contributions come from paid pledges in the database. If it can't be
   // reached they stay as placeholders rather than showing a number that might be wrong.
   const totals = await getTotals();
+  const progress = totals && campaign.goalUsd !== null ? getProgress(totals.raisedCents, campaign.goalUsd) : null;
   const items: { label: Bilingual; value: React.ReactNode | null; placeholder: Bilingual }[] = [
     { label: copy.ficha.goal, value: campaign.goalUsd === null ? null : formatUsd(campaign.goalUsd), placeholder: p.goal },
     { label: copy.ficha.raised, value: totals ? formatUsd(totals.raisedUsd) : null, placeholder: p.raised },
+    { label: copy.ficha.funded, value: progress ? progress.label : null, placeholder: p.funded },
     { label: copy.ficha.backers, value: totals ? String(totals.backers) : null, placeholder: p.backers },
   ];
   return (
@@ -41,6 +46,27 @@ export async function Ficha() {
           </div>
         ))}
       </dl>
+      {/* One meter per language so each carries its own name and spoken value; CSS shows one.
+          The figures above already say everything; the meter adds the picture and the semantics. */}
+      {progress && campaign.goalUsd !== null ? (
+        <div className="lomo__avance">
+          {(["es", "en"] as const).map((lang) => (
+            <div
+              key={lang}
+              lang={lang}
+              className={`l-${lang} lomo__medidor`}
+              role="meter"
+              aria-label={copy.ficha.progress[lang]}
+              aria-valuemin={0}
+              aria-valuemax={campaign.goalUsd!}
+              aria-valuenow={progress.valueNow}
+              aria-valuetext={progress.valueText[lang]}
+            >
+              <span className="lomo__relleno" style={{ width: `${progress.fill * 100}%` }} />
+            </div>
+          ))}
+        </div>
+      ) : null}
       <p className="lomo__coords micro">
         {/* Test-mode totals are labelled so the preview's numbers never read as real money. */}
         {totals && !totals.livemode ? (

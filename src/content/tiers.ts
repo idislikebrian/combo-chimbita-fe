@@ -1,11 +1,13 @@
 // Reward tiers. Edit here; the page and checkout both read this file.
-// STATUS: first draft. Prices and included rewards come from the band's
-// "NEW RECORD CROWDFUNDING" PDF (the working source for tiers, confirmed Oct 7 2026).
-// Tier names are descriptive labels for the preview; the PDF only names "Executive producer".
+// STATUS: band PDF ("NEW RECORD CROWDFUNDING", Oct 7 2026) updated with the Oct 14 decisions
+// in COB-601 (canonical). New wording for the Zoom session, NYC show and special thanks is
+// WORKING COPY, pending band review. Never put [bracketed] placeholders here: these strings
+// go to Stripe Checkout and receipts.
 // Set `approved: false` on any tier to bracket its price and refuse checkout.
 //
 // - priceUsd: whole dollars.
-// - limit: number of slots, or null if unconfirmed / unlimited (shows [límite]).
+// - limit: public cap shown as "Cupos N", or null for no public cap (nothing shown).
+//   Display only: checkout does not enforce it yet.
 // - stripePriceId: optional. Leave null to let checkout build the price from priceUsd.
 
 import type { Bilingual } from "./copy";
@@ -17,7 +19,7 @@ export type Tier = {
   includes: Bilingual<string[]>;
   limit: number | null;
   stripePriceId: string | null;
-  /** Physical goods: ask for a shipping address at checkout. */
+  /** Includes the physical record: shipping applies (see shipping.ts). */
   ships: boolean;
   /** false = not ready to sell: price shows in brackets and checkout is refused. */
   approved: boolean;
@@ -38,12 +40,13 @@ export const tiers: Tier[] = [
     approved: true,
   },
   {
+    // id kept from the earlier name ("Para la pared") so existing pledges still match.
     id: "vinilo-afiche",
     priceUsd: 100,
-    name: { es: "Para la pared", en: "For the wall" },
+    name: { es: "Afiche firmado", en: "Signed poster" },
     includes: {
-      es: ["Vinilo del disco nuevo [¿firmado?]", "Afiche firmado"],
-      en: ["Vinyl of the new record [signed?]", "Signed poster"],
+      es: ["Vinilo del disco nuevo", "Afiche firmado"],
+      en: ["Vinyl of the new record", "Signed poster"],
     },
     limit: null,
     stripePriceId: null,
@@ -55,10 +58,10 @@ export const tiers: Tier[] = [
     priceUsd: 300,
     name: { es: "Escucha con la banda", en: "Listen with the band" },
     includes: {
-      es: ["Vinilo del disco nuevo [¿firmado?]", "Afiche firmado", "Una escucha privada en línea con la banda"],
-      en: ["Vinyl of the new record [signed?]", "Signed poster", "A private online listening session with the band"],
+      es: ["Vinilo del disco nuevo", "Afiche firmado", "Escucha y conversatorio privado con la banda por Zoom (2 horas)"],
+      en: ["Vinyl of the new record", "Signed poster", "Private listening session and conversation with the band on Zoom (2 hours)"],
     },
-    limit: null,
+    limit: 50,
     stripePriceId: null,
     ships: true,
     approved: true,
@@ -68,34 +71,36 @@ export const tiers: Tier[] = [
     priceUsd: 500,
     name: { es: "De cerquita", en: "Up close" },
     includes: {
-      es: ["Vinilo del disco nuevo [¿firmado?]", "Afiche firmado", "Una escucha privada en línea con la banda", "Un show íntimo de cupo limitado en Nueva York"],
-      en: ["Vinyl of the new record [signed?]", "Signed poster", "A private online listening session with the band", "An intimate, limited-capacity show in New York"],
+      es: ["Vinilo del disco nuevo", "Afiche firmado", "Un show íntimo y exclusivo en Nueva York"],
+      en: ["Vinyl of the new record", "Signed poster", "An exclusive, intimate show in New York"],
     },
-    limit: null,
+    limit: 50,
     stripePriceId: null,
     ships: true,
     approved: true,
   },
   {
+    // id kept from the earlier name so existing pledges still match. COB-601: no
+    // "executive producer" language and no public cap (the ~5 soft limit is internal).
     id: "productor",
     priceUsd: 1000,
-    name: { es: "Producción ejecutiva", en: "Executive producer" },
+    name: { es: "Agradecimiento especial", en: "Special thanks" },
     includes: {
       es: [
-        "Vinilo del disco nuevo [¿firmado?]",
+        "Vinilo del disco nuevo",
         "Afiche firmado",
-        "Una escucha privada en línea con la banda",
-        "Un show íntimo de cupo limitado en Nueva York",
-        "Pase VIP al show de lanzamiento [confirmar detalle]",
-        "Crédito de producción ejecutiva",
+        "Escucha y conversatorio privado con la banda por Zoom (2 horas)",
+        "Un show íntimo y exclusivo en Nueva York",
+        "Pase VIP al show de lanzamiento",
+        "Agradecimiento especial impreso",
       ],
       en: [
-        "Vinyl of the new record [signed?]",
+        "Vinyl of the new record",
         "Signed poster",
-        "A private online listening session with the band",
-        "An intimate, limited-capacity show in New York",
-        "VIP pass to the album release show [confirm detail]",
-        "Executive producer credit",
+        "Private listening session and conversation with the band on Zoom (2 hours)",
+        "An exclusive, intimate show in New York",
+        "VIP pass to the album release show",
+        "Printed special thanks",
       ],
     },
     limit: null,

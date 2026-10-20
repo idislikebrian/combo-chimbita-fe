@@ -49,16 +49,25 @@ export const copy = {
     raised: { es: "Recaudado", en: "Raised" },
     goal: { es: "Meta", en: "Goal" },
     backers: { es: "Aportes", en: "Contributions" },
+    /** Progress toward the goal (COB-614). WORKING COPY, pending band review. */
+    funded: { es: "Financiado", en: "Funded" },
+    /** Screen-reader name of the progress meter. */
+    progress: { es: "Avance hacia la meta", en: "Progress toward the goal" },
+    /** Joins raised and goal in the meter's spoken value: "$100 de $30,000". */
+    of: { es: "de", en: "of" },
+    /** Spoken form of the visible "<1%". */
+    lessThanOne: { es: "menos de 1%", en: "less than 1%" },
     testMode: { es: "Modo de prueba · no se cobra dinero real", en: "Test mode · no real money is charged" },
     placeholders: {
       raised: { es: "[recaudado]", en: "[raised]" },
       goal: { es: "[meta]", en: "[goal]" },
       backers: { es: "[aportes]", en: "[contributions]" },
+      funded: { es: "[financiado]", en: "[funded]" },
     },
   },
 
   story: {
-    kicker: { es: "La historia · borrador", en: "The story · draft" },
+    kicker: { es: "La historia", en: "The story" },
     heading: { es: "Diez años con ustedes", en: "Ten years, with you" },
     paragraphs: {
       es: [
@@ -78,13 +87,25 @@ export const copy = {
   },
 
   tiers: {
-    kicker: { es: "Formas de entrar · borrador", en: "Ways in · draft" },
+    kicker: { es: "Formas de entrar", en: "Ways in" },
     heading: { es: "Haz parte del disco", en: "Be part of the record" },
     includes: { es: "Incluye", en: "Includes" },
     limit: { es: "Cupos", en: "Spots" },
     currency: { es: "USD", en: "USD" },
-    limitPlaceholder: { es: "[límite]", en: "[limit]" },
     cta: { es: "Me sumo", en: "I'm in" },
+    /** Facts already true (COB-601). WORKING COPY, pending band review. No policy beyond these. */
+    terms: {
+      es: [
+        "El cobro a tu tarjeta se hace en el momento del aporte.",
+        "Esta campaña financia el disco directamente: no es de todo o nada.",
+        "El envío del disco físico no está incluido en el precio de la recompensa. Las tarifas de envío todavía se están definiendo.",
+      ],
+      en: [
+        "Your card is charged when you contribute.",
+        "This campaign funds the record directly. It isn't all-or-nothing.",
+        "Shipping for the physical record isn't included in the reward price. Shipping rates are still being set.",
+      ],
+    },
     open: {
       name: { es: "Aporte libre", en: "Any amount" },
       body: {
@@ -132,6 +153,9 @@ export const copy = {
     thanks: { es: "Gracias. Tu aporte quedó registrado.", en: "Thank you. Your contribution went through." },
     /** Shown on the receipt page while Stripe runs on test keys. */
     testMode: { es: "Modo de prueba · no se cobra dinero real", en: "Test mode · no real money is charged" },
+    /** Appended to the Stripe line-item description for tiers with the physical record. WORKING COPY.
+     *  Neutral on purpose: no price or timing until regional rates are approved (see shipping.ts). */
+    shippingNotIncluded: { es: "Envío no incluido en el precio de la recompensa.", en: "Shipping not included in the reward price." },
     invalidAmount: { es: "Escribe un monto de al menos ${min}.", en: "Enter an amount of at least ${min}." },
   },
 
@@ -148,8 +172,9 @@ export const copy = {
       en: "Your payment is still processing. Reload this page in a few minutes.",
     },
     missing: {
-      es: "No encontramos este pago. Si ya pagaste, escríbenos a [correo de contacto] y lo resolvemos.",
-      en: "We couldn't find this payment. If you already paid, write to us at [contact email] and we'll sort it out.",
+      // No contact address yet: add "write to us at …" back once the band confirms one.
+      es: "No encontramos este pago. Revisa que el enlace esté completo o vuelve a la campaña.",
+      en: "We couldn't find this payment. Check that the link is complete, or go back to the campaign.",
     },
     reward: { es: "Recompensa", en: "Reward" },
     /** Reward value when a paid session's tier can't be matched to tiers.ts. */
@@ -203,7 +228,6 @@ export const copy = {
 
   footer: {
     list: { es: "Lista de correo", en: "Mailing list" },
-    pending: { es: "[enlace pendiente]", en: "[link pending]" },
     rights: { es: "Brooklyn · Bogotá", en: "Brooklyn · Bogotá" },
   },
 } as const;

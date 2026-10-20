@@ -4,7 +4,7 @@ import { isLiveStripe } from "./stripe";
 
 export const TOTALS_TAG = "pledge-totals";
 
-export type Totals = { raisedUsd: number; backers: number; livemode: boolean };
+export type Totals = { raisedUsd: number; raisedCents: number; backers: number; livemode: boolean };
 
 /** Raised total and contribution count from PAID pledges only, in the current Stripe mode
  *  (test rows never count once live keys are in). null = database not reachable. */
@@ -22,7 +22,8 @@ export async function getTotals(): Promise<Totals | null> {
       _sum: { amountCents: true },
       _count: { _all: true },
     });
-    return { raisedUsd: (agg._sum.amountCents ?? 0) / 100, backers: agg._count._all, livemode };
+    const raisedCents = agg._sum.amountCents ?? 0;
+    return { raisedUsd: raisedCents / 100, raisedCents, backers: agg._count._all, livemode };
   } catch (err) {
     console.error("[totals] query failed", (err as { code?: string }).code);
     return null;

@@ -1,7 +1,16 @@
-// Where rewards with physical goods can ship. Checkout only asks for an address when
-// the selected tier has `ships: true` (tiers.ts).
-// DRAFT: every country Stripe Checkout accepts. The band hasn't set shipping regions
-// or shipping cost yet. Narrow this list once they do; nothing is charged for shipping today.
+// Physical-record shipping. Launch architecture (approved Oct 20 2026, "A2"):
+//   1. On the page, the supporter picks a shipping region before "Me sumo" (physical tiers only).
+//   2. The checkout route creates a hosted Checkout Session with ONLY that region's flat rate
+//      (shipping_options) and allowed_countries limited to that region, so Stripe rejects an
+//      address outside it. Stripe collects the full address; shipping is in the same payment.
+//   3. The webhook stores shippingCents and shippingRegion apart from the contribution; the
+//      public $30K total excludes shipping; the receipt shows contribution and shipping apart.
+// NOT BUILT YET: regions, country lists and rates are unapproved. Until then there is no region
+// selector and no shipping charge; checkout only collects the address (any country below).
+// Never publish a rate here until it's approved.
+export const collectAddressAtPledge = true;
+
+// Used until regions exist. DRAFT: every country Stripe Checkout accepts.
 
 import type Stripe from "stripe";
 

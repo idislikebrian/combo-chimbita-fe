@@ -1,6 +1,6 @@
 import type Stripe from "stripe";
 import { tiers, openAmount } from "@/content/tiers";
-import { shippingCountries } from "@/content/shipping";
+import { shippingCountries, collectAddressAtPledge } from "@/content/shipping";
 import { copy, type Lang } from "@/content/copy";
 import { campaign } from "@/content/campaign";
 import { getStripe } from "@/lib/stripe";
@@ -9,6 +9,9 @@ import { getStripe } from "@/lib/stripe";
 // Prices always come from tiers.ts, never from the request body.
 
 type Body = { tierId?: unknown; amountUsd?: unknown; lang?: unknown };
+
+// Anything still in [brackets] is an unconfirmed placeholder and must never reach Stripe.
+const hasPlaceholder = (...texts: string[]) => texts.some((t) => /\[[^\]]*\]/.test(t));
 
 export async function POST(request: Request) {
   const body = (await request.json().catch(() => null)) as Body | null;
@@ -25,6 +28,12 @@ export async function POST(request: Request) {
     if (!tier.approved) return Response.json({ status: "unavailable" }, { status: 409 });
     ships = tier.ships;
     pledge = tier.id;
+    const name = `COMBO CHIMBITA · ${tier.name[lang]}`;
+    const description = [...tier.includes[lang], ...(ships ? [copy.checkout.shippingNotIncluded[lang]] : [])].join(" · ");
+    if (hasPlaceholder(name, description)) {
+      console.error("[checkout] placeholder text in tier", tier.id);
+      return Response.json({ status: "unavailable" }, { status: 409 });
+    }
     line = tier.stripePriceId
       ? { price: tier.stripePriceId, quantity: 1 }
       : {
@@ -33,8 +42,8 @@ export async function POST(request: Request) {
             currency: "usd",
             unit_amount: tier.priceUsd * 100,
             product_data: {
-              name: `COMBO CHIMBITA · ${tier.name[lang]}`,
-              description: tier.includes[lang].join(" · "),
+              name,
+              description,
             },
           },
         };
@@ -74,7 +83,7 @@ export async function POST(request: Request) {
       // Checkout always asks for an email in payment mode; this adds the supporter's name.
       name_collection: { individual: { enabled: true } },
       customer_creation: "always",
-      ...(ships ? { shipping_address_collection: { allowed_countries: shippingCountries } } : {}),
+      ...(ships && collectAddressAtPledge ? { shipping_address_collection: { allowed_countries: shippingCountries } } : {}),
       metadata: { pledge, ships: String(ships), lang },
       payment_intent_data: { metadata: { pledge } },
       // Always back to the campaign host, whichever host the request came in on.

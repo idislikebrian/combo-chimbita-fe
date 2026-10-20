@@ -3,14 +3,6 @@ import { campaign } from "@/content/campaign";
 import { T } from "./T";
 import { Flor, FLORES } from "./Flor";
 
-function Pending() {
-  return (
-    <span className="is-placeholder">
-      <T t={copy.footer.pending} />
-    </span>
-  );
-}
-
 export function Footer() {
   const f = copy.footer;
   const l = campaign.links;
@@ -26,10 +18,19 @@ export function Footer() {
           <li>
             <a href={l.bandcamp} rel="noopener">Bandcamp ↗</a>
           </li>
-          <li>{l.instagram ? <a href={l.instagram} rel="noopener">Instagram ↗</a> : <>Instagram · <Pending /></>}</li>
-          <li>
-            <T t={f.list} /> · {l.mailingList ? <a href={l.mailingList} rel="noopener">↗</a> : <Pending />}
-          </li>
+          {/* A link without a confirmed URL is left out rather than shown as a placeholder. */}
+          {l.instagram ? (
+            <li>
+              <a href={l.instagram} rel="noopener">Instagram ↗</a>
+            </li>
+          ) : null}
+          {l.mailingList ? (
+            <li>
+              <a href={l.mailingList} rel="noopener">
+                <T t={f.list} /> ↗
+              </a>
+            </li>
+          ) : null}
         </ul>
         <p className="site-footer__flores" aria-hidden="true">
           {FLORES.map((n) => (
