@@ -102,15 +102,24 @@ export const copy = {
     notAvailable: { es: "Aún no disponible", en: "Not available yet" },
   },
 
+  // Funding breakdown and roadmap live in funding.ts.
+  // SPANISH: WORKING TRANSLATION, pending band review.
   money: {
     kicker: { es: "A dónde va el dinero", en: "Where the money goes" },
-    heading: { es: "Para empezar a grabar", en: "To start recording" },
-    body: {
-      es: "Esta campaña financia el inicio de la grabación del disco.",
-      en: "This campaign funds the start of recording the album.",
+    heading: { es: "Lo que hacen posible $30,000", en: "What $30,000 makes possible" },
+    paragraphs: {
+      es: [
+        "Esta campaña lleva el disco desde el estudio hasta el mundo. Primero vienen la grabación y la mezcla. Después, la masterización, el arte y la fabricación. A partir de ahí, la campaña apoya dos sencillos y videos, prensa, el trabajo de lanzamiento y a las personas que sostienen el proyecto en cada etapa.",
+        "La meta no es solo terminar un álbum. Es darle la vida completa que merece.",
+      ],
+      en: [
+        "This campaign carries the record from the studio all the way into the world. Recording and mixing come first. Then mastering, artwork and manufacturing. From there, the campaign supports two singles and videos, press, release work, and the people carrying the project through each stage.",
+        "The goal isn’t just to finish an album. It’s to give it the full life it deserves.",
+      ],
     },
-    budgetLabel: { es: "Presupuesto del proyecto", en: "Project budget" },
-    pending: { es: "[desglose del presupuesto de $30K, por confirmar]", en: "[breakdown of the $30K budget, to be confirmed]" },
+    goalLabel: { es: "Meta de recaudación", en: "Funding goal" },
+    total: { es: "Total", en: "Total" },
+    roadmapLabel: { es: "Ruta de lanzamiento", en: "Release roadmap" },
   },
 
   checkout: {

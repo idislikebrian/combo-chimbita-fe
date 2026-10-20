@@ -14,8 +14,8 @@ export default function Home() {
         <Hero />
         <Ficha />
         <Story />
-        <Tiers />
         <Money />
+        <Tiers />
       </main>
       <Footer />
     </>

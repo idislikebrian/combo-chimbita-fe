@@ -11,7 +11,12 @@ export function Tiers() {
   const anyDraft = tiers.some((t) => !t.approved);
   return (
     <section className="lista" id="recompensas" aria-labelledby="tiers-title">
-      <span className="sello sello--lista" aria-hidden="true" />
+      <span className="ramo" aria-hidden="true">
+        {/* back to front: the passionflower prints last, on top */}
+        {(["heliconia", "loto", "dalia", "pasiflora"] as const).map((n) => (
+          <span key={n} className={`sello ramo__flor ramo__flor--${n} flor-glifo--${n}`} />
+        ))}
+      </span>
       <header className="lista__head">
         <p className="lista__kicker etiqueta">
           <T t={c.kicker} />

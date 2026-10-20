@@ -391,15 +391,27 @@ html[data-lang="es"] .l-en, html[data-lang="en"] .l-es { display: none !importan
 }
 .open-form__input::-webkit-outer-spin-button, .open-form__input::-webkit-inner-spin-button { -webkit-appearance: none; margin: 0; }
 
-/* The recurring passionflower stamp (Brian's vector, deliverables/flowers). */
+/* The flower stamp (Brian's four vectors, deliverables/flowers), printed in pasiflora. */
 .sello {
   position: absolute; display: block; pointer-events: none;
-  width: clamp(96px, 11vw, 168px); aspect-ratio: 1;
   background: var(--pasiflora);
-  -webkit-mask: url("/media/flores/pasiflora.svg") center / contain no-repeat;
-  mask: url("/media/flores/pasiflora.svg") center / contain no-repeat;
+  -webkit-mask: var(--flor) center / contain no-repeat;
+  mask: var(--flor) center / contain no-repeat;
 }
-.sello--lista { top: calc(-0.5 * clamp(96px, 11vw, 168px)); right: calc(var(--margen) + 6%); transform: rotate(-9deg); }
+/* A loose bunch on the funding → rewards seam. The box is the passionflower's own spot;
+   the other three are placed in units of it. Within the bunch the inks multiply, so where
+   two flowers cross they overprint darker, like two riso passes; the page behind is untouched. */
+.ramo {
+  --u: clamp(96px, 11vw, 168px);
+  position: absolute; pointer-events: none; isolation: isolate;
+  width: var(--u); height: var(--u);
+  top: calc(-0.5 * var(--u)); right: calc(var(--margen) + 6%);
+}
+.ramo__flor { mix-blend-mode: multiply; }
+.ramo__flor--pasiflora { inset: 0; transform: rotate(-9deg); }
+.ramo__flor--heliconia { width: calc(var(--u) * .5); height: calc(var(--u) * .77); left: calc(var(--u) * .9); top: calc(var(--u) * .06); transform: rotate(28deg); }
+.ramo__flor--loto { width: calc(var(--u) * .7); height: calc(var(--u) * .65); left: calc(var(--u) * -.52); top: calc(var(--u) * .5); transform: rotate(-6deg); }
+.ramo__flor--dalia { width: calc(var(--u) * .56); height: calc(var(--u) * .55); left: calc(var(--u) * .5); top: calc(var(--u) * .72); transform: rotate(14deg); }
 
 @media (max-width: 720px) {
   .lista { padding-block: var(--paso-6); }
@@ -421,7 +433,7 @@ html[data-lang="es"] .l-en, html[data-lang="en"] .l-es { display: none !importan
   .renglon__price { font-size: 56px; align-self: end; }
   .renglon__action, .open-form__action { align-self: end; }
   .renglon__form { grid-template-areas: "no no" "name name" "items items" "price price" "action action"; row-gap: var(--paso-2); }
-  .sello--lista { right: var(--margen); }
+  .ramo { --u: 84px; right: calc(var(--margen) + 36px); }
 }
 
 /* ---------- where the money goes: maiz flood (the sparing second spring ink) ---------- */
@@ -436,11 +448,72 @@ html[data-lang="es"] .l-en, html[data-lang="en"] .l-es { display: none !importan
   font-family: var(--font-cartel); font-variation-settings: var(--cartel-opsz); font-weight: 900;
   font-size: clamp(64px, 8.5vw, 150px); line-height: var(--cartel-lead); letter-spacing: var(--cartel-track);
 }
-.money__text { grid-column: 9 / span 4; align-self: end; display: grid; gap: var(--paso-3); }
+.money__text { grid-column: 8 / span 5; align-self: end; max-width: 60ch; }
+.money__text p + p { margin-top: 1em; }
+
+/* The $30K bar and its printed list. Everything here is sobre-maiz on maiz: one ink on the flood. */
+.fondos {
+  grid-column: 1 / -1; margin-top: var(--paso-7);
+  display: grid; grid-template-columns: subgrid; row-gap: var(--paso-6);
+}
+.fondos__desglose { grid-column: 1 / span 7; }
+.ruta { grid-column: 9 / span 4; }
+.fondos__meta, .ruta__label {
+  display: flex; justify-content: space-between; align-items: baseline; gap: var(--paso-3);
+  padding-bottom: var(--paso-2); margin-bottom: var(--paso-3);
+  border-bottom: 1.5px solid var(--sobre-maiz);
+}
+.fondos__barra { display: flex; gap: 3px; height: 56px; }
+.tramo {
+  flex-basis: 0; min-width: 0; /* flex-grow = the line's dollars, so widths stay proportional */
+  container-type: inline-size;
+  position: relative; overflow: hidden; /* no padding or border: they would skew the proportions */
+  background: var(--sobre-maiz); color: var(--maiz);
+}
+.tramo__no { position: absolute; left: 5px; bottom: 4px; }
+/* the $1K line is narrow by design: its number only shows where it fits */
+@container (max-width: 24px) { .tramo__no { display: none; } }
+.fondos[data-pairing] .tramo:not(.is-active) { background: transparent; color: var(--sobre-maiz); outline: 1.5px solid var(--sobre-maiz); outline-offset: -1.5px; }
+
+.fondos__lista { margin-top: var(--paso-4); border-top: 1.5px solid var(--sobre-maiz); }
+.partida {
+  display: grid; grid-template-columns: 4ch minmax(0, 1fr) auto 6ch;
+  column-gap: var(--paso-3); align-items: baseline;
+  padding: var(--paso-2) 0;
+  border-bottom: 1px solid var(--sobre-maiz);
+}
+.partida__no { padding: 1px 3px; justify-self: start; }
+.fondos[data-pairing] .partida.is-active .partida__no { background: var(--sobre-maiz); color: var(--maiz); }
+.partida__name { display: flex; align-items: baseline; gap: var(--paso-3); }
+/* handbill leader, as in the rewards list */
+.partida__name::after { content: ""; flex: 1; min-width: var(--paso-4); border-bottom: 2px dotted var(--sobre-maiz); transform: translateY(-.2em); }
+.partida__amount, .partida__pct { text-align: right; font-variant-numeric: tabular-nums; }
+.fondos__total {
+  display: flex; justify-content: space-between;
+  padding-top: var(--paso-2); border-top: 4.5px double var(--sobre-maiz); margin-top: -1px;
+}
+
+/* Release roadmap: a printed schedule, not a chart. */
+.ruta__label { justify-content: flex-start; }
+.ruta__paso { display: grid; gap: var(--paso-1); padding: var(--paso-3) 0; }
+.ruta__paso + .ruta__paso { border-top: 1px solid var(--sobre-maiz); }
+.ruta__what { text-wrap: pretty; }
+
+@media (prefers-reduced-motion: no-preference) {
+  .tramo, .partida__no { transition: background-color 120ms ease-out, color 120ms ease-out; }
+}
+
 @media (max-width: 900px) {
   .money { grid-template-columns: 1fr; row-gap: var(--paso-4); padding-block: var(--paso-6); }
-  .money__title, .money__text { grid-column: 1; }
+  .money__title, .money__text, .fondos, .fondos__desglose, .ruta { grid-column: 1; }
   .money__title { font-size: 17vw; }
+  .fondos { grid-template-columns: 1fr; margin-top: var(--paso-5); }
+  .fondos__barra { height: 44px; gap: 2px; }
+}
+@media (max-width: 420px) {
+  .partida { grid-template-columns: 3ch minmax(0, 1fr) auto; }
+  .partida__pct { grid-column: 3; }
+  .partida__name::after { display: none; }
 }
 
 /* ---------- footer ---------- */
