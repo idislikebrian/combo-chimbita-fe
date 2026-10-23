@@ -32,6 +32,20 @@ export default function EsperaPage() {
             <T t={h.meanwhile} />
           </p>
           <ul className="espera__links ficha">
+            {l.spotify ? (
+              <li>
+                <a href={l.spotify} rel="noopener">
+                  Spotify <span aria-hidden="true">↗</span>
+                </a>
+              </li>
+            ) : null}
+            {l.appleMusic ? (
+              <li>
+                <a href={l.appleMusic} rel="noopener">
+                  Apple Music <span aria-hidden="true">↗</span>
+                </a>
+              </li>
+            ) : null}
             <li>
               <a href={l.bandcamp} rel="noopener">
                 Bandcamp <span aria-hidden="true">↗</span>
@@ -51,8 +65,8 @@ export default function EsperaPage() {
         <p className="site-footer__name" aria-hidden="true">COMBO CHIMBITA</p>
         <div className="site-footer__band ficha">
           <ul className="site-footer__coords">
-            <li>Brooklyn · {campaign.coords.brooklyn}</li>
-            <li>Bogotá · {campaign.coords.bogota}</li>
+            <li>Lenapehoking · {campaign.coords.brooklyn}</li>
+            <li>Abya Yala · {campaign.coords.bogota}</li>
           </ul>
         </div>
       </footer>

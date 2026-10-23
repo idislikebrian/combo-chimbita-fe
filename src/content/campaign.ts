@@ -32,6 +32,9 @@ export const campaign = {
   rootUrl: "https://combochimbita.net",
 
   links: {
+    // Spotify and Apple Music: null until the band gives the URLs; a null link is not rendered.
+    spotify: null as string | null,
+    appleMusic: null as string | null,
     bandcamp: "https://combochimbita.bandcamp.com/",
     instagram: "https://instagram.com/combochimbita" as string | null, // verified by Brian, Oct 7 2026
     mailingList: null as string | null,

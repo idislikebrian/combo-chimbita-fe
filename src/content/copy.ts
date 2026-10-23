@@ -221,9 +221,9 @@ export const copy = {
   // Holding page on the root domain (combochimbita.net). Not linked to the campaign yet.
   holding: {
     title: "COMBO CHIMBITA",
-    description: "COMBO CHIMBITA. Brooklyn · Bogotá.",
+    description: "COMBO CHIMBITA. Lenapehoking / Abya Yala.",
     line: { es: "Diez años. Lo que sigue, pronto.", en: "Ten years. What's next, soon." },
-    meanwhile: { es: "Mientras tanto:", en: "In the meantime:" },
+    meanwhile: { es: "Escucha y sigue:", en: "Listen and follow:" },
   },
 
   footer: {
