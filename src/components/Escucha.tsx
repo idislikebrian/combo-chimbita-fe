@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import { copy } from "@/content/copy";
+import { copy, type Bilingual } from "@/content/copy";
 import { fragmentos, formatDuration } from "@/content/escucha";
 import { T } from "./T";
 import { Flor, FLORES } from "./Flor";
@@ -9,7 +9,7 @@ import { Flor, FLORES } from "./Flor";
 // Rehearsal fragments as a row of tiles. One shared <audio>, created on the first tap, so
 // nothing downloads until a visitor picks a clip, and then only that clip. When a clip
 // ends the next one starts; after the last, playback stops.
-export function Escucha() {
+export function Escucha({ kicker, heading }: { kicker?: Bilingual; heading?: Bilingual } = {}) {
   const c = copy.escucha;
   const audioRef = useRef<HTMLAudioElement | null>(null);
   const [current, setCurrent] = useState<number | null>(null);
@@ -60,10 +60,10 @@ export function Escucha() {
   return (
     <section className="escucha" id="escucha" aria-labelledby="escucha-title">
       <p className="kicker etiqueta">
-        <T t={c.kicker} />
+        <T t={kicker ?? c.kicker} />
       </p>
       <h2 id="escucha-title" className="escucha__title">
-        <T t={c.heading} />
+        <T t={heading ?? c.heading} />
       </h2>
       <div className="escucha__cuerpo">
         <p className="cuerpo">

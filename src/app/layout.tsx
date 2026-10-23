@@ -26,9 +26,9 @@ const texto = Newsreader({
 // Flip INDEXABLE=true in the production env at launch.
 const indexable = process.env.INDEXABLE === "true";
 
-// Link previews are Spanish only. The image is a placeholder (the band still, resized and
-// compressed under 250 KB for WhatsApp; not 1200×630) until a proper share card exists.
-const shareImage = { url: "/media/og-temp.jpg", width: 1200, height: 757, alt: copy.hero.mediaAlt.es };
+// Link previews: Spanish title and description; the share card (COB-624) is set in English.
+// 1200×630, under 300 KB for WhatsApp.
+const shareImage = { url: "/media/og/disco.jpg", width: 1200, height: 630, alt: "COMBO CHIMBITA. Be part of the record." };
 
 export const metadata: Metadata = {
   metadataBase: new URL(campaign.siteUrl),

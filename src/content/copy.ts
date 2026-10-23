@@ -239,6 +239,11 @@ export const copy = {
     line: { es: "Otro sueño empieza.", en: "Another dream begins." },
     date: { es: "27 oct 2026", en: "Oct 27, 2026" },
     meanwhile: { es: "Escucha y sigue:", en: "Listen and follow:" },
+    /** The Escucha section on the holding page; the body and tiles stay as on the campaign. */
+    escucha: {
+      kicker: { es: "Disco nuevo", en: "New record" },
+      heading: { es: "Lo que viene.", en: "What's coming." },
+    },
   },
 
   footer: {

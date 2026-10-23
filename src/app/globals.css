@@ -710,13 +710,40 @@ html[data-lang="es"] .l-en, html[data-lang="en"] .l-es { display: none !importan
 }
 
 /* ---------- holding page (root domain): the receipt sheet, links set like the footer ---------- */
-.espera .recibo__title { margin-bottom: var(--paso-3); }
+/* Portada: headline and date on the left, the flower bunch on the right (stand-in for the teaser). */
+.espera__portada {
+  display: grid; grid-template-columns: repeat(12, 1fr); column-gap: var(--paso-4); align-items: center;
+  padding: var(--paso-7) var(--margen) var(--paso-7);
+}
+.espera__texto { grid-column: 1 / span 7; }
+/* Looser than the campaign billing: at these sizes the tight cut made "Otro sueño" touch and the
+   descender of "empieza" reach the date. Line-height clears descenders; tracking clears the joins. */
+.espera__title {
+  font-family: var(--font-cartel); font-variation-settings: var(--cartel-opsz); font-weight: 900;
+  font-size: clamp(60px, 10vw, 150px); line-height: .95; letter-spacing: 0;
+  /* .065em = the half-leading given back (1.08 → .95), so the gap to the date stays as it was */
+  margin-bottom: calc(var(--paso-4) + .065em);
+}
 .espera__fecha {
   font-family: var(--font-cartel); font-variation-settings: var(--cartel-opsz); font-weight: 900;
-  font-size: clamp(32px, 4.5vw, 64px); line-height: var(--cartel-lead); letter-spacing: var(--cartel-track);
-  margin-bottom: var(--paso-5);
+  font-size: clamp(30px, 4.2vw, 60px); line-height: 1; letter-spacing: 0;
 }
+.espera__visual { grid-column: 8 / -1; display: flex; justify-content: center; }
+.espera__visual .ramo {
+  --u: clamp(140px, 17vw, 260px);
+  position: relative; top: auto; right: auto;
+  /* the bunch spills past its box: loto to the left, heliconia right, dalia below */
+  margin: 0 calc(var(--u) * .45) calc(var(--u) * .3) calc(var(--u) * .55);
+}
+/* Holding page Escucha heading: the open setting of the headline, so the q descender never meets a second line. */
+.espera .escucha__title { line-height: 1.08; letter-spacing: 0; }
+.espera__seguir { padding: var(--paso-6) var(--margen); }
 .espera__links { display: grid; gap: var(--paso-2); margin-top: var(--paso-3); }
+@media (max-width: 900px) {
+  .espera__portada { grid-template-columns: 1fr; row-gap: var(--paso-6); padding-block: var(--paso-6); }
+  .espera__texto, .espera__visual { grid-column: 1; }
+  .espera__visual .ramo { --u: clamp(120px, 38vw, 220px); }
+}
 .espera__links a { color: var(--tinta); text-underline-offset: 3px; text-decoration-thickness: 1.5px; }
 
 /* ---------- checkout return pages (gracias / cancelado) ---------- */
