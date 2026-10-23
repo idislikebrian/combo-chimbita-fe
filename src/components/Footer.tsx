@@ -11,8 +11,8 @@ export function Footer() {
       <p className="site-footer__name" aria-hidden="true">COMBO CHIMBITA</p>
       <div className="site-footer__band ficha">
         <ul className="site-footer__coords">
-          <li>Brooklyn · {campaign.coords.brooklyn}</li>
-          <li>Bogotá · {campaign.coords.bogota}</li>
+          <li>Lenapehoking · {campaign.coords.brooklyn}</li>
+          <li>Abya Yala · {campaign.coords.bogota}</li>
         </ul>
         <ul className="site-footer__links">
           <li>

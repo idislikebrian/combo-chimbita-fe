@@ -17,9 +17,9 @@ export function Hero() {
         <Flor name="dalia" className="flor-glifo--sep" />
         <span><T t={f.record} /></span>
         <Flor name="loto" className="flor-glifo--sep" />
-        <span>Brooklyn {campaign.coords.brooklyn}</span>
+        <span>Lenapehoking {campaign.coords.brooklyn}</span>
         <Flor name="heliconia" className="flor-glifo--sep" />
-        <span>Bogotá {campaign.coords.bogota}</span>
+        <span>Abya Yala {campaign.coords.bogota}</span>
       </p>
 
       <div className="cartel__sheet">

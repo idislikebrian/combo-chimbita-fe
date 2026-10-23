@@ -228,7 +228,7 @@ export const copy = {
 
   footer: {
     list: { es: "Lista de correo", en: "Mailing list" },
-    rights: { es: "Brooklyn · Bogotá", en: "Brooklyn · Bogotá" },
+    rights: { es: "Lenapehoking / Abya Yala", en: "Lenapehoking / Abya Yala" },
   },
 } as const;
 

@@ -74,8 +74,8 @@ export async function Ficha() {
             <T t={copy.ficha.testMode} />
           </span>
         ) : null}
-        <span aria-hidden="true">Brooklyn {campaign.coords.brooklyn}</span>
-        <span aria-hidden="true">Bogotá {campaign.coords.bogota}</span>
+        <span aria-hidden="true">Lenapehoking {campaign.coords.brooklyn}</span>
+        <span aria-hidden="true">Abya Yala {campaign.coords.bogota}</span>
       </p>
     </section>
   );
