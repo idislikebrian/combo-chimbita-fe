@@ -508,6 +508,55 @@ html[data-lang="es"] .l-en, html[data-lang="en"] .l-es { display: none !importan
   .ramo { --u: 84px; right: calc(var(--margen) + 36px); }
 }
 
+/* ---------- discografía: a compact strip of the records under the story ---------- */
+.discos {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  column-gap: var(--paso-4);
+  padding: 0 var(--margen) var(--paso-7);
+}
+.discos::before { content: ""; grid-column: 1 / -1; border-top: 1.5px solid var(--linea); margin-bottom: var(--paso-4); }
+.discos__head { grid-column: 1 / span 4; padding-right: var(--paso-4); }
+.discos__title {
+  font-family: var(--font-cartel); font-variation-settings: var(--cartel-opsz); font-weight: 800;
+  font-size: clamp(32px, 3.2vw, 48px); line-height: var(--titular-sm-lead); letter-spacing: var(--titular-sm-track);
+}
+.discos__line { margin-top: var(--paso-3); max-width: 40ch; }
+.discos__lista { grid-column: 5 / -1; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: var(--paso-4) var(--paso-3); }
+.disco { display: flex; flex-direction: column; gap: var(--paso-1); color: var(--tinta); text-decoration: none; }
+.disco__tapa { width: 100%; height: auto; aspect-ratio: 1; object-fit: cover; margin-bottom: var(--paso-2); border: 1.5px solid var(--linea); }
+.disco__title {
+  font-family: var(--font-cartel); font-variation-settings: var(--cartel-opsz); font-weight: 800;
+  font-size: 22px; line-height: var(--titular-sm-lead); letter-spacing: var(--titular-sm-track);
+}
+.disco__meta { color: var(--tinta-suave); }
+.disco__link { margin-top: var(--paso-1); text-decoration: underline; text-underline-offset: 3px; text-decoration-thickness: 1.5px; }
+@media (hover: hover) {
+  .disco:hover .disco__link { background: var(--tinta); color: var(--fondo-100); text-decoration: none; }
+  .discos__sencillos a:hover { background: var(--tinta); color: var(--fondo-100); text-decoration: none; }
+}
+.discos__sencillos {
+  grid-column: 5 / -1; margin-top: var(--paso-5); padding-top: var(--paso-3);
+  border-top: 1px solid var(--linea-suave);
+  display: flex; flex-wrap: wrap; align-items: baseline; gap: var(--paso-2) var(--paso-4);
+}
+.discos__sencillos-label { font: inherit; color: var(--tinta-suave); }
+.discos__sencillos ul { display: flex; flex-wrap: wrap; align-items: baseline; row-gap: var(--paso-2); }
+.discos__sencillos li { display: inline-flex; align-items: baseline; }
+.discos__sencillos a { color: var(--tinta); text-underline-offset: 3px; text-decoration-thickness: 1.5px; }
+@media (max-width: 900px) {
+  .discos { grid-template-columns: 1fr; padding-bottom: var(--paso-6); }
+  .discos__head, .discos__lista, .discos__sencillos { grid-column: 1; }
+  .discos__head { padding-right: 0; margin-bottom: var(--paso-4); }
+}
+@media (max-width: 560px) {
+  .discos__lista { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .disco__title { font-size: 20px; }
+  .discos__sencillos { flex-direction: column; gap: var(--paso-2); }
+  .discos__sencillos ul { flex-direction: column; }
+  .discos__sencillos .flor-glifo--sep { display: none; }
+}
+
 /* ---------- where the money goes: maiz flood (the sparing second spring ink) ---------- */
 .money {
   background: var(--maiz); color: var(--sobre-maiz);

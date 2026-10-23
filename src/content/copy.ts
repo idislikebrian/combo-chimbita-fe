@@ -99,6 +99,18 @@ export const copy = {
     places: { es: "Studio 9, Massachusetts · Bogotá", en: "Studio 9, Massachusetts · Bogotá" },
   },
 
+  discografia: {
+    kicker: { es: "Discografía", en: "Discography" },
+    heading: { es: "Cuatro discos, una historia", en: "Four records, one story" },
+    line: {
+      es: "De El Corredor del Jaguar a IRÉ, y los sencillos que vinieron después. Empiecen por donde quieran.",
+      en: "From El Corredor del Jaguar to IRÉ, plus the singles since. Start anywhere.",
+    },
+    singles: { es: "Sencillos", en: "Singles" },
+    link: { es: "Escúchalo en Bandcamp", en: "Listen on Bandcamp" },
+    types: { ep: { es: "EP", en: "EP" }, album: { es: "Álbum", en: "Album" } },
+  },
+
   tiers: {
     kicker: { es: "Formas de entrar", en: "Ways in" },
     heading: { es: "Haz parte del disco", en: "Be part of the record" },
