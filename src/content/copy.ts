@@ -66,6 +66,19 @@ export const copy = {
     },
   },
 
+  // Listen section: rehearsal fragments (Dropbox assets/NEW ALBUM REHERASAL CLIPS, Oct 20 2026).
+  escucha: {
+    kicker: { es: "Escucha · disco nuevo", en: "Listen · new record" },
+    heading: { es: "Escucha", en: "Listen in" },
+    body: {
+      es: "Fragmentos de los ensayos del disco nuevo. Todavía crudos, todavía cambiando. Escoge uno.",
+      en: "Fragments from rehearsals for the new record. Still raw, still changing. Pick one.",
+    },
+    tile: { es: "Fragmento", en: "Fragment" },
+    play: { es: "Reproducir", en: "Play" },
+    pause: { es: "Pausa", en: "Pause" },
+  },
+
   story: {
     kicker: { es: "La historia", en: "The story" },
     heading: { es: "Diez años con ustedes", en: "Ten years, with you" },
