@@ -15,13 +15,23 @@ export function Footer() {
           <li>Abya Yala · {campaign.coords.bogota}</li>
         </ul>
         <ul className="site-footer__links">
+          {/* Same order as the holding page. A link without a confirmed URL is left out. */}
+          {l.spotify ? (
+            <li>
+              <a href={l.spotify} rel="noopener">Spotify <span aria-hidden="true">↗</span></a>
+            </li>
+          ) : null}
+          {l.appleMusic ? (
+            <li>
+              <a href={l.appleMusic} rel="noopener">Apple Music <span aria-hidden="true">↗</span></a>
+            </li>
+          ) : null}
           <li>
-            <a href={l.bandcamp} rel="noopener">Bandcamp ↗</a>
+            <a href={l.bandcamp} rel="noopener">Bandcamp <span aria-hidden="true">↗</span></a>
           </li>
-          {/* A link without a confirmed URL is left out rather than shown as a placeholder. */}
           {l.instagram ? (
             <li>
-              <a href={l.instagram} rel="noopener">Instagram ↗</a>
+              <a href={l.instagram} rel="noopener">Instagram <span aria-hidden="true">↗</span></a>
             </li>
           ) : null}
           {l.mailingList ? (

@@ -12,8 +12,6 @@ export function Hero() {
     <section className="cartel" aria-labelledby="hero-title">
       <p className="cartel__ficha ficha">
         <span>COMBO CHIMBITA</span>
-        <Flor name="pasiflora" className="flor-glifo--sep" />
-        <span><T t={f.status} /></span>
         <Flor name="dalia" className="flor-glifo--sep" />
         <span><T t={f.record} /></span>
         <Flor name="loto" className="flor-glifo--sep" />
@@ -33,7 +31,6 @@ export function Hero() {
           print={campaign.media.print}
           video={campaign.media.video}
           alt={copy.hero.mediaAlt}
-          note={copy.hero.mediaNote}
           layersLabel={copy.hero.layersLabel}
         />
 

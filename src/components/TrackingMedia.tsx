@@ -34,14 +34,12 @@ export function TrackingMedia({
   print,
   video,
   alt,
-  note,
   layersLabel,
 }: {
   still: string;
   print: string;
   video: string | null;
   alt: Bilingual;
-  note: Bilingual;
   layersLabel: Bilingual;
 }) {
   const layersId = useId();
@@ -98,9 +96,6 @@ export function TrackingMedia({
       </figure>
 
       {/* Readout corners: printed over the image like a camera's data, outside the role="img" figure. */}
-      <p className="media__note micro">
-        <T t={note} />
-      </p>
       <p className="media__count micro" aria-hidden="true">
         {boxes.length} obj · {W}×{H}
       </p>

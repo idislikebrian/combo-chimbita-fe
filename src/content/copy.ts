@@ -16,7 +16,6 @@ export const copy = {
 
   header: {
     langLabel: { es: "Idioma", en: "Language" },
-    status: { es: "Crowdfunding · borrador", en: "Crowdfunding · draft" },
   },
 
   hero: {
@@ -32,15 +31,10 @@ export const copy = {
     },
     /** The edge-running ficha band on the hero poster. Coordinates come from campaign.ts. */
     ficha: {
-      status: { es: "Crowdfunding · borrador", en: "Crowdfunding · draft" },
       record: { es: "Nuevo disco", en: "New record" },
     },
     /** Screen-reader name of the Filtro / Trazado toggle group. */
     layersLabel: { es: "Capas", en: "Layers" },
-    mediaNote: {
-      es: "Imagen temporal · el video con filtro de rastreo llega después",
-      en: "Temporary image · the tracking-filter video comes later",
-    },
   },
 
   ficha: {
@@ -59,10 +53,10 @@ export const copy = {
     lessThanOne: { es: "menos de 1%", en: "less than 1%" },
     testMode: { es: "Modo de prueba · no se cobra dinero real", en: "Test mode · no real money is charged" },
     placeholders: {
-      raised: { es: "[recaudado]", en: "[raised]" },
-      goal: { es: "[meta]", en: "[goal]" },
-      backers: { es: "[aportes]", en: "[contributions]" },
-      funded: { es: "[financiado]", en: "[funded]" },
+      raised: { es: "…", en: "…" },
+      goal: { es: "…", en: "…" },
+      backers: { es: "…", en: "…" },
+      funded: { es: "…", en: "…" },
     },
   },
 
@@ -140,11 +134,6 @@ export const copy = {
       label: { es: "Monto en USD", en: "Amount in USD" },
     },
     edition: { es: "№", en: "№" },
-    draftStamp: { es: "Borrador · sin aprobar", en: "Draft · not approved" },
-    draftNote: {
-      es: "Precios, cupos y contenidos vienen de un documento anterior y no están aprobados. Se actualizan con el documento final de recompensas.",
-      en: "Prices, limits and contents come from an earlier document and aren't approved. They'll be updated from the final rewards doc.",
-    },
     notAvailable: { es: "Aún no disponible", en: "Not available yet" },
   },
 

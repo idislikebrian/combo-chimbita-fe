@@ -9,7 +9,6 @@ import { Ramo } from "./Ramo";
 // DOM order is name → contents → price → action so headings lead; the grid puts the price first.
 export function Tiers() {
   const c = copy.tiers;
-  const anyDraft = tiers.some((t) => !t.approved);
   return (
     <section className="lista" id="recompensas" aria-labelledby="tiers-title">
       <Ramo />
@@ -20,11 +19,6 @@ export function Tiers() {
         <h2 id="tiers-title" className="lista__title">
           <T t={c.heading} />
         </h2>
-        {anyDraft ? (
-          <p className="lista__draft pequeno">
-            <T t={c.draftNote} />
-          </p>
-        ) : null}
         <ul className="lista__terms pequeno">
           {c.terms.es.map((line, i) => (
             <li key={i}>

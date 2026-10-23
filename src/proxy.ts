@@ -24,6 +24,7 @@ export function proxy(request: NextRequest) {
 }
 
 export const config = {
-  // Static assets pass straight through so the holding page keeps its fonts, logo and flowers.
-  matcher: ["/((?!_next/static|_next/image|favicon.ico|media/).*)"],
+  // Static assets and app icons pass straight through so the holding page keeps its fonts,
+  // logo, flowers and favicon.
+  matcher: ["/((?!_next/static|_next/image|favicon.ico|icon1.png|icon2.svg|apple-icon.png|media/).*)"],
 };
