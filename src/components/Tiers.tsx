@@ -3,6 +3,7 @@ import { tiers } from "@/content/tiers";
 import { TierButton, OpenAmountForm } from "./Checkout";
 import { T } from "./T";
 import { Flor, FlorList, FLORES } from "./Flor";
+import { Ramo } from "./Ramo";
 
 // Rewards as a printed price list (market bill / ticket office), not plan cards.
 // DOM order is name → contents → price → action so headings lead; the grid puts the price first.
@@ -11,12 +12,7 @@ export function Tiers() {
   const anyDraft = tiers.some((t) => !t.approved);
   return (
     <section className="lista" id="recompensas" aria-labelledby="tiers-title">
-      <span className="ramo" aria-hidden="true">
-        {/* back to front: the passionflower prints last, on top */}
-        {(["heliconia", "loto", "dalia", "pasiflora"] as const).map((n) => (
-          <span key={n} className={`sello ramo__flor ramo__flor--${n} flor-glifo--${n}`} />
-        ))}
-      </span>
+      <Ramo />
       <header className="lista__head">
         <p className="lista__kicker etiqueta">
           <T t={c.kicker} />

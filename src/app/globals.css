@@ -478,12 +478,29 @@ html[data-lang="es"] .l-en, html[data-lang="en"] .l-es { display: none !importan
   position: absolute; pointer-events: none; isolation: isolate;
   width: var(--u); height: var(--u);
   top: calc(-0.5 * var(--u)); right: calc(var(--margen) + 6%);
+  --giro: 360deg; /* scroll rotation, top of page to bottom: dalia clockwise, pasiflora counter */
 }
 .ramo__flor { mix-blend-mode: multiply; }
 .ramo__flor--pasiflora { inset: 0; transform: rotate(-9deg); }
-.ramo__flor--heliconia { width: calc(var(--u) * .5); height: calc(var(--u) * .77); left: calc(var(--u) * .9); top: calc(var(--u) * .06); transform: rotate(28deg); }
+.ramo__flor--heliconia { width: calc(var(--u) * .5); height: calc(var(--u) * .77); left: calc(var(--u) * .9); top: calc(var(--u) * .06); }
 .ramo__flor--loto { width: calc(var(--u) * .7); height: calc(var(--u) * .65); left: calc(var(--u) * -.52); top: calc(var(--u) * .5); transform: rotate(-6deg); }
 .ramo__flor--dalia { width: calc(var(--u) * .56); height: calc(var(--u) * .55); left: calc(var(--u) * .5); top: calc(var(--u) * .72); transform: rotate(14deg); }
+/* Scroll turn. The individual `rotate` property composes with the static tilt in `transform`,
+   both about the flower's centre, so at the top of the page the bunch looks exactly as set.
+   Browsers without scroll timelines get the same `rotate` from Ramo.tsx. */
+.ramo__flor--dalia, .ramo__flor--pasiflora { transform-origin: center; }
+@keyframes ramo-horario { from { rotate: 0deg; } to { rotate: var(--giro); } }
+@keyframes ramo-antihorario { from { rotate: 0deg; } to { rotate: calc(-1 * var(--giro)); } }
+@media (prefers-reduced-motion: no-preference) {
+  @supports (animation-timeline: scroll()) {
+    .ramo__flor--dalia, .ramo__flor--pasiflora {
+      animation-duration: auto; animation-timing-function: linear; animation-fill-mode: both;
+      animation-timeline: scroll(root block);
+    }
+    .ramo__flor--dalia { animation-name: ramo-horario; }
+    .ramo__flor--pasiflora { animation-name: ramo-antihorario; }
+  }
+}
 
 @media (max-width: 720px) {
   .lista { padding-block: var(--paso-6); }
