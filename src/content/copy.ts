@@ -247,7 +247,8 @@ export const copy = {
   holding: {
     title: "COMBO CHIMBITA",
     description: "COMBO CHIMBITA. Lenapehoking / Abya Yala.",
-    line: { es: "Diez años. Lo que sigue, pronto.", en: "Ten years. What's next, soon." },
+    line: { es: "Otro sueño empieza.", en: "Another dream begins." },
+    date: { es: "27 oct 2026", en: "Oct 27, 2026" },
     meanwhile: { es: "Escucha y sigue:", en: "Listen and follow:" },
   },
 

@@ -28,6 +28,11 @@ export default function EsperaPage() {
           <h1 id="espera-title" className="recibo__title">
             <T t={h.line} />
           </h1>
+          <p className="espera__fecha">
+            <time dateTime="2026-10-27">
+              <T t={h.date} />
+            </time>
+          </p>
           <p className="subtitulo">
             <T t={h.meanwhile} />
           </p>

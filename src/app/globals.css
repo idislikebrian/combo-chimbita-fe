@@ -711,6 +711,12 @@ html[data-lang="es"] .l-en, html[data-lang="en"] .l-es { display: none !importan
 }
 
 /* ---------- holding page (root domain): the receipt sheet, links set like the footer ---------- */
+.espera .recibo__title { margin-bottom: var(--paso-3); }
+.espera__fecha {
+  font-family: var(--font-cartel); font-variation-settings: var(--cartel-opsz); font-weight: 900;
+  font-size: clamp(32px, 4.5vw, 64px); line-height: var(--cartel-lead); letter-spacing: var(--cartel-track);
+  margin-bottom: var(--paso-5);
+}
 .espera__links { display: grid; gap: var(--paso-2); margin-top: var(--paso-3); }
 .espera__links a { color: var(--tinta); text-underline-offset: 3px; text-decoration-thickness: 1.5px; }
 
