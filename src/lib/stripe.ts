@@ -3,8 +3,8 @@ import Stripe from "stripe";
 // Server-only Stripe client. The secret is read from the Vercel environment
 // (STRIPE_SECRET_KEY) and never leaves the server.
 //
-// TEST MODE ONLY during the preview: a live key is refused outright, so a wrong
-// paste in the dashboard can't take real money from the review URL.
+// Test or live: the mode follows the key. Preview keeps test credentials; Production
+// goes live when its key is replaced. Anything that isn't a Stripe server key is refused.
 
 let client: Stripe | null | undefined;
 
@@ -13,8 +13,8 @@ export function getStripe(): Stripe | null {
   const key = process.env.STRIPE_SECRET_KEY;
   if (!key) {
     client = null;
-  } else if (!/^(sk|rk)_test_/.test(key)) {
-    console.error("[checkout] STRIPE_SECRET_KEY is not a test-mode key; payments disabled.");
+  } else if (!/^(sk|rk)_(test|live)_/.test(key)) {
+    console.error("[checkout] STRIPE_SECRET_KEY is not a recognized Stripe server key; payments disabled.");
     client = null;
   } else {
     client = new Stripe(key);
@@ -22,7 +22,8 @@ export function getStripe(): Stripe | null {
   return client;
 }
 
-/** Live keys are refused above, so this is false until launch changes that guard. */
+/** True when the server key is a live-mode key. Drives the test-mode labels and which
+ *  pledges count toward the totals. */
 export function isLiveStripe(): boolean {
-  return false;
+  return /^(sk|rk)_live_/.test(process.env.STRIPE_SECRET_KEY ?? "");
 }

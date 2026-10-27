@@ -8,10 +8,16 @@ import { copy } from "@/content/copy";
 import { campaign } from "@/content/campaign";
 
 // Holding page for the root domain, served at / by src/proxy.ts. Same paper, tinta and
-// type as the campaign; deliberately no link to it yet.
+// type as the campaign. The root domain stays the link-in-bio page after launch too.
 // Order: headline + flower bunch, rehearsal fragments, listen-and-follow links, discography.
 
 const h = copy.holding;
+
+// Launch gate: the same Production flag that lifts noindex. Off, the headline carries the
+// Oct 27 date; on, the date gives way to a link into the campaign. Read at build time,
+// so flipping it takes a redeploy.
+const launched = process.env.INDEXABLE === "true";
+const CAMPAIGN_URL = "https://disco.combochimbita.net";
 
 // Replaces the campaign's Open Graph and Twitter tags so a shared root-domain link never
 // previews the campaign. Robots (noindex, nofollow) still come from the root layout.
@@ -48,11 +54,21 @@ export default function EsperaPage() {
             <h1 id="espera-title" className="espera__title">
               <T t={h.line} />
             </h1>
-            <p className="espera__fecha">
-              <time dateTime="2026-10-27">
-                <T t={h.date} />
-              </time>
-            </p>
+            {launched ? (
+              <p className="espera__entrar">
+                <a className="btn btn--primary btn--lg" href={CAMPAIGN_URL}>
+                  <span className="btn__label">
+                    <T t={h.launch} /> <span aria-hidden="true">→</span>
+                  </span>
+                </a>
+              </p>
+            ) : (
+              <p className="espera__fecha">
+                <time dateTime="2026-10-27">
+                  <T t={h.date} />
+                </time>
+              </p>
+            )}
           </div>
           {/* Stand-in for the teaser video until the export is chosen: the bunch, turning with scroll. */}
           <div className="espera__visual">

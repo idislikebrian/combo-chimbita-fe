@@ -7,7 +7,7 @@ import { copy, type Bilingual } from "@/content/copy";
 import { tiers, openAmount } from "@/content/tiers";
 import { campaign, formatUsd } from "@/content/campaign";
 import { Share } from "@/components/Share";
-import { getStripe } from "@/lib/stripe";
+import { getStripe, isLiveStripe } from "@/lib/stripe";
 
 // Return page after Stripe Checkout. Reads the session from Stripe on the server so
 // nothing shown here comes from the URL except the session id.
@@ -65,13 +65,15 @@ function Receipt({
   shareUrl?: string | null;
 }) {
   const g = copy.gracias;
+  const title =
+    state === "paid" ? g.title : state === "processing" ? g.titleProcessing : state === "missing" ? g.titleMissing : g.titleLoading;
   return (
     <section className="recibo__sheet" aria-labelledby="recibo-title" aria-busy={state === "loading" || undefined}>
       <p className="kicker etiqueta">
         <T t={g.kicker} />
       </p>
       <h1 id="recibo-title" className="recibo__title">
-        <T t={g.title} />
+        <T t={title} />
       </h1>
       {state === "paid" && paid ? (
         <>
@@ -106,7 +108,7 @@ function Receipt({
       ) : state === "missing" ? (
         <p className="recibo__body subtitulo"><T t={g.missing} /></p>
       ) : null}
-      <p className="recibo__test etiqueta"><T t={copy.checkout.testMode} /></p>
+      {isLiveStripe() ? null : <p className="recibo__test etiqueta"><T t={copy.checkout.testMode} /></p>}
       <Link className="btn btn--primary recibo__back" href="/">
         <span className="btn__label"><span aria-hidden="true">←</span> <T t={g.back} /></span>
       </Link>

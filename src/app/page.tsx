@@ -6,6 +6,7 @@ import { Story } from "@/components/Story";
 import { Discografia } from "@/components/Discografia";
 import { Tiers } from "@/components/Tiers";
 import { Money } from "@/components/Money";
+import { Preguntas } from "@/components/Preguntas";
 import { Footer } from "@/components/Footer";
 
 export default function Home() {
@@ -20,6 +21,7 @@ export default function Home() {
         <Discografia />
         <Money />
         <Tiers />
+        <Preguntas />
       </main>
       <Footer />
     </>

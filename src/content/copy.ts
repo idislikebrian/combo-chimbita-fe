@@ -137,6 +137,51 @@ export const copy = {
     notAvailable: { es: "Aún no disponible", en: "Not available yet" },
   },
 
+  // Questions, answered only from facts already approved (COB-601 terms, tiers.ts).
+  // WORKING LAUNCH COPY, pending the band's read. No refund, delivery date, regions, rates,
+  // customs or contact address here until the band decides them.
+  preguntas: {
+    kicker: { es: "Preguntas", en: "Questions" },
+    heading: { es: "Antes de entrar", en: "Before you join" },
+    items: [
+      {
+        q: { es: "¿Cuándo se hace el cobro?", en: "When is my card charged?" },
+        a: { es: "En el momento del aporte.", en: "When you contribute." },
+      },
+      {
+        q: { es: "¿Es de todo o nada?", en: "Is this all-or-nothing?" },
+        a: {
+          es: "No. Esta campaña financia el disco directamente.",
+          en: "No. This campaign funds the record directly.",
+        },
+      },
+      {
+        q: { es: "¿El envío está incluido?", en: "Is shipping included?" },
+        a: {
+          es: "No. El envío del disco físico no está incluido en el precio de la recompensa. Los detalles finales del envío todavía se están definiendo.",
+          en: "No. Shipping for the physical record isn't included in the reward price. Final shipping details are still being worked out.",
+        },
+      },
+      {
+        q: { es: "¿Puedo aportar sin recompensa?", en: "Can I contribute without a reward?" },
+        a: {
+          es: "Sí. Con el aporte libre escoges el monto. No trae recompensa, y cada aporte suma al disco.",
+          en: "Yes. With any amount, you choose what to give. There's no reward attached, and every bit counts toward the record.",
+        },
+      },
+    ],
+    /** The last question lists every reward from tiers.ts. */
+    rewards: { es: "¿Qué incluye cada recompensa?", en: "What does each reward include?" },
+  },
+
+  /** Closing note under the questions, from the story's own lines. WORKING LAUNCH COPY. */
+  cierre: {
+    line: {
+      es: "Esta banda duró porque una comunidad decidió quedarse. Esta vez, ustedes están adentro.",
+      en: "This band lasted because a community decided to stay. This time, you're in it.",
+    },
+  },
+
   // Funding breakdown and roadmap live in funding.ts.
   // SPANISH: WORKING TRANSLATION, pending band review.
   money: {
@@ -176,6 +221,10 @@ export const copy = {
   // Return pages after Stripe Checkout. DRAFT wording, not reviewed by the band.
   gracias: {
     title: { es: "Ya estás adentro", en: "You're in" },
+    /** Headings for the states without a confirmed payment, so "You're in" only follows a real one. */
+    titleLoading: { es: "Revisando tu pago…", en: "Checking your payment…" },
+    titleProcessing: { es: "Pago en proceso", en: "Payment processing" },
+    titleMissing: { es: "Pago no encontrado", en: "Payment not found" },
     kicker: { es: "Comprobante de aporte", en: "Contribution receipt" },
     body: {
       es: "Tu aporte quedó registrado. Este disco ya lleva algo tuyo.",
@@ -232,12 +281,14 @@ export const copy = {
     back: { es: "Ver las formas de entrar", en: "See the ways in" },
   },
 
-  // Holding page on the root domain (combochimbita.net). Not linked to the campaign yet.
+  // Holding page on the root domain (combochimbita.net). Links to the campaign once INDEXABLE is on.
   holding: {
     title: "COMBO CHIMBITA",
     description: "COMBO CHIMBITA. Lenapehoking / Abya Yala.",
     line: { es: "Otro sueño empieza.", en: "Another dream begins." },
     date: { es: "27 oct 2026", en: "Oct 27, 2026" },
+    /** Replaces the date at launch; same words as the campaign's hero button. */
+    launch: { es: "Haz parte del disco", en: "Be part of the record" },
     meanwhile: { es: "Escucha y sigue:", en: "Listen and follow:" },
     /** The Escucha section on the holding page; the body and tiles stay as on the campaign. */
     escucha: {

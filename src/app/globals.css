@@ -573,6 +573,43 @@ html[data-lang="es"] .l-en, html[data-lang="en"] .l-es { display: none !importan
   .discos__sencillos .flor-glifo--sep { display: none; }
 }
 
+/* ---------- preguntas: plain answers under the price list, then the closing line ---------- */
+.preguntas {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  column-gap: var(--paso-4);
+  padding: var(--paso-7) var(--margen) var(--paso-6);
+}
+.preguntas__head { grid-column: 1 / span 4; padding-right: var(--paso-4); }
+.preguntas__title {
+  font-family: var(--font-cartel); font-variation-settings: var(--cartel-opsz); font-weight: 800;
+  font-size: clamp(32px, 3.2vw, 48px); line-height: var(--titular-sm-lead); letter-spacing: var(--titular-sm-track);
+}
+.preguntas__lista { grid-column: 5 / -1; border-top: 1.5px solid var(--linea); }
+.pregunta { padding-block: var(--paso-3); border-bottom: 1px solid var(--linea-suave); }
+.pregunta__q {
+  font-family: var(--font-cartel); font-variation-settings: var(--cartel-opsz); font-weight: 800;
+  font-size: 22px; line-height: var(--titular-sm-lead); letter-spacing: var(--titular-sm-track);
+}
+.pregunta__a { margin-top: var(--paso-1); max-width: 60ch; }
+.pregunta__recompensas li + li { margin-top: var(--paso-2); }
+.pregunta__recompensa { display: block; font-weight: 600; }
+.cierre {
+  padding: var(--paso-6) var(--margen) var(--paso-7);
+  border-top: 1.5px solid var(--linea);
+  display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: var(--paso-4);
+}
+.cierre__line { max-width: 32ch; }
+@media (max-width: 900px) {
+  .preguntas { grid-template-columns: 1fr; padding-block: var(--paso-6); }
+  .preguntas__head, .preguntas__lista { grid-column: 1; }
+  .preguntas__head { padding-right: 0; margin-bottom: var(--paso-4); }
+}
+@media (max-width: 560px) {
+  .pregunta__q { font-size: 20px; }
+  .cierre .btn { width: 100%; }
+}
+
 /* ---------- where the money goes: maiz flood (the sparing second spring ink) ---------- */
 .money {
   background: var(--maiz); color: var(--sobre-maiz);
@@ -728,6 +765,7 @@ html[data-lang="es"] .l-en, html[data-lang="en"] .l-es { display: none !importan
   font-family: var(--font-cartel); font-variation-settings: var(--cartel-opsz); font-weight: 900;
   font-size: clamp(30px, 4.2vw, 60px); line-height: 1; letter-spacing: 0;
 }
+.espera__entrar { margin: 0; }
 .espera__visual { grid-column: 8 / -1; display: flex; justify-content: center; }
 .espera__visual .ramo {
   --u: clamp(140px, 17vw, 260px);
