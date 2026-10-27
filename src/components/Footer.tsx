@@ -39,6 +39,11 @@ export function Footer() {
               <T t={f.contact} />
             </a>
           </li>
+          <li>
+            <a href="/privacy">
+              <T t={f.privacy} />
+            </a>
+          </li>
           {l.mailingList ? (
             <li>
               <a href={l.mailingList} rel="noopener">

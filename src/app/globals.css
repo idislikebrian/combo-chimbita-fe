@@ -787,6 +787,19 @@ html[data-lang="es"] .l-en, html[data-lang="en"] .l-es { display: none !importan
 }
 .espera__links a { color: var(--tinta); text-underline-offset: 3px; text-decoration-thickness: 1.5px; }
 
+/* ---------- privacy: the receipt slip, set as plain reading text ---------- */
+.legal__updated { color: var(--tinta-suave); margin-bottom: var(--paso-5); }
+.legal__intro { max-width: 60ch; margin-bottom: var(--paso-5); }
+.legal__seccion { border-top: 1.5px solid var(--linea); padding-block: var(--paso-3) var(--paso-4); }
+.legal__heading {
+  font-family: var(--font-cartel); font-variation-settings: var(--cartel-opsz); font-weight: 800;
+  font-size: 22px; line-height: 1.1; letter-spacing: var(--titular-sm-track); margin-bottom: var(--paso-2);
+}
+.legal__seccion ul { list-style: disc; padding-left: 1.2em; max-width: 60ch; }
+.legal__seccion li + li { margin-top: var(--paso-1); }
+.legal__seccion--solo ul { list-style: none; padding-left: 0; }
+.legal__seccion a { color: var(--tinta); text-underline-offset: 3px; text-decoration-thickness: 1.5px; }
+
 /* ---------- checkout return pages (gracias / cancelado) ---------- */
 /* A printed receipt slip: tinta on paper, one pasiflora button. */
 .recibo { padding: var(--paso-7) var(--margen); min-height: 60vh; }

@@ -343,9 +343,67 @@ export const copy = {
     },
   },
 
+  // /privacy. States only what the campaign actually collects and does (Checkout fields,
+  // the Pledge table, the language switch). No claims about analytics, cookies, retention,
+  // sale or other third parties: none are established. Approved scope Oct 27 2026.
+  privacidad: {
+    title: { es: "Privacidad", en: "Privacy" },
+    kicker: { es: "Campaña del disco nuevo", en: "New record campaign" },
+    updated: { es: "Actualizado el 27 oct 2026", en: "Updated Oct 27, 2026" },
+    intro: {
+      es: "Esta página explica qué información recoge la campaña del disco nuevo de COMBO CHIMBITA cuando haces un aporte, y para qué la usamos.",
+      en: "This page explains what information the COMBO CHIMBITA new record campaign collects when you contribute, and what we use it for.",
+    },
+    sections: [
+      {
+        heading: { es: "Lo que recogemos", en: "What we collect" },
+        items: {
+          es: [
+            "Tu nombre y tu correo electrónico.",
+            "Tu dirección de envío, si tu recompensa incluye algo físico.",
+            "El registro de tu aporte: monto, recompensa, fecha y estado del pago.",
+          ],
+          en: [
+            "Your name and email address.",
+            "Your shipping address, if your reward includes something physical.",
+            "The record of your contribution: amount, reward, date and payment status.",
+          ],
+        },
+      },
+      {
+        heading: { es: "Pagos", en: "Payments" },
+        items: {
+          es: [
+            "Stripe procesa los pagos. Escribes los datos de tu tarjeta en la página de pago de Stripe, y nosotros no los vemos ni los guardamos.",
+          ],
+          en: [
+            "Stripe processes payments. You enter your card details on Stripe's payment page, and we never see or store them.",
+          ],
+        },
+      },
+      {
+        heading: { es: "Para qué la usamos", en: "What we use it for" },
+        items: {
+          es: ["Para confirmar tu aporte, responder tus preguntas, hacer reembolsos y enviarte tu recompensa."],
+          en: ["To confirm your contribution, answer your questions, process refunds and send you your reward."],
+        },
+      },
+      {
+        heading: { es: "Tu idioma", en: "Your language" },
+        items: {
+          es: ["Si eliges español o inglés, el sitio guarda esa elección en tu navegador. No se envía a ninguna parte."],
+          en: ["If you pick Spanish or English, the site saves that choice in your browser. It isn't sent anywhere."],
+        },
+      },
+    ],
+    contact: { es: "Para preguntas sobre tu información, escríbenos a", en: "For questions about your information, write to" },
+    stripePolicy: { es: "Política de privacidad de Stripe", en: "Stripe's privacy policy" },
+  },
+
   footer: {
     list: { es: "Lista de correo", en: "Mailing list" },
     contact: { es: "Contacto", en: "Contact" },
+    privacy: { es: "Privacidad", en: "Privacy" },
     rights: { es: "Lenapehoking / Abya Yala", en: "Lenapehoking / Abya Yala" },
   },
 } as const;
