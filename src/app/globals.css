@@ -830,6 +830,8 @@ html[data-lang="es"] .l-en, html[data-lang="en"] .l-es { display: none !importan
   font-size: clamp(36px, 5.2vw, 64px); line-height: var(--titular-sm-lead, .92); letter-spacing: var(--titular-sm-track);
   margin-bottom: var(--paso-4);
 }
+.compartir__story { display: flex; flex-wrap: wrap; gap: var(--paso-2); margin-bottom: var(--paso-4); }
+@media (max-width: 420px) { .compartir__story .btn { width: 100%; } }
 .compartir__link { display: flex; flex-wrap: wrap; align-items: baseline; gap: var(--paso-1) var(--paso-3); margin-bottom: var(--paso-3); }
 .compartir__url { user-select: all; overflow-wrap: anywhere; }
 .compartir__item { display: flex; align-items: baseline; gap: var(--paso-3); border-bottom: 1px dotted var(--linea); }

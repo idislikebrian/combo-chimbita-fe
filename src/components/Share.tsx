@@ -63,10 +63,14 @@ const ACTIONS: Action[] = [
   { id: "copy", label: s.copy, kind: "button", run: ({ url }) => copyLink(url, s.copied) },
 ];
 
-/** `url` is the public campaign URL (campaign.siteUrl), never the current page. */
-export function Share({ url }: { url: string }) {
+const st = copy.igStory;
+
+/** `url` is the public campaign URL (campaign.siteUrl), never the current page.
+ *  `reward` is the public reward id (tiers.ts or "libre"); it only picks the story's reward line. */
+export function Share({ url, reward }: { url: string; reward: string | null }) {
   const [status, setStatus] = useState<Result>(null);
   const ctxFor = (lang: Lang): Ctx => ({ url, message: s.message[lang] });
+  const storyHref = (lang: Lang) => `/gracias/story?${new URLSearchParams({ lang, ...(reward ? { r: reward } : {}) })}`;
 
   return (
     <section className="compartir" aria-labelledby="compartir-title">
@@ -77,6 +81,42 @@ export function Share({ url }: { url: string }) {
         <span className="etiqueta"><T t={s.linkLabel} /></span>
         <span className="compartir__url ficha">{url.replace(/^https?:\/\//, "").replace(/\/$/, "")}</span>
       </p>
+      {/* Instagram Story: a 1080×1920 PNG made on the server. The download attribute saves it
+          where supported; elsewhere (iOS Safari) it opens in a new tab to save or share. */}
+      <div className="compartir__story">
+        {LANGS.map((lang) => (
+          <a
+            key={lang}
+            lang={lang}
+            className={`btn btn--primary l-${lang}`}
+            href={storyHref(lang)}
+            download={`combo-chimbita-story-${lang}.png`}
+            target="_blank"
+          >
+            <span className="btn__label">
+              {st.download[lang]} <span aria-hidden="true">↓</span>
+              <span className="sr-only"> ({st.downloadHint[lang]})</span>
+            </span>
+          </a>
+        ))}
+        <button
+          type="button"
+          className="btn"
+          onClick={async () => {
+            const lang = currentLang();
+            try {
+              await navigator.clipboard.writeText(st.caption[lang]);
+              setStatus(st.captionCopied);
+            } catch {
+              setStatus(s.copyFailed);
+            }
+          }}
+        >
+          <span className="btn__label">
+            <T t={st.copyText} />
+          </span>
+        </button>
+      </div>
       <ul className="compartir__list">
         {ACTIONS.map((a, i) => (
           <li key={a.id} className="compartir__item">

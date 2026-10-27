@@ -31,7 +31,15 @@ export default function GraciasPage({ searchParams }: { searchParams: Promise<{ 
   );
 }
 
-type Paid = { reward: Bilingual; amountUsd: number; email: string | null; shipTo: string | null; ships: boolean };
+type Paid = {
+  reward: Bilingual;
+  /** Public reward id for the story graphic: a tiers.ts id or "libre"; null if unmatched. */
+  rewardId: string | null;
+  amountUsd: number;
+  email: string | null;
+  shipTo: string | null;
+  ships: boolean;
+};
 
 async function Resolved({ searchParams }: { searchParams: Promise<{ session_id?: string }> }) {
   const { session_id } = await searchParams;
@@ -56,6 +64,7 @@ async function Resolved({ searchParams }: { searchParams: Promise<{ session_id?:
         email: session.customer_details?.email ?? null,
         shipTo: addr ? [addr.city, addr.country].filter(Boolean).join(", ") : null,
         ships: tier?.ships ?? false,
+        rewardId: tier ? tier.id : pledge === openAmount.id ? openAmount.id : null,
       }}
     />
   );
@@ -133,7 +142,7 @@ function Receipt({
         <span className="btn__label"><span aria-hidden="true">←</span> <T t={g.back} /></span>
       </Link>
       {/* Shown only after a confirmed payment. Shares the campaign, never this receipt. */}
-      {state === "paid" && shareUrl ? <Share url={shareUrl} /> : null}
+      {state === "paid" && shareUrl ? <Share url={shareUrl} reward={paid?.rewardId ?? null} /> : null}
     </section>
   );
 }

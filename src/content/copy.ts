@@ -317,6 +317,23 @@ export const copy = {
     newWindow: { es: "abre en una ventana nueva", en: "opens in a new window" },
   },
 
+  // Instagram Story graphic (/gracias/story) and its actions on the receipt page.
+  // Nothing personal: no amount, email, address or session, only the reward's public name.
+  igStory: {
+    /** One entry per printed line. */
+    headline: { es: ["Ya soy", "parte del", "nuevo", "disco"], en: ["I'm part", "of the", "new", "record"] },
+    reward: { es: "Recompensa", en: "Reward" },
+    download: { es: "Descargar story", en: "Download story" },
+    /** Screen-reader detail for the download link. */
+    downloadHint: { es: "imagen PNG vertical para Instagram", en: "vertical PNG image for Instagram" },
+    copyText: { es: "Copiar texto", en: "Copy text" },
+    caption: {
+      es: "Ya soy parte del nuevo disco de COMBO CHIMBITA. Otro sueño empieza.\ndisco.combochimbita.net",
+      en: "I'm part of COMBO CHIMBITA's new record. Another dream begins.\ndisco.combochimbita.net",
+    },
+    captionCopied: { es: "Texto copiado", en: "Text copied" },
+  },
+
   cancelado: {
     title: { es: "Pago cancelado", en: "Payment cancelled" },
     kicker: { es: "Sin cobro", en: "Nothing charged" },
