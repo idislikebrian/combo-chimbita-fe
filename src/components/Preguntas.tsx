@@ -5,9 +5,12 @@ import { T } from "./T";
 
 /** The support address as a mail link. */
 export function Correo() {
+  const [user, domain] = campaign.supportEmail.split("@");
   return (
     <a className="correo" href={`mailto:${campaign.supportEmail}`}>
-      {campaign.supportEmail}
+      {/* On narrow screens the address breaks before the @, not inside the domain. */}
+      {user}
+      <wbr />@{domain}
     </a>
   );
 }

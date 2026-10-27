@@ -709,6 +709,8 @@ html[data-lang="es"] .l-en, html[data-lang="en"] .l-es { display: none !importan
 }
 .site-footer__links { display: grid; gap: var(--paso-1); }
 .site-footer__coords { display: grid; gap: var(--paso-1); }
+.site-footer__legal { display: flex; flex-wrap: wrap; gap: var(--paso-1) var(--paso-3); margin-top: var(--paso-4); }
+.site-footer__legal a { color: var(--tinta); }
 .site-footer a { text-underline-offset: 3px; text-decoration-thickness: 1.5px; }
 @media (max-width: 720px) {
   .site-footer__band { grid-template-columns: 1fr; }

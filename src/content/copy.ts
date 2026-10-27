@@ -400,10 +400,127 @@ export const copy = {
     stripePolicy: { es: "Política de privacidad de Stripe", en: "Stripe's privacy policy" },
   },
 
+  // /support: Stripe's customer support URL. No response-time promise.
+  soporte: {
+    title: { es: "Soporte", en: "Support" },
+    kicker: { es: "Campaña del disco nuevo", en: "New record campaign" },
+    updated: { es: "Actualizado el 27 oct 2026", en: "Updated Oct 27, 2026" },
+    intro: {
+      es: "¿Tienes una pregunta sobre tu aporte? Escríbenos a",
+      en: "Have a question about your contribution? Write to",
+    },
+    sections: [
+      {
+        heading: { es: "Escríbenos sobre", en: "Write to us about" },
+        items: {
+          es: [
+            "Preguntas sobre un aporte o una recompensa.",
+            "Solicitudes de reembolso.",
+            "El envío o la entrega de tu recompensa, incluidos cambios de dirección.",
+          ],
+          en: [
+            "Questions about a contribution or a reward.",
+            "Refund requests.",
+            "Shipping or delivery of your reward, including address changes.",
+          ],
+        },
+      },
+      {
+        heading: { es: "Para encontrar tu aporte", en: "So we can find your contribution" },
+        items: {
+          es: ["Escríbenos desde el correo que usaste al aportar, o inclúyelo en tu mensaje."],
+          en: ["Write from the email you used when you contributed, or include it in your message."],
+        },
+      },
+    ],
+    more: { es: "Más información", en: "More" },
+    faq: { es: "Preguntas de la campaña", en: "Campaign questions" },
+  },
+
+  // /terms: Stripe's terms of service URL. Campaign terms only, from the launch policy approved
+  // Oct 27 2026. No dates, warranties, governing law, arbitration or retention: none decided.
+  terminos: {
+    title: { es: "Términos", en: "Terms" },
+    kicker: { es: "Campaña del disco nuevo", en: "New record campaign" },
+    updated: { es: "Actualizado el 27 oct 2026", en: "Updated Oct 27, 2026" },
+    intro: {
+      es: "Estos términos aplican a los aportes a la campaña de crowdfunding del disco nuevo de COMBO CHIMBITA en disco.combochimbita.net.",
+      en: "These terms apply to contributions to the COMBO CHIMBITA new record crowdfunding campaign at disco.combochimbita.net.",
+    },
+    sections: [
+      {
+        heading: { es: "Aportes y pagos", en: "Contributions and payments" },
+        items: {
+          es: [
+            "El cobro se hace en el momento en que completas el pago en Stripe Checkout.",
+            "Esta campaña no es de todo o nada: cada aporte financia el disco directamente.",
+            "Puedes aportar con una recompensa o sin ella.",
+          ],
+          en: [
+            "You're charged as soon as you complete payment in Stripe Checkout.",
+            "This campaign isn't all-or-nothing: every contribution funds the record directly.",
+            "You can contribute with or without choosing a reward.",
+          ],
+        },
+      },
+      {
+        heading: { es: "Recompensas", en: "Rewards" },
+        items: {
+          es: [
+            "Las recompensas disponibles y sus cupos son los que muestra la página de la campaña en el momento de tu aporte.",
+            "Donde la campaña dice que el lugar o la fecha de una experiencia están por anunciar, como el show en Nueva York, esos detalles se anunciarán más adelante.",
+          ],
+          en: [
+            "Available rewards and their caps are the ones shown on the campaign page at the time you contribute.",
+            "Where the campaign says the venue or date of an experience is to be announced, such as the New York show, those details will be announced later.",
+          ],
+        },
+      },
+      {
+        heading: { es: "Envío", en: "Shipping" },
+        items: {
+          es: [
+            "El precio de las recompensas físicas no incluye el envío.",
+            "Para las recompensas físicas, tomamos tu dirección de envío cuando haces el aporte.",
+            "Antes de enviar tu recompensa, COMBO CHIMBITA te escribe con el costo real del envío. Puedes rechazar ese costo y pedir el reembolso completo antes de que empiece la preparación de tu recompensa.",
+            "Puedes participar desde cualquier país. Los aranceles, el IVA, los impuestos de importación y cargos parecidos del país de destino, donde apliquen, corren por tu cuenta.",
+            "Si no podemos hacer llegar la recompensa a tu destino de forma razonable, te devolvemos el aporte de esa recompensa.",
+          ],
+          en: [
+            "Physical reward prices don't include shipping.",
+            "For physical rewards, we take your shipping address when you contribute.",
+            "Before your reward ships, COMBO CHIMBITA will write to you with the actual shipping cost. You can decline that cost and ask for a full refund before fulfillment of your reward begins.",
+            "You can join from any country. Customs, VAT, import duties and similar charges at your destination, where they apply, are your responsibility.",
+            "If we can't reasonably get your reward to your destination, we'll refund your contribution for that reward.",
+          ],
+        },
+      },
+      {
+        heading: { es: "Reembolsos", en: "Refunds" },
+        items: {
+          es: [
+            "Puedes pedir el reembolso completo hasta que empiece la preparación de tu recompensa.",
+            "Después de eso, hacemos reembolsos si la recompensa no llega, si no podemos cumplirla, o cuando de otra forma estemos obligados a hacerlo.",
+          ],
+          en: [
+            "You can ask for a full refund until fulfillment of your reward begins.",
+            "After that, we handle refunds for non-delivery, if we can't fulfill your reward, or where we're otherwise required to.",
+          ],
+        },
+      },
+    ],
+    contact: { es: "Para preguntas o reembolsos, escríbenos a", en: "For questions or refunds, write to" },
+  },
+
+  /** Shared by /privacy, /support and /terms. */
+  legal: {
+    privacy: { es: "Privacidad", en: "Privacy" },
+    terms: { es: "Términos", en: "Terms" },
+    support: { es: "Soporte", en: "Support" },
+  },
+
   footer: {
     list: { es: "Lista de correo", en: "Mailing list" },
-    contact: { es: "Contacto", en: "Contact" },
-    privacy: { es: "Privacidad", en: "Privacy" },
     rights: { es: "Lenapehoking / Abya Yala", en: "Lenapehoking / Abya Yala" },
   },
 } as const;
