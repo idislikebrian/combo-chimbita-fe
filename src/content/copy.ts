@@ -112,17 +112,19 @@ export const copy = {
     limit: { es: "Cupos", en: "Spots" },
     currency: { es: "USD", en: "USD" },
     cta: { es: "Me sumo", en: "I'm in" },
-    /** Facts already true (COB-601). WORKING COPY, pending band review. No policy beyond these. */
+    /** COB-601 facts plus the launch policy approved Oct 27 2026. Details in preguntas below. */
     terms: {
       es: [
         "El cobro a tu tarjeta se hace en el momento del aporte.",
         "Esta campaña financia el disco directamente: no es de todo o nada.",
-        "El envío del disco físico no está incluido en el precio de la recompensa. Las tarifas de envío todavía se están definiendo.",
+        "El envío no está incluido en el precio de la recompensa. Antes de enviar, te escribimos con el costo real del envío.",
+        "Puedes pedir el reembolso completo hasta que empecemos a preparar tu recompensa.",
       ],
       en: [
         "Your card is charged when you contribute.",
         "This campaign funds the record directly. It isn't all-or-nothing.",
-        "Shipping for the physical record isn't included in the reward price. Shipping rates are still being set.",
+        "Shipping isn't included in the reward price. Before we ship, we'll write to you with the actual shipping cost.",
+        "You can ask for a full refund until we start fulfilling your reward.",
       ],
     },
     open: {
@@ -137,9 +139,9 @@ export const copy = {
     notAvailable: { es: "Aún no disponible", en: "Not available yet" },
   },
 
-  // Questions, answered only from facts already approved (COB-601 terms, tiers.ts).
-  // WORKING LAUNCH COPY, pending the band's read. No refund, delivery date, regions, rates,
-  // customs or contact address here until the band decides them.
+  // Questions, answered only from approved facts: COB-601 terms, tiers.ts and the launch
+  // policy approved Oct 27 2026 (refunds, shipping, international, support address).
+  // No delivery dates or shipping rates until they're decided.
   preguntas: {
     kicker: { es: "Preguntas", en: "Questions" },
     heading: { es: "Antes de entrar", en: "Before you join" },
@@ -158,8 +160,22 @@ export const copy = {
       {
         q: { es: "¿El envío está incluido?", en: "Is shipping included?" },
         a: {
-          es: "No. El envío del disco físico no está incluido en el precio de la recompensa. Los detalles finales del envío todavía se están definiendo.",
-          en: "No. Shipping for the physical record isn't included in the reward price. Final shipping details are still being worked out.",
+          es: "No. Tomamos tu dirección cuando haces el aporte. Antes de enviar tu recompensa, te escribimos con el costo real del envío. Si prefieres no pagarlo, puedes rechazarlo y recibir el reembolso completo antes del envío.",
+          en: "No. We take your address when you contribute. Before we ship your reward, we'll write to you with the actual shipping cost. If you'd rather not pay it, you can decline and get a full refund before anything ships.",
+        },
+      },
+      {
+        q: { es: "¿Puedo participar desde fuera de Estados Unidos?", en: "Can I join from outside the US?" },
+        a: {
+          es: "Sí. Los aranceles, el IVA y otros impuestos de importación, donde apliquen, corren por tu cuenta. Si no podemos hacer llegar la recompensa a tu destino de forma razonable, te devolvemos el valor de la recompensa.",
+          en: "Yes. Customs, VAT and import duties, where they apply, are your responsibility. If we can't reasonably get your reward to your destination, we'll refund the reward.",
+        },
+      },
+      {
+        q: { es: "¿Puedo pedir un reembolso?", en: "Can I get a refund?" },
+        a: {
+          es: "Sí. Puedes pedir el reembolso completo hasta que empecemos a preparar tu recompensa. Después de eso, hacemos reembolsos si la recompensa no llega, si no podemos cumplirla, o cuando de otra forma estemos obligados a hacerlo.",
+          en: "Yes. You can ask for a full refund until we start fulfilling your reward. After that, we refund if the reward doesn't arrive, if we can't fulfill it, or where we're otherwise required to.",
         },
       },
       {
@@ -170,8 +186,13 @@ export const copy = {
         },
       },
     ],
-    /** The last question lists every reward from tiers.ts. */
+    /** Lists every reward from tiers.ts. */
     rewards: { es: "¿Qué incluye cada recompensa?", en: "What does each reward include?" },
+    /** Last question; the support address follows the answer as a mail link. */
+    contact: {
+      q: { es: "¿Cómo les escribo?", en: "How do I reach you?" },
+      a: { es: "Para preguntas, reembolsos o cambios de dirección, escríbenos a", en: "For questions, refunds or address changes, write to" },
+    },
   },
 
   /** Closing note under the questions, from the story's own lines. WORKING LAUNCH COPY. */
@@ -180,6 +201,7 @@ export const copy = {
       es: "Esta banda duró porque una comunidad decidió quedarse. Esta vez, ustedes están adentro.",
       en: "This band lasted because a community decided to stay. This time, you're in it.",
     },
+    contact: { es: "¿Preguntas? Escríbenos a", en: "Questions? Write to" },
   },
 
   // Funding breakdown and roadmap live in funding.ts.
@@ -212,9 +234,23 @@ export const copy = {
     thanks: { es: "Gracias. Tu aporte quedó registrado.", en: "Thank you. Your contribution went through." },
     /** Shown on the receipt page while Stripe runs on test keys. */
     testMode: { es: "Modo de prueba · no se cobra dinero real", en: "Test mode · no real money is charged" },
-    /** Appended to the Stripe line-item description for tiers with the physical record. WORKING COPY.
-     *  Neutral on purpose: no price or timing until regional rates are approved (see shipping.ts). */
-    shippingNotIncluded: { es: "Envío no incluido en el precio de la recompensa.", en: "Shipping not included in the reward price." },
+    /** Appended to the Stripe line-item description for tiers with the physical record.
+     *  No price or timing: the actual cost is sent to each supporter before fulfillment. */
+    shippingNotIncluded: {
+      es: "Envío no incluido: antes de enviar te escribimos con el costo real.",
+      en: "Shipping not included: we'll write with the actual cost before we ship.",
+    },
+    /** Stripe Checkout custom text above the pay button. {email} is the support address. */
+    submitNote: {
+      ships: {
+        es: "El envío no está incluido. Antes de enviar te escribimos con el costo real; puedes rechazarlo y recibir el reembolso completo. Reembolso completo disponible hasta que empecemos a preparar tu recompensa. Preguntas: {email}",
+        en: "Shipping isn't included. Before we ship, we'll write with the actual cost; you can decline it for a full refund. Full refunds are available until we start fulfilling your reward. Questions: {email}",
+      },
+      open: {
+        es: "Aporte sin recompensa. Preguntas o reembolsos: {email}",
+        en: "Contribution with no reward. Questions or refunds: {email}",
+      },
+    },
     invalidAmount: { es: "Escribe un monto de al menos ${min}.", en: "Enter an amount of at least ${min}." },
   },
 
@@ -235,10 +271,20 @@ export const copy = {
       en: "Your payment is still processing. Reload this page in a few minutes.",
     },
     missing: {
-      // No contact address yet: add "write to us at …" back once the band confirms one.
-      es: "No encontramos este pago. Revisa que el enlace esté completo o vuelve a la campaña.",
-      en: "We couldn't find this payment. Check that the link is complete, or go back to the campaign.",
+      es: "No encontramos este pago. Revisa que el enlace esté completo, o escríbenos y lo buscamos.",
+      en: "We couldn't find this payment. Check that the link is complete, or write to us and we'll look it up.",
     },
+    /** Paid state: Stripe's email is the official receipt. */
+    receiptNote: {
+      es: "Stripe te envía el recibo oficial por correo.",
+      en: "Stripe emails you the official receipt.",
+    },
+    /** Paid state, rewards with the physical record only. */
+    shippingNext: {
+      es: "Antes de enviar tu recompensa, te escribimos con el costo real del envío. Si prefieres no pagarlo, puedes rechazarlo y recibir el reembolso completo.",
+      en: "Before we ship your reward, we'll write to you with the actual shipping cost. If you'd rather not pay it, you can decline and get a full refund.",
+    },
+    contact: { es: "¿Preguntas o un reembolso? Escríbenos a", en: "Questions or a refund? Write to" },
     reward: { es: "Recompensa", en: "Reward" },
     /** Reward value when a paid session's tier can't be matched to tiers.ts. */
     rewardFallback: { es: "Sin detalle", en: "Not listed" },
@@ -299,6 +345,7 @@ export const copy = {
 
   footer: {
     list: { es: "Lista de correo", en: "Mailing list" },
+    contact: { es: "Contacto", en: "Contact" },
     rights: { es: "Lenapehoking / Abya Yala", en: "Lenapehoking / Abya Yala" },
   },
 } as const;

@@ -7,7 +7,12 @@ import { copy, type Bilingual } from "@/content/copy";
 import { tiers, openAmount } from "@/content/tiers";
 import { campaign, formatUsd } from "@/content/campaign";
 import { Share } from "@/components/Share";
+import { Correo } from "@/components/Preguntas";
+import type { Metadata } from "next";
 import { getStripe, isLiveStripe } from "@/lib/stripe";
+
+// Never indexed, even after the launch switch (INDEXABLE) opens the rest of the site.
+export const metadata: Metadata = { robots: { index: false, follow: false, nocache: true } };
 
 // Return page after Stripe Checkout. Reads the session from Stripe on the server so
 // nothing shown here comes from the URL except the session id.
@@ -26,7 +31,7 @@ export default function GraciasPage({ searchParams }: { searchParams: Promise<{ 
   );
 }
 
-type Paid = { reward: Bilingual; amountUsd: number; email: string | null; shipTo: string | null };
+type Paid = { reward: Bilingual; amountUsd: number; email: string | null; shipTo: string | null; ships: boolean };
 
 async function Resolved({ searchParams }: { searchParams: Promise<{ session_id?: string }> }) {
   const { session_id } = await searchParams;
@@ -50,6 +55,7 @@ async function Resolved({ searchParams }: { searchParams: Promise<{ session_id?:
         amountUsd: (session.amount_total ?? 0) / 100,
         email: session.customer_details?.email ?? null,
         shipTo: addr ? [addr.city, addr.country].filter(Boolean).join(", ") : null,
+        ships: tier?.ships ?? false,
       }}
     />
   );
@@ -102,11 +108,25 @@ function Receipt({
               </div>
             ) : null}
           </dl>
+          <p className="recibo__nota pequeno">
+            <T t={g.receiptNote} />
+            {paid.ships ? (
+              <>
+                {" "}
+                <T t={g.shippingNext} />
+              </>
+            ) : null}
+          </p>
         </>
       ) : state === "processing" ? (
         <p className="recibo__body subtitulo"><T t={g.processing} /></p>
       ) : state === "missing" ? (
         <p className="recibo__body subtitulo"><T t={g.missing} /></p>
+      ) : null}
+      {state !== "loading" ? (
+        <p className="recibo__nota pequeno">
+          <T t={g.contact} /> <Correo />.
+        </p>
       ) : null}
       {isLiveStripe() ? null : <p className="recibo__test etiqueta"><T t={copy.checkout.testMode} /></p>}
       <Link className="btn btn--primary recibo__back" href="/">

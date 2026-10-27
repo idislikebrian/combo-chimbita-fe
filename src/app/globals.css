@@ -589,7 +589,7 @@ html[data-lang="es"] .l-en, html[data-lang="en"] .l-es { display: none !importan
 .pregunta { padding-block: var(--paso-3); border-bottom: 1px solid var(--linea-suave); }
 .pregunta__q {
   font-family: var(--font-cartel); font-variation-settings: var(--cartel-opsz); font-weight: 800;
-  font-size: 22px; line-height: var(--titular-sm-lead); letter-spacing: var(--titular-sm-track);
+  font-size: 22px; line-height: 1.1; letter-spacing: var(--titular-sm-track); /* wrapped questions keep their accents clear */
 }
 .pregunta__a { margin-top: var(--paso-1); max-width: 60ch; }
 .pregunta__recompensas li + li { margin-top: var(--paso-2); }
@@ -600,6 +600,9 @@ html[data-lang="es"] .l-en, html[data-lang="en"] .l-es { display: none !importan
   display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: var(--paso-4);
 }
 .cierre__line { max-width: 32ch; }
+.cierre__contacto { margin-top: var(--paso-2); }
+.correo { color: var(--tinta); overflow-wrap: anywhere; text-underline-offset: 3px; text-decoration-thickness: 1.5px; }
+.recibo__nota { margin-block: var(--paso-3); max-width: 60ch; }
 @media (max-width: 900px) {
   .preguntas { grid-template-columns: 1fr; padding-block: var(--paso-6); }
   .preguntas__head, .preguntas__lista { grid-column: 1; }

@@ -1,6 +1,16 @@
 import { copy } from "@/content/copy";
 import { tiers } from "@/content/tiers";
+import { campaign } from "@/content/campaign";
 import { T } from "./T";
+
+/** The support address as a mail link. */
+export function Correo() {
+  return (
+    <a className="correo" href={`mailto:${campaign.supportEmail}`}>
+      {campaign.supportEmail}
+    </a>
+  );
+}
 
 // Questions under the price list, then a closing line that sends readers back up to it.
 // The rewards answer is built from tiers.ts so it can never drift from the list above.
@@ -52,13 +62,26 @@ export function Preguntas() {
               </ul>
             </dd>
           </div>
+          <div className="pregunta">
+            <dt className="pregunta__q">
+              <T t={c.contact.q} />
+            </dt>
+            <dd className="pregunta__a cuerpo">
+              <T t={c.contact.a} /> <Correo />.
+            </dd>
+          </div>
         </dl>
       </section>
 
       <section className="cierre" aria-label="COMBO CHIMBITA">
-        <p className="cierre__line subtitulo">
-          <T t={copy.cierre.line} />
-        </p>
+        <div className="cierre__texto">
+          <p className="cierre__line subtitulo">
+            <T t={copy.cierre.line} />
+          </p>
+          <p className="cierre__contacto pequeno">
+            <T t={copy.cierre.contact} /> <Correo />.
+          </p>
+        </div>
         <a className="btn btn--primary btn--lg" href="#recompensas">
           <span className="btn__label">
             <T t={copy.hero.cta} /> <span aria-hidden="true">↑</span>

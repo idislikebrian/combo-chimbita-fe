@@ -28,6 +28,8 @@ export const campaign = {
     process.env.VERCEL_ENV === "production"
       ? "https://disco.combochimbita.net"
       : "https://combo-chimbita-preview.vercel.app",
+  /** Support address for supporters: FAQ, receipt page, closing note, footer, Checkout. */
+  supportEmail: "combochimbita+support@gmail.com",
   /** Root domain, home of the holding page (src/app/espera). */
   rootUrl: "https://combochimbita.net",
 

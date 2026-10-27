@@ -34,6 +34,11 @@ export function Footer() {
               <a href={l.instagram} rel="noopener">Instagram <span aria-hidden="true">↗</span></a>
             </li>
           ) : null}
+          <li>
+            <a href={`mailto:${campaign.supportEmail}`}>
+              <T t={f.contact} />
+            </a>
+          </li>
           {l.mailingList ? (
             <li>
               <a href={l.mailingList} rel="noopener">

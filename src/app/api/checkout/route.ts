@@ -84,6 +84,9 @@ export async function POST(request: Request) {
       name_collection: { individual: { enabled: true } },
       customer_creation: "always",
       ...(ships && collectAddressAtPledge ? { shipping_address_collection: { allowed_countries: shippingCountries } } : {}),
+      custom_text: {
+        submit: { message: copy.checkout.submitNote[ships ? "ships" : "open"][lang].replace("{email}", campaign.supportEmail) },
+      },
       metadata: { pledge, ships: String(ships), lang },
       payment_intent_data: { metadata: { pledge } },
       // Always back to the campaign host, whichever host the request came in on.

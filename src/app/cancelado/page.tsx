@@ -1,8 +1,12 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { T } from "@/components/T";
 import { copy } from "@/content/copy";
+
+// Never indexed, even after the launch switch (INDEXABLE) opens the rest of the site.
+export const metadata: Metadata = { robots: { index: false, follow: false, nocache: true } };
 
 // Stripe Checkout's cancel_url. Nothing was charged; send them back to the price list.
 
